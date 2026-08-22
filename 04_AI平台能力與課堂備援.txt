@@ -1,0 +1,15 @@
+【已確認的能力定位】
+ChatGPT Work：課堂主要工具。適合讀檔、整理、建立及檢查實際交付檔案。
+Claude Project：適合精美 HTML／Artifact；可依帳號功能建立 PDF 及 DOCX，作為主要替代方案。
+Gemini Gem：適合 Canvas 網頁提案與 Google 文件流程；直接下載能力依介面與帳號而異。
+
+【免費版省時策略】
+第一輪只做 HTML；不開深度研究、不預設搜尋、不主動生成圖片；只做一次預覽檢查。HTML 確認後才分開做 PDF、Word。
+
+【格式備援】
+DOCX 讀不到：另存 PDF 或貼純文字。
+XLS／PPT 讀不到：改存 XLSX／PPTX 或 PDF。
+掃描 PDF 讀不到：先 OCR 或提供可複製文字。
+HTML 無法下載：保留 Canvas／Artifact 成果並複製完整 HTML。
+PDF 跑版：回到確認版 HTML，使用瀏覽器列印為 PDF 並檢查 A4 分頁。
+Word 版：以可編輯性與資料一致為主，不要求與 HTML 像素級相同。
