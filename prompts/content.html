@@ -1,0 +1,931 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive"><title>與 AI 交朋友｜指令工具箱</title><link rel="icon" type="image/x-icon" href="/ai/favicon.ico?v=20260822"><link rel="shortcut icon" type="image/x-icon" href="/ai/favicon.ico?v=20260822"><style>
+:root{--ink:#111d38;--blue:#2945d3;--violet:#7358e8;--gold:#ffc969;--paper:#f5f6fb;--line:#dfe3ef;--muted:#657087;--pink:#e4007f;--green:#16805a}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif}button,input{font:inherit}button,a{cursor:pointer}.top{position:sticky;top:0;z-index:20;background:#101c42;color:white;box-shadow:0 5px 20px #111a3d22}.top-inner{width:min(1220px,calc(100% - 30px));margin:auto;min-height:72px;display:flex;align-items:center;gap:20px}.brand{color:white;text-decoration:none;font-weight:900;white-space:nowrap}.brand b{display:inline-grid;place-items:center;width:38px;height:38px;margin-right:9px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--violet))}.search{position:relative;flex:1}.search input{width:100%;padding:12px 48px 12px 16px;border:1px solid #ffffff25;border-radius:10px;background:#ffffff12;color:white}.search input::placeholder{color:#bcc6df}.search kbd{position:absolute;right:12px;top:11px;padding:2px 6px;border:1px solid #ffffff33;border-radius:5px;color:#bac3dc}.top a.back{color:var(--gold);text-decoration:none;font-size:13px;font-weight:800}.hero{padding:75px max(20px,calc((100vw - 1220px)/2));color:white;background:radial-gradient(circle at 82% 20%,#ffc96966,transparent 22%),linear-gradient(135deg,#101c42,#2d46c5 60%,#654bce)}.hero small{font-weight:900;letter-spacing:.15em;color:#cdd5ff}.hero h1{font-size:clamp(48px,7vw,84px);line-height:1.05;letter-spacing:-.05em;margin:18px 0}.hero h1 em{font-style:normal;color:var(--gold)}.hero p{max-width:750px;font-size:18px;line-height:1.8;color:#e3e7ff}.how{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.how span{padding:9px 12px;border:1px solid #ffffff33;border-radius:9px;background:#ffffff12}.layout{width:min(1220px,calc(100% - 30px));margin:35px auto 90px;display:grid;grid-template-columns:240px 1fr;gap:25px;align-items:start}.side{position:sticky;top:92px;padding:14px;background:white;border:1px solid var(--line);border-radius:15px}.side b{display:block;padding:8px;color:var(--muted);font-size:12px;letter-spacing:.12em}.side a{display:flex;gap:10px;align-items:center;padding:11px 9px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:800}.side a:hover,.side a.on{background:#edf0ff;color:var(--blue)}.side a span{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:#e5e8f4;font-size:11px}.status{padding:12px;margin-top:10px;background:#fff8e6;border-radius:9px;color:#715723;font-size:12px;line-height:1.6}.prompt-section{scroll-margin-top:95px;margin-bottom:85px}.section-head{display:flex;gap:18px;align-items:center;padding-bottom:18px;border-bottom:3px solid var(--ink);margin-bottom:18px}.section-head>span{display:grid;place-items:center;width:55px;height:55px;border-radius:15px;background:var(--ink);color:white;font-size:22px;font-weight:900}.section-head h2{font-size:34px;margin:0}.section-head p{margin:5px 0 0;color:var(--muted)}.cards{display:grid;gap:14px}.prompt-card{padding:22px;background:white;border:1px solid var(--line);border-radius:15px}.card-top{display:flex;align-items:flex-start;gap:12px}.code{padding:5px 9px;border-radius:7px;background:var(--pink);color:white;font-size:12px;font-weight:900}.card-top>div{flex:1}.card-top h3{font-size:20px;margin:0}.card-top p{margin:5px 0;color:var(--muted);font-size:13px}.bookmark{border:0;background:transparent;font-size:25px;color:#9ba3b4}.bookmark.saved{color:var(--gold)}pre{margin:17px 0;padding:17px;border:1px solid var(--line);border-radius:11px;background:#f5f6fa;white-space:pre-wrap;word-break:break-word;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;line-height:1.75}.card-foot{display:flex;align-items:center;gap:14px}.copy{padding:10px 15px;border:0;border-radius:8px;background:var(--ink);color:white;font-weight:900}.copy.done{background:var(--green)}.card-foot span{color:var(--muted);font-size:12px}.example-label{display:flex;align-items:center;gap:10px;margin-top:18px;color:var(--green)}.example-label b{padding:6px 9px;border-radius:7px;background:#e5f7ef}.example-label span{color:var(--muted);font-size:13px}details.custom-prompt{margin-top:18px;padding:15px;border:1px dashed #b8bfd1;border-radius:11px;background:#fafbfe}details.custom-prompt summary{cursor:pointer;font-weight:900;color:var(--blue)}details.custom-prompt .copy{margin-top:0}.subhead{margin:35px 0 15px}.subhead h3{font-size:25px;margin:0}.subhead p{color:var(--muted)}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mini-card{padding:18px;background:white;border:1px solid var(--line);border-radius:13px}.mini-card h3{margin:0}.mini-card pre{min-height:100px}.mini-card small{margin-left:10px;color:var(--muted)}.help-grid{grid-template-columns:repeat(3,1fr)}.help-card pre{min-height:330px}.help-table th:first-child{min-width:190px}.help-table td{min-width:250px}details.parts{margin-top:20px;padding:18px;background:#ece9fb;border-radius:13px}details.parts summary{cursor:pointer;font-weight:900}.parts-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.part{padding:15px;background:white;border-radius:10px}.part p{color:var(--muted);font-size:12px}.part div{line-height:1.7}.table-wrap{overflow:auto;border-radius:13px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:white}th,td{padding:13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}thead th{background:var(--ink);color:white}tbody th{color:var(--violet)}.empty{display:none;padding:60px;text-align:center;background:white;border-radius:15px}.hidden{display:none!important}footer{padding:50px max(20px,calc((100vw - 1220px)/2));background:var(--ink);color:white}footer p{color:#abb5ce}@media(max-width:800px){.top-inner{flex-wrap:wrap;padding:12px 0}.search{order:3;flex-basis:100%}.layout{grid-template-columns:1fr}.side{position:relative;top:0;display:flex;overflow:auto}.side b,.status{display:none}.side a{white-space:nowrap}.mini-grid,.parts-grid,.help-grid{grid-template-columns:1fr}.card-foot{align-items:flex-start;flex-direction:column}.example-label{align-items:flex-start;flex-direction:column}.help-card pre{min-height:0}}@media(max-width:500px){.hero{padding-top:45px}.section-head h2{font-size:27px}.prompt-card{padding:16px}pre{font-size:14px}}
+/* Responsive and long-prompt refinements */
+html,body{max-width:100%;overflow-x:hidden}main,.prompt-section,.prompt-card,.copy-block{min-width:0;max-width:100%}pre{max-width:100%;overflow-x:auto;overflow-wrap:anywhere}.table-wrap{max-width:100%;-webkit-overflow-scrolling:touch}.long-actions{display:flex;align-items:center;gap:12px;margin-top:17px}.long-actions span{color:var(--muted);font-size:12px}details.long-prompt{margin-top:14px;border:1px solid var(--line);border-radius:11px;background:#f8f9fd;overflow:hidden}details.long-prompt summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 17px;cursor:pointer;color:var(--blue);font-weight:900}details.long-prompt summary small{color:var(--muted);font-weight:400}details.long-prompt pre{margin:0;border:0;border-top:1px solid var(--line);border-radius:0}.check-only{margin-top:12px}
+@media(max-width:800px){body{width:100%}.top{position:relative;padding-top:env(safe-area-inset-top)}.top-inner{width:100%;max-width:100%;padding:12px 14px;gap:10px}.brand{font-size:15px;white-space:normal}.brand b{width:34px;height:34px;margin-right:7px}.search{min-width:0}.search kbd{display:none}.search input{padding-right:14px}.hero{width:100%;padding:38px 18px 42px}.hero h1{font-size:clamp(38px,11vw,52px);letter-spacing:-.04em}.hero p{font-size:16px;line-height:1.75}.how{gap:8px}.how span{font-size:13px;padding:8px 10px}.layout{width:100%;max-width:100%;padding:0 12px;margin:18px auto 65px;display:block}.side{position:relative;top:0;width:100%;max-width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:9px;margin-bottom:28px;overflow:visible}.side b{display:block;grid-column:1/-1;padding:4px 6px}.side a{min-width:0;padding:9px 7px;white-space:normal;font-size:13px;line-height:1.35}.side a span{flex:0 0 24px}.section-head{gap:12px;align-items:flex-start}.section-head>span{width:48px;height:48px;flex:0 0 48px}.section-head h2{font-size:26px;line-height:1.25}.section-head p{font-size:13px;line-height:1.55}.prompt-section{margin-bottom:60px}.prompt-card{padding:15px;border-radius:13px}.card-top{gap:9px}.card-top h3{font-size:18px;line-height:1.4}pre{font-size:14px;line-height:1.7;padding:14px}.long-actions{align-items:stretch;flex-direction:column}.long-actions .copy{width:100%}details.long-prompt summary{padding:14px;font-size:14px}.help-table th:first-child{min-width:150px}.help-table td{min-width:220px}}
+@media(max-width:380px){.side{grid-template-columns:1fr}.side b{grid-column:auto}.brand{font-size:14px}}
+/* Premium travel-toolbox visual system */
+:root{--ink:#13203f;--paper:#f4f6fb;--line:#dfe5f0;--muted:#66728a;--blue:#3658df;--violet:#7658e8;--gold:#ffd078}
+body{background:
+radial-gradient(circle at 7% 11%,#e5e9ff 0,transparent 22rem),
+radial-gradient(circle at 94% 34%,#fff0e8 0,transparent 25rem),
+var(--paper)}
+.top{background:#101a39eF;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #ffffff18}
+.top-inner{min-height:78px}.brand{display:flex;align-items:center;letter-spacing:.01em;font-size:17px}.brand b{box-shadow:0 7px 22px #7058e866}
+.search input{border-color:#ffffff2f;background:#ffffff16;box-shadow:inset 0 1px 0 #ffffff12;transition:.2s ease}
+.search input:focus{outline:0;border-color:#9caeff;background:#ffffff20;box-shadow:0 0 0 4px #7890ff26}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:435px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(128deg,#111d42 0%,#2742bc 51%,#6d4dd3 100%);border-bottom:1px solid #ffffff44}
+.hero:before,.hero:after{content:"";position:absolute;z-index:-1;border-radius:999px;pointer-events:none}
+.hero:before{width:430px;height:430px;right:-75px;top:-155px;background:radial-gradient(circle at 35% 65%,#ffd47fa8,transparent 62%);filter:blur(2px)}
+.hero:after{width:370px;height:370px;left:46%;bottom:-285px;border:1px solid #ffffff2c;box-shadow:0 0 0 44px #ffffff0a,0 0 0 88px #ffffff08}
+.hero small{width:max-content;padding:7px 11px;border:1px solid #ffffff2d;border-radius:999px;background:#ffffff0e;color:#e8ebff}
+.hero h1{max-width:940px;text-shadow:0 10px 32px #10183b55}.hero h1 em{background:linear-gradient(90deg,#ffd37f,#ffb995);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin-top:4px;color:#edf0ff}.how span{border-color:#ffffff35;background:#ffffff14;box-shadow:inset 0 1px 0 #ffffff14;backdrop-filter:blur(8px)}
+.layout{margin-top:44px;gap:30px}.side{padding:13px;border-color:#e1e5f0;background:#ffffffda;box-shadow:0 18px 48px #1e2d5a12;backdrop-filter:blur(12px)}
+.side a{position:relative;transition:transform .18s ease,background .18s ease,color .18s ease}.side a:hover{transform:translateX(3px)}.side a.on{background:linear-gradient(90deg,#e9edff,#f4f0ff);box-shadow:inset 3px 0 0 var(--blue)}
+.side a span{background:#eef1f8;color:#5e6a84}.side a.on span{background:white;color:var(--blue);box-shadow:0 3px 10px #405bd52c}
+.prompt-section{--accent:#5268dc;--accent2:#7d62e8;--soft:#eef1ff}#foundation{--accent:#7158df;--accent2:#9a72ef;--soft:#f2eeff}#daily{--accent:#2e6fd0;--accent2:#4d9be4;--soft:#ebf5ff}#image{--accent:#d94e8a;--accent2:#ef7a86;--soft:#fff0f6}#document{--accent:#138a78;--accent2:#37ad8d;--soft:#eaf8f5}#project{--accent:#a36719;--accent2:#dd9440;--soft:#fff4e5}#help{--accent:#d35435;--accent2:#ea7657;--soft:#fff0ea}
+.section-head{position:relative;border-bottom:1px solid #dce2ed;padding-bottom:20px}.section-head:after{content:"";position:absolute;left:0;bottom:-1px;width:116px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.section-head>span{background:linear-gradient(145deg,var(--accent),var(--accent2));box-shadow:0 10px 26px color-mix(in srgb,var(--accent) 28%,transparent);transform:rotate(-2deg)}
+.section-head h2{letter-spacing:-.025em}.section-head p{line-height:1.65}
+.cards{gap:17px}.prompt-card,.mini-card{position:relative;overflow:hidden;border-color:#e0e5ef;background:linear-gradient(180deg,#ffffff 0%,#fdfdff 100%);box-shadow:0 13px 36px #1e2d5a0c;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.prompt-card:before,.mini-card:before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:.94}
+.prompt-card:hover,.mini-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 28%,#dfe4ee);box-shadow:0 20px 48px #1e2d5a16}
+.prompt-card{padding:24px}.code{background:var(--soft);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 18%,white);font-size:11px;letter-spacing:.04em}
+.bookmark{transition:.18s ease}.bookmark:hover{transform:scale(1.12);color:var(--accent)}
+pre{border-color:#e1e6ef;background:linear-gradient(180deg,#f8f9fc,#f4f6fa);box-shadow:inset 0 1px 0 #ffffff;scrollbar-color:#b8c1d4 transparent}
+.copy{background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 8px 18px color-mix(in srgb,var(--accent) 25%,transparent);transition:transform .18s ease,box-shadow .18s ease}.copy:hover{transform:translateY(-1px);box-shadow:0 12px 24px color-mix(in srgb,var(--accent) 32%,transparent)}.copy:active{transform:translateY(0)}
+.example-label b{background:var(--soft);color:var(--accent)}details.custom-prompt,details.long-prompt{border-color:color-mix(in srgb,var(--accent) 23%,#d8deea);background:linear-gradient(180deg,#ffffff,#f8f9fd)}details.custom-prompt summary,details.long-prompt summary{color:var(--accent)}
+details.long-prompt summary:after{content:"＋";display:grid;place-items:center;width:25px;height:25px;margin-left:auto;border-radius:50%;background:var(--soft);color:var(--accent)}details.long-prompt[open] summary:after{content:"−"}details.long-prompt summary small{margin-left:8px}
+.subhead{padding-left:16px;border-left:4px solid var(--accent)}.subhead h3{letter-spacing:-.02em}details.parts{background:linear-gradient(135deg,#ece9ff,#eef4ff);border:1px solid #dcd9f5}
+.table-wrap{border-color:#dfe5ef;box-shadow:0 12px 34px #1e2d5a0c}thead th{background:linear-gradient(135deg,var(--accent),var(--accent2))}tbody tr:nth-child(even){background:#fafbfe}tbody tr:hover{background:var(--soft)}tbody th{color:var(--accent)}
+footer{position:relative;overflow:hidden;background:linear-gradient(135deg,#101a39,#192957);border-top:4px solid #7658e8}footer:after{content:"AI";position:absolute;right:5%;bottom:-54px;color:#ffffff08;font-size:190px;font-weight:900}
+@media(max-width:800px){.top-inner{min-height:auto}.hero{min-height:0;padding-top:44px;padding-bottom:48px}.hero:before{width:280px;height:280px;right:-120px;top:-80px}.hero:after{display:none}.hero small{font-size:11px;line-height:1.4}.layout{margin-top:20px}.side{box-shadow:0 12px 30px #1e2d5a12}.side a:hover{transform:none}.prompt-section{margin-bottom:66px}.section-head:after{width:82px}.prompt-card:hover,.mini-card:hover{transform:none}.prompt-card{padding:17px}.copy{min-height:44px}}
+@media(max-width:500px){.brand{font-size:14px}.hero h1{margin:15px 0 12px}.how span{background:#ffffff12}.section-head>span{border-radius:13px}.subhead{padding-left:12px}}
+</style></head><body>
+<header class="top"><div class="top-inner"><div class="brand"><b>AI</b>與 AI 交朋友｜指令工具箱</div><div class="search"><input id="q" type="search" placeholder="搜尋：報價、行程、圖片、Email、專案……"><kbd>/</kbd></div></div></header>
+<section class="hero"><small>2026 與 AI 交朋友｜課堂隨手工具</small><h1>找到、修改、<em>直接複製。</em></h1><p>先選工作類型，再選指令。看到 [請填寫：自己的資料] 就換成你的內容；價格、日期、航班、飯店、餐食與條款一律回原檔核對。</p><div class="how"><span>① 找到工作類型</span><span>② 複製指令</span><span>③ 修改 [請填寫：...]</span><span>④ 檢查固定事實</span></div></section>
+<div class="layout"><nav class="side"><b>依使用情境分類</b><a href="#foundation"><span>01</span>基礎建設與設定</a><a href="#daily"><span>02</span>一般問答與萬用句型</a><a href="#image"><span>03</span>圖片生成</a><a href="#document"><span>04</span>報價、行程與交付</a><a href="#project"><span>05</span>專案完整指令</a><a href="#help"><span>06</span>AI 卡住了？先這樣處理</a></nav><main><section id="foundation" class="prompt-section"><div class="section-head"><span>01</span><div><h2>基礎建設與設定</h2><p>依工作屬性選擇直售、產品或行銷，貼到 AI 的個人化設定。</p></div></div><div class="cards"><article class="prompt-card" data-id="PERSON_SALES" data-search="個人化設定｜直售 適合直售業務、直售主管及負責客戶案件的人員 【我的工作】
+我是可樂旅遊直售單位成員，職務是[請填寫：職稱]，主要負責[請填寫：主要商品或客群]。工作可能包含詢價、報價、整理行程、客戶提案、案件審核、進度追蹤、團隊協作與跨部門溝通。
+
+【回答方式】
+請一律使用繁體中文及台灣用語，語氣自然、專業、直接，文字要像熟悉旅行社實務的同事所寫。不要使用「綜上所述、在這個快速變動的時代、賦能、全方位」等空泛句型。先說結論，再整理重點、風險與下一步；內容簡潔、好讀、可以直接使用。只有比較或多項資料確實需要時才使用表格。
+
+【資料規則】
+價格、日期、航班、飯店、餐食、景點、人數、付款與取消條款都必須依照我提供的資料，不可自行推測或改寫。請清楚區分「已確認事實、分析建議、待確認事項」；缺少的資訊會影響結果時才向我提問，其他情況先合理完成並標示假設。
+
+【工作輸出】
+對客文字、主管報告、會議摘要、團隊公告、案件審核意見及跨部門訊息，須符合旅行社實際工作語氣並可直接使用。當我要求建立或修改 Word、PDF、簡報、試算表、網頁、圖片或其他檔案時，請直接完成並提供可檢視成果，不要只給操作教學。除非是輕鬆訊息或我明確要求，否則不要使用表情符號。 ">
+      <div class="card-top"><span class="code">01</span><div><h3>個人化設定｜直售</h3><p>適合直售業務、直售主管及負責客戶案件的人員</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block long-block"><div class="long-actions"><button class="copy" data-label="一鍵複製完整指令">一鍵複製完整指令</button><span>不用展開也能複製</span></div>
+      <details class="long-prompt"><summary>展開完整指令 <small>約 494 字</small></summary><pre>【我的工作】
+我是可樂旅遊直售單位成員，職務是[請填寫：職稱]，主要負責[請填寫：主要商品或客群]。工作可能包含詢價、報價、整理行程、客戶提案、案件審核、進度追蹤、團隊協作與跨部門溝通。
+
+【回答方式】
+請一律使用繁體中文及台灣用語，語氣自然、專業、直接，文字要像熟悉旅行社實務的同事所寫。不要使用「綜上所述、在這個快速變動的時代、賦能、全方位」等空泛句型。先說結論，再整理重點、風險與下一步；內容簡潔、好讀、可以直接使用。只有比較或多項資料確實需要時才使用表格。
+
+【資料規則】
+價格、日期、航班、飯店、餐食、景點、人數、付款與取消條款都必須依照我提供的資料，不可自行推測或改寫。請清楚區分「已確認事實、分析建議、待確認事項」；缺少的資訊會影響結果時才向我提問，其他情況先合理完成並標示假設。
+
+【工作輸出】
+對客文字、主管報告、會議摘要、團隊公告、案件審核意見及跨部門訊息，須符合旅行社實際工作語氣並可直接使用。當我要求建立或修改 Word、PDF、簡報、試算表、網頁、圖片或其他檔案時，請直接完成並提供可檢視成果，不要只給操作教學。除非是輕鬆訊息或我明確要求，否則不要使用表情符號。</pre></details>
+      <div class="card-foot check-only"><span><b>用完檢查：</b>先把職稱與主要工作換成自己的內容，再測試一份日常案件</span></div></div>
+    </article><article class="prompt-card" data-id="PERSON_PRODUCT" data-search="個人化設定｜產品 適合產品企劃、線控、產品主管及商品營運人員 【我的工作】
+我是可樂旅遊產品單位成員，職務是[請填寫：職稱]，主要負責[請填寫：旅遊線別、商品或工作範圍]。工作可能包含商品規劃、資料整理、出發進度、供應資訊、異動管理、商品審核，以及提供業務正確且可執行的資訊。
+
+【回答方式】
+請一律使用繁體中文及台灣用語，語氣自然、專業、直接，文字要像熟悉旅行社產品實務的同事所寫。不要使用「綜上所述、在這個快速變動的時代、賦能、全方位」等空泛句型。先說結論，再整理現況、異動、影響、風險、待確認事項與下一步；資訊多時使用清楚的條列或表格，並標示比較基準。
+
+【資料規則】
+日期、航班、飯店、餐食、景點、價格、名額、效期與條款均以我提供的資料為準，不得自行補充，也不得把「預定、參考、或同級、可能調整」改成已確定。請清楚區分「已確認事實、分析推論、建議方案、待確認事項」；不同版本資料有衝突時先列出差異與影響，不可自行選一個當答案。
+
+【工作輸出】
+商品說明、異動通知、產品比較、異常摘要、主管報告及跨部門溝通，必須一眼看懂「發生什麼、影響什麼、要做什麼」。當我要求建立或修改 Word、PDF、簡報、試算表、網頁、圖片或其他檔案時，請直接完成並提供可檢視成果，不要只給操作教學。除非是輕鬆訊息或我明確要求，否則不要使用表情符號。 ">
+      <div class="card-top"><span class="code">02</span><div><h3>個人化設定｜產品</h3><p>適合產品企劃、線控、產品主管及商品營運人員</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block long-block"><div class="long-actions"><button class="copy" data-label="一鍵複製完整指令">一鍵複製完整指令</button><span>不用展開也能複製</span></div>
+      <details class="long-prompt"><summary>展開完整指令 <small>約 535 字</small></summary><pre>【我的工作】
+我是可樂旅遊產品單位成員，職務是[請填寫：職稱]，主要負責[請填寫：旅遊線別、商品或工作範圍]。工作可能包含商品規劃、資料整理、出發進度、供應資訊、異動管理、商品審核，以及提供業務正確且可執行的資訊。
+
+【回答方式】
+請一律使用繁體中文及台灣用語，語氣自然、專業、直接，文字要像熟悉旅行社產品實務的同事所寫。不要使用「綜上所述、在這個快速變動的時代、賦能、全方位」等空泛句型。先說結論，再整理現況、異動、影響、風險、待確認事項與下一步；資訊多時使用清楚的條列或表格，並標示比較基準。
+
+【資料規則】
+日期、航班、飯店、餐食、景點、價格、名額、效期與條款均以我提供的資料為準，不得自行補充，也不得把「預定、參考、或同級、可能調整」改成已確定。請清楚區分「已確認事實、分析推論、建議方案、待確認事項」；不同版本資料有衝突時先列出差異與影響，不可自行選一個當答案。
+
+【工作輸出】
+商品說明、異動通知、產品比較、異常摘要、主管報告及跨部門溝通，必須一眼看懂「發生什麼、影響什麼、要做什麼」。當我要求建立或修改 Word、PDF、簡報、試算表、網頁、圖片或其他檔案時，請直接完成並提供可檢視成果，不要只給操作教學。除非是輕鬆訊息或我明確要求，否則不要使用表情符號。</pre></details>
+      <div class="card-foot check-only"><span><b>用完檢查：</b>先填入負責線別與工作範圍，再用兩個版本的商品資料測試差異整理</span></div></div>
+    </article><article class="prompt-card" data-id="PERSON_MARKETING" data-search="個人化設定｜行銷 適合行銷相關工作與行銷主管 【我的工作】
+我是可樂旅遊行銷單位成員，職務是[請填寫：職稱]，主要負責[請填寫：主要工作，例如品牌規劃、活動企劃]。日常可能需要處理行銷企劃、主管報告、會議摘要、成效分析、簡報、素材需求及跨部門協作。
+
+【回答方式】
+請一律使用繁體中文及台灣用語，語氣自然、專業、直接，文字要像熟悉行銷實務的同事所寫。不要使用「綜上所述、在這個快速變動的時代、賦能、全方位」等空泛句型。回覆先說結論，再整理原因、重點、風險與下一步；以簡潔、好讀、可直接使用為優先。只有比較、數據或多項內容確實需要時才使用表格。
+
+【分析規則】
+請清楚區分「已確認事實、分析推論、建議方案、待確認事項」。資訊不足時不可自行虛構；數據分析須註明資料來源、統計期間、指標定義及比較基準，不能只因單一數據就判定整體成效，並將結果轉化為可執行建議。
+
+【工作輸出】
+主管報告、會議摘要、公告、企劃及對外回覆須邏輯清楚、重點明確並符合職場實際語氣。當我要求建立或修改 Word、PDF、簡報、試算表、網頁、圖片或其他檔案時，請直接完成並提供可檢視成果，不要只給操作教學。除非是社群文案、輕鬆訊息或我明確要求，否則不要使用表情符號。 ">
+      <div class="card-top"><span class="code">03</span><div><h3>個人化設定｜行銷</h3><p>適合行銷相關工作與行銷主管</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block long-block"><div class="long-actions"><button class="copy" data-label="一鍵複製完整指令">一鍵複製完整指令</button><span>不用展開也能複製</span></div>
+      <details class="long-prompt"><summary>展開完整指令 <small>約 494 字</small></summary><pre>【我的工作】
+我是可樂旅遊行銷單位成員，職務是[請填寫：職稱]，主要負責[請填寫：主要工作，例如品牌規劃、活動企劃]。日常可能需要處理行銷企劃、主管報告、會議摘要、成效分析、簡報、素材需求及跨部門協作。
+
+【回答方式】
+請一律使用繁體中文及台灣用語，語氣自然、專業、直接，文字要像熟悉行銷實務的同事所寫。不要使用「綜上所述、在這個快速變動的時代、賦能、全方位」等空泛句型。回覆先說結論，再整理原因、重點、風險與下一步；以簡潔、好讀、可直接使用為優先。只有比較、數據或多項內容確實需要時才使用表格。
+
+【分析規則】
+請清楚區分「已確認事實、分析推論、建議方案、待確認事項」。資訊不足時不可自行虛構；數據分析須註明資料來源、統計期間、指標定義及比較基準，不能只因單一數據就判定整體成效，並將結果轉化為可執行建議。
+
+【工作輸出】
+主管報告、會議摘要、公告、企劃及對外回覆須邏輯清楚、重點明確並符合職場實際語氣。當我要求建立或修改 Word、PDF、簡報、試算表、網頁、圖片或其他檔案時，請直接完成並提供可檢視成果，不要只給操作教學。除非是社群文案、輕鬆訊息或我明確要求，否則不要使用表情符號。</pre></details>
+      <div class="card-foot check-only"><span><b>用完檢查：</b>先填入職稱與負責工作，再用一份報告或成效資料測試輸出</span></div></div>
+    </article><article class="prompt-card" data-id="SETTING_VERIFY" data-search="設定驗收｜檢查 AI 懂了什麼 個人化設定完成後，先用這句確認它是否真的理解。 請根據我的自訂指示，整理： 1. 我的工作 2. 常見任務 3. 不可自行補寫的資訊 4. 你應採用的回覆方式 若理解不完整，請直接提出需要我補充的問題。">
+      <div class="card-top"><span class="code">04</span><div><h3>設定驗收｜檢查 AI 懂了什麼</h3><p>個人化設定完成後，先用這句確認它是否真的理解。</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>請根據我的自訂指示，整理：
+
+1. 我的工作
+2. 常見任務
+3. 不可自行補寫的資訊
+4. 你應採用的回覆方式
+
+若理解不完整，請直接提出需要我補充的問題。</pre>
+      <div class="card-foot"><button class="copy" data-label="一鍵複製設定驗收">一鍵複製設定驗收</button><span><b>使用後提醒：</b>如果 AI 理解錯誤，回到自訂指示補清楚，再測一次。</span></div></div>
+    </article></div></section><section id="daily" class="prompt-section"><div class="section-head"><span>02</span><div><h2>一般問答與萬用句型</h2><p>改寫、摘要、追問、修正與驗收；不必建立專案也能直接用。</p></div></div><div class="cards"><article class="prompt-card" data-id="B5" data-search="壓縮但不增補 景點介紹太長時 把下列景點介紹濃縮成 3 點，每點 20–28 字。保留地名、特色與限制；刪除重複形容詞；不得加入原文未提及的歷史、數字或保證。
+另列出你刪除的內容摘要，供我確認沒有遺漏重要條件。 ">
+      <div class="card-top"><span class="code">01</span><div><h3>壓縮但不增補</h3><p>景點介紹太長時</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>把下列景點介紹濃縮成 3 點，每點 20–28 字。保留地名、特色與限制；刪除重複形容詞；不得加入原文未提及的歷史、數字或保證。
+另列出你刪除的內容摘要，供我確認沒有遺漏重要條件。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>「刪了什麼」清單讓人工校對快十倍</span></div></div>
+    </article><article class="prompt-card" data-id="B7" data-search="多版本 email 熟客／急件 請把上面這封 email 再產兩個版本，資訊完全相同，只調整語氣與長度：
+①熟客版（合作過的窗口，親切簡短，100 字內）
+②急件版（效期或名額將到，強調時間點但不施壓）
+兩版都不得更動任何數字與條件。 ">
+      <div class="card-top"><span class="code">02</span><div><h3>多版本 email</h3><p>熟客／急件</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>請把上面這封 email 再產兩個版本，資訊完全相同，只調整語氣與長度：
+①熟客版（合作過的窗口，親切簡短，100 字內）
+②急件版（效期或名額將到，強調時間點但不施壓）
+兩版都不得更動任何數字與條件。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>資訊一致、語氣有別、不施壓</span></div></div>
+    </article><article class="prompt-card" data-id="B9" data-search="換工具續跑 免費額度用完 我正在製作旅行社報價與行程，以下是上一個 AI 已經整理、並由我確認過的資料：
+
+[請填寫：貼上已確認的「報價資料表」與「每日行程資料表」]
+
+請只依據以上資料繼續，不得自行新增、推測或更動價格、日期、航班、飯店、餐食、景點與條款，也不得引用其他案件。
+
+接下來請完成：
+[請填寫：一項，例如：製作一頁式報價網頁／整理每日行程網頁／撰寫報價 Email]
+
+若資料不足，先列出需要我補充的項目，不要自行補寫。 ">
+      <div class="card-top"><span class="code">03</span><div><h3>換工具續跑</h3><p>免費額度用完</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>我正在製作旅行社報價與行程，以下是上一個 AI 已經整理、並由我確認過的資料：
+
+[請填寫：貼上已確認的「報價資料表」與「每日行程資料表」]
+
+請只依據以上資料繼續，不得自行新增、推測或更動價格、日期、航班、飯店、餐食、景點與條款，也不得引用其他案件。
+
+接下來請完成：
+[請填寫：一項，例如：製作一頁式報價網頁／整理每日行程網頁／撰寫報價 Email]
+
+若資料不足，先列出需要我補充的項目，不要自行補寫。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>確認已貼上兩張資料表，並把最後一行換成這次要完成的工作</span></div></div>
+    </article></div><div class="subhead"><h3>萬用句型</h3><p>沒有現成指令時，先用這六句處理九成日常問題。</p></div><div class="mini-grid"><article class="mini-card" data-search="交辦型 你是[請填寫：角色]，請根據[請填寫：資料]做[請填寫：任務]，不得[請填寫：限制]，最後附[請填寫：驗收]。"><h3>交辦型</h3><pre>你是[請填寫：角色]，請根據[請填寫：資料]做[請填寫：任務]，不得[請填寫：限制]，最後附[請填寫：驗收]。</pre><button class="copy">複製</button><small>九成的出件任務</small></article><article class="mini-card" data-search="先問型 先不要動手，請先列出你需要我確認的問題（最多 5 個）。"><h3>先問型</h3><pre>先不要動手，請先列出你需要我確認的問題（最多 5 個）。</pre><button class="copy">複製</button><small>資料不完整時</small></article><article class="mini-card" data-search="規格型 以下規格套用到接下來所有產出：[請填寫：格式／字數／配色／禁止事項]。"><h3>規格型</h3><pre>以下規格套用到接下來所有產出：[請填寫：格式／字數／配色／禁止事項]。</pre><button class="copy">複製</button><small>要連續產好幾份、風格要一致</small></article><article class="mini-card" data-search="修正型 這份有以下問題：[請填寫：列點]。請只修正這些，其他保持原樣。"><h3>修正型</h3><pre>這份有以下問題：[請填寫：列點]。請只修正這些，其他保持原樣。</pre><button class="copy">複製</button><small>改稿比重寫快，也不會改壞對的地方</small></article><article class="mini-card" data-search="驗收型 請扮演嚴格的[請填寫：審核角色]，檢查並列出問題清單（附位置與修法）。"><h3>驗收型</h3><pre>請扮演嚴格的[請填寫：審核角色]，檢查並列出問題清單（附位置與修法）。</pre><button class="copy">複製</button><small>寄出前自我檢查</small></article><article class="mini-card" data-search="比較選擇型 請比較[請填寫：方案 A]與[請填寫：方案 B]，從[請填寫：價格／時間／客群／優缺點／風險]分析，最後依照[請填寫：我的目標]給出建議，並說明理由。資料不足的地方標示「待確認」，不要自行假設。"><h3>比較選擇型</h3><pre>請比較[請填寫：方案 A]與[請填寫：方案 B]，從[請填寫：價格／時間／客群／優缺點／風險]分析，最後依照[請填寫：我的目標]給出建議，並說明理由。資料不足的地方標示「待確認」，不要自行假設。</pre><button class="copy">複製</button><small>同時有比較基準、建議與理由，才是真的能幫忙做決定</small></article></div><details class="parts"><summary>進階：自己拼一條新指令</summary><div class="parts-grid"><article class="part"><b>① 角色詞</b><p>先定位職務，語氣與判斷標準跟著變</p><div>你是出件的資料稽核助理／嚴格的出件審核主管／排版設計助理／你不是文案作家</div></article><article class="part"><b>② 任務動詞</b><p>一次交辦一個動作</p><div>請先讀完並回報／請擷取，不要改寫／請重排成〇〇／請濃縮成 N 點／請逐句檢查／請生成一張〇〇圖／請只修正〇〇</div></article><article class="part"><b>③ 資料範圍</b><p>不畫範圍它就去公海抓</p><div>只依據我上傳的檔案／只依據上面擷取好的資料表／不得引用其他案件／資料只能來自我提供的行程</div></article><article class="part"><b>④ 限制條款</b><p>出件安全全靠這幾句</p><div>數字條件一字不改／找不到填「原始資料未提供」／不得推測／「同級」不得寫成特定名稱／不得改變法律與商務意思／不得新增原文沒有的景點餐食或保證</div></article><article class="part"><b>⑤ 輸出格式</b><p>不講格式就看運氣</p><div>製作成可直接開啟的單一網頁檔（HTML）／表格呈現／每點 25 字內／全文 200 字內／主標 12–18 字／直式適合 LINE／白底＋[請填寫：品牌色]／手機打開好讀</div></article><article class="part"><b>⑥ 驗收要求</b><p>有驗收才檢查得出對錯</p><div>最後附疑點清單／另列你刪除了什麼／附每個數字的來源／輸出修改前後對照表／先列出你要我確認的問題，不要直接生成</div></article></div></details></section><section id="image" class="prompt-section"><div class="section-head"><span>03</span><div><h2>圖片生成</h2><p>成交回報圖、旅遊情境合成、創意玩法、無字底圖、提醒圖與局部修正。</p></div></div><div class="cards"><article class="prompt-card" data-id="C1" data-search="賀成交圖｜快速版 已建立成交圖專案，這次只要貼五項資料 承辦業務：[請填寫：姓名]
+客戶名稱：[請填寫：公司或客戶]
+出發日期：[請填寫：YYYY/MM/DD]
+旅遊地區：[請填寫：地區]
+報名人數：[請填寫：N]人
+（想換風格再加一行）風格：[請填寫：風格名] 承辦業務：陳小可
+客戶名稱：幸福企業員工旅遊
+出發日期：2026/10/15
+旅遊地區：韓國釜山
+報名人數：32人">
+      <div class="card-top"><span class="code">01</span><div><h3>賀成交圖｜快速版</h3><p>已建立成交圖專案，這次只要貼五項資料</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
+      <div class="copy-block"><pre>承辦業務：陳小可
+客戶名稱：幸福企業員工旅遊
+出發日期：2026/10/15
+旅遊地區：韓國釜山
+報名人數：32人</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>五項齊全；生成後逐字檢查</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>承辦業務：[請填寫：姓名]
+客戶名稱：[請填寫：公司或客戶]
+出發日期：[請填寫：YYYY/MM/DD]
+旅遊地區：[請填寫：地區]
+報名人數：[請填寫：N]人
+（想換風格再加一行）風格：[請填寫：風格名]</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card" data-id="C2" data-search="賀成交圖（沒建專案時的完整版） 臨時要用、沒設專案 請生成一張成交回報圖（直式，適合 LINE 群組）。
+必須完整出現的五個欄位（名稱與順序固定，文字一字不差）：
+承辦業務：[請填寫：姓名]／客戶名稱：[請填寫：客戶]／出發日期：[請填寫：日期]／旅遊地區：[請填寫：地區]／報名人數：[請填寫：N]人
+風格：[請填寫：風格名，例：企業精品風]；主色[請填寫：色系]。
+中文字必須正確清晰；不確定能正確生成的字改用色塊＋簡潔排版；不要浮水印、假 Logo 或可辨識真人。 請直接生成一張「恭喜成交」回報圖，直式 1080×1350，適合手機與 LINE 群組閱讀。
+
+承辦業務：陳小可
+客戶名稱：幸福企業員工旅遊
+出發日期：2026/10/15
+旅遊地區：韓國釜山
+報名人數：32人
+
+風格使用質感旅遊插畫，主色為深藍與暖金；上方放「恭喜成交」，中間呈現釜山海岸與城市景觀，下方用整齊資訊卡放五項資料。中文字必須清楚正確，不得增加團號、電話、英文名稱、假 Logo 或其他標語。完成後請用文字列出圖中的五項資料，讓我逐字核對。">
+      <div class="card-top"><span class="code">02</span><div><h3>賀成交圖（沒建專案時的完整版）</h3><p>臨時要用、沒設專案</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
+      <div class="copy-block"><pre>請直接生成一張「恭喜成交」回報圖，直式 1080×1350，適合手機與 LINE 群組閱讀。
+
+承辦業務：陳小可
+客戶名稱：幸福企業員工旅遊
+出發日期：2026/10/15
+旅遊地區：韓國釜山
+報名人數：32人
+
+風格使用質感旅遊插畫，主色為深藍與暖金；上方放「恭喜成交」，中間呈現釜山海岸與城市景觀，下方用整齊資訊卡放五項資料。中文字必須清楚正確，不得增加團號、電話、英文名稱、假 Logo 或其他標語。完成後請用文字列出圖中的五項資料，讓我逐字核對。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>五欄完整無錯字</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請生成一張成交回報圖（直式，適合 LINE 群組）。
+必須完整出現的五個欄位（名稱與順序固定，文字一字不差）：
+承辦業務：[請填寫：姓名]／客戶名稱：[請填寫：客戶]／出發日期：[請填寫：日期]／旅遊地區：[請填寫：地區]／報名人數：[請填寫：N]人
+風格：[請填寫：風格名，例：企業精品風]；主色[請填寫：色系]。
+中文字必須正確清晰；不確定能正確生成的字改用色塊＋簡潔排版；不要浮水印、假 Logo 或可辨識真人。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card" data-id="C3" data-search="圖片提示詞六欄位（通用） 任何一張圖都適用 ①用途：[請填寫：例：旅遊報價封面]
+②主體：[請填寫：例：冬季京都街景與遠方列車]
+③地點／季節：[請填寫：例：京都・一月]
+④風格：[請填寫：例：高質感旅遊編輯風]
+⑤構圖與留白：[請填寫：例：主體靠右、左側留白給標題]
+⑥尺寸與禁止事項：[請填寫：例：16:9；不要文字、Logo、浮水印與可辨識真人] 請生成一張企業包團提案封面圖。
+
+主題：韓國釜山秋日五日
+主體：釜山海岸列車、海景與城市天際線
+場景：秋季午後，明亮溫暖，有旅行期待感
+風格：精品旅遊雜誌風，深藍搭配暖金，專業、有質感
+構圖：A4 直式，主景放在上半部，下方保留 40% 乾淨留白
+限制：整張圖不要放任何文字、Logo、價格、人物或浮水印
+
+請直接生成完成圖。">
+      <div class="card-top"><span class="code">03</span><div><h3>圖片提示詞六欄位（通用）</h3><p>任何一張圖都適用</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
+      <div class="copy-block"><pre>請生成一張企業包團提案封面圖。
+
+主題：韓國釜山秋日五日
+主體：釜山海岸列車、海景與城市天際線
+場景：秋季午後，明亮溫暖，有旅行期待感
+風格：精品旅遊雜誌風，深藍搭配暖金，專業、有質感
+構圖：A4 直式，主景放在上半部，下方保留 40% 乾淨留白
+限制：整張圖不要放任何文字、Logo、價格、人物或浮水印
+
+請直接生成完成圖。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>六欄齊全，生成結果最穩</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>①用途：[請填寫：例：旅遊報價封面]
+②主體：[請填寫：例：冬季京都街景與遠方列車]
+③地點／季節：[請填寫：例：京都・一月]
+④風格：[請填寫：例：高質感旅遊編輯風]
+⑤構圖與留白：[請填寫：例：主體靠右、左側留白給標題]
+⑥尺寸與禁止事項：[請填寫：例：16:9；不要文字、Logo、浮水印與可辨識真人]</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card" data-id="C4" data-search="無字底圖（最穩做法） 重要文字要正確時 請生成一張[請填寫：用途]的背景圖：
+主體[請填寫：內容]；風格[請填寫：風格]；構圖[請填寫：留白位置]；尺寸[請填寫：比例]。
+重要：整張圖不要出現任何文字、Logo 或浮水印，留白區保持乾淨——我會自己加上文字。 請生成一張「韓國釜山秋季五日旅遊提案」的無字背景圖。
+
+A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與城市天際線，時間為秋季午後，配色使用深藍、海洋藍與少量暖金。主景集中在上半部，下方保留 45% 淺色乾淨留白，方便之後排入團名、日期與價格。
+
+整張圖不得出現任何中文、英文、數字、Logo、招牌、浮水印或假文字。">
+      <div class="card-top"><span class="code">04</span><div><h3>無字底圖（最穩做法）</h3><p>重要文字要正確時</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
+      <div class="copy-block"><pre>請生成一張「韓國釜山秋季五日旅遊提案」的無字背景圖。
+
+A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與城市天際線，時間為秋季午後，配色使用深藍、海洋藍與少量暖金。主景集中在上半部，下方保留 45% 淺色乾淨留白，方便之後排入團名、日期與價格。
+
+整張圖不得出現任何中文、英文、數字、Logo、招牌、浮水印或假文字。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>不生成文字就不會有錯字；文字用 Canva 或手機修圖疊上</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請生成一張[請填寫：用途]的背景圖：
+主體[請填寫：內容]；風格[請填寫：風格]；構圖[請填寫：留白位置]；尺寸[請填寫：比例]。
+重要：整張圖不要出現任何文字、Logo 或浮水印，留白區保持乾淨——我會自己加上文字。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card" data-id="IMG_PRODUCT" data-search="去背與旅遊情境合成 製作企業包團提案封面、行前群組圖或成交賀圖 請編輯我上傳的[請填寫：人物／物件]照片：
+
+・精準去除原背景，完整保留人物五官、髮型、服裝，或物件的外觀、比例、Logo 與原有文字；不得重繪、變形或自行改字。
+・將主體自然合成到[請填寫：旅遊目的地／指定場景]，背景呈現[請填寫：季節／時間／氣氛]，光線方向、色溫、陰影與景深必須一致，不要有剪貼感。
+・整體風格為質感旅遊攝影，主體清楚、背景不雜亂，使用[請填寫：品牌色／指定色系]做少量視覺呼應。
+・圖片比例[請填寫：4:5／16:9／1:1]，並在[請填寫：上方／下方／右側]保留約 35% 乾淨留白，方便之後放團名、日期、價格或成交資訊。
+・畫面不要自行生成活動文字、價格、假 Logo、浮水印或其他人物。
+
+請直接產生完成圖。 請編輯我上傳的人物照片：精準去除原背景，完整保留人物五官、髮型、服裝與姿勢，不可改變本人長相。
+
+將人物自然合成到韓國釜山海岸列車旁的觀景平台，呈現秋季晴朗午後；光線方向、色溫、陰影與景深要一致，不要有剪貼感。整體為質感旅遊攝影，深藍與暖金配色，人物放在左側，右側保留約 40% 乾淨留白，方便之後放成交資訊。
+
+圖片比例 4:5，不要生成文字、價格、Logo、浮水印或其他人物。">
+      <div class="card-top"><span class="code">05</span><div><h3>去背與旅遊情境合成</h3><p>製作企業包團提案封面、行前群組圖或成交賀圖</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
+      <div class="copy-block"><pre>請編輯我上傳的人物照片：精準去除原背景，完整保留人物五官、髮型、服裝與姿勢，不可改變本人長相。
+
+將人物自然合成到韓國釜山海岸列車旁的觀景平台，呈現秋季晴朗午後；光線方向、色溫、陰影與景深要一致，不要有剪貼感。整體為質感旅遊攝影，深藍與暖金配色，人物放在左側，右側保留約 40% 乾淨留白，方便之後放成交資訊。
+
+圖片比例 4:5，不要生成文字、價格、Logo、浮水印或其他人物。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>主體不能變形、背景不能有剪貼感；重要文字與價格另外排版最安全</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請編輯我上傳的[請填寫：人物／物件]照片：
+
+・精準去除原背景，完整保留人物五官、髮型、服裝，或物件的外觀、比例、Logo 與原有文字；不得重繪、變形或自行改字。
+・將主體自然合成到[請填寫：旅遊目的地／指定場景]，背景呈現[請填寫：季節／時間／氣氛]，光線方向、色溫、陰影與景深必須一致，不要有剪貼感。
+・整體風格為質感旅遊攝影，主體清楚、背景不雜亂，使用[請填寫：品牌色／指定色系]做少量視覺呼應。
+・圖片比例[請填寫：4:5／16:9／1:1]，並在[請填寫：上方／下方／右側]保留約 35% 乾淨留白，方便之後放團名、日期、價格或成交資訊。
+・畫面不要自行生成活動文字、價格、假 Logo、浮水印或其他人物。
+
+請直接產生完成圖。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card" data-id="IMG_HOLOGRAM" data-search="未來全息影像改造 課堂創意挑戰，或製作有科技感的內部成交賀圖 請編輯我上傳的圖片，保留原人物的臉部特徵、姿勢與辨識度，將[請填寫：手上的物件／指定主體]改造成透明、發光的 3D 全息影像。
+
+背景改成 500 年後的未來旅遊指揮中心：大型透明介面、懸浮城市與航線、藍紫色霓虹光、金色成功提示，具有電影感、專業且明亮，不要做成陰暗末日風。
+
+如果用於成交賀圖，畫面請預留下方 35% 乾淨資訊區，之後可放：承辦業務、客戶名稱、出發日期、旅遊地區、報名人數。不要在圖片中自行生成這些文字、假 Logo 或額外標語。
+
+圖片比例 4:5，人物手指與臉部自然，畫面清楚、精緻、有高級科技感。 請編輯我上傳的人物照片，保留本人臉部特徵、姿勢與辨識度，將人物手上的物件改造成透明發光的 3D 地球全息影像。
+
+背景改成 500 年後的未來旅遊指揮中心：大型透明介面、懸浮城市與發光航線，使用藍紫色霓虹光與少量金色成功提示；電影感、專業且明亮，不要做成陰暗末日風。
+
+圖片比例 4:5，下方保留 35% 乾淨資訊區；不要生成成交資訊、假 Logo、額外標語或其他人物。人物手指與臉部必須自然。">
+      <div class="card-top"><span class="code">06</span><div><h3>未來全息影像改造</h3><p>課堂創意挑戰，或製作有科技感的內部成交賀圖</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
+      <div class="copy-block"><pre>請編輯我上傳的人物照片，保留本人臉部特徵、姿勢與辨識度，將人物手上的物件改造成透明發光的 3D 地球全息影像。
+
+背景改成 500 年後的未來旅遊指揮中心：大型透明介面、懸浮城市與發光航線，使用藍紫色霓虹光與少量金色成功提示；電影感、專業且明亮，不要做成陰暗末日風。
+
+圖片比例 4:5，下方保留 35% 乾淨資訊區；不要生成成交資訊、假 Logo、額外標語或其他人物。人物手指與臉部必須自然。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>正式成交資訊後製排版，不讓生圖模型直接寫重要中文</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請編輯我上傳的圖片，保留原人物的臉部特徵、姿勢與辨識度，將[請填寫：手上的物件／指定主體]改造成透明、發光的 3D 全息影像。
+
+背景改成 500 年後的未來旅遊指揮中心：大型透明介面、懸浮城市與航線、藍紫色霓虹光、金色成功提示，具有電影感、專業且明亮，不要做成陰暗末日風。
+
+如果用於成交賀圖，畫面請預留下方 35% 乾淨資訊區，之後可放：承辦業務、客戶名稱、出發日期、旅遊地區、報名人數。不要在圖片中自行生成這些文字、假 Logo 或額外標語。
+
+圖片比例 4:5，人物手指與臉部自然，畫面清楚、精緻、有高級科技感。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card" data-id="IMG_AGE_GRID" data-search="我的九宮格年齡變化 課堂趣味體驗，用自己的照片觀察 AI 如何想像年齡 請以我上傳的本人照片為唯一人物參考，生成一張 3×3 九宮格寫實照片拼貼，呈現同一個人在以下九個年齡的樣貌：15、20、25、30、35、40、45、50、55 歲。
+
+要求：
+・九格必須是同一個人，保留主要五官、臉型與辨識度，只調整合理的年齡特徵。
+・每格正面半身、相同角度、相同光線與簡潔背景，服裝自然且不搶畫面。
+・由左到右、由上到下依年齡排列；每格下方只標示阿拉伯數字：15、20、25、30、35、40、45、50、55。
+・不要過度美肌、醜化、誇張老化，也不要增加其他人物。
+
+圖片比例 1:1，整體像攝影棚拍攝的成長紀錄。這是趣味模擬，不代表本人未來真實樣貌。 ">
+      <div class="card-top"><span class="code">07</span><div><h3>我的九宮格年齡變化</h3><p>課堂趣味體驗，用自己的照片觀察 AI 如何想像年齡</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>請以我上傳的本人照片為唯一人物參考，生成一張 3×3 九宮格寫實照片拼貼，呈現同一個人在以下九個年齡的樣貌：15、20、25、30、35、40、45、50、55 歲。
+
+要求：
+・九格必須是同一個人，保留主要五官、臉型與辨識度，只調整合理的年齡特徵。
+・每格正面半身、相同角度、相同光線與簡潔背景，服裝自然且不搶畫面。
+・由左到右、由上到下依年齡排列；每格下方只標示阿拉伯數字：15、20、25、30、35、40、45、50、55。
+・不要過度美肌、醜化、誇張老化，也不要增加其他人物。
+
+圖片比例 1:1，整體像攝影棚拍攝的成長紀錄。這是趣味模擬，不代表本人未來真實樣貌。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>先確認九格是同一人、順序正確；年齡變化只是娛樂模擬</span></div></div>
+    </article><article class="prompt-card" data-id="C5" data-search="每日行程提醒圖 帶團期間每晚貼群組 請生成一張「明日行程提醒」圖（直式，LINE 群組用，淺色底）：
+必放資訊：明天日期與第幾天／集合時間與地點[請填寫：原檔資訊]／明日重點行程 2–3 項／提醒事項 1–2 條（穿著、天氣或攜帶物品，取自原始資料）。
+風格清爽友善，資訊優先於裝飾；重要文字用清晰排版呈現。 請生成一張「明日行程提醒」圖，直式 1080×1350，適合 LINE 群組閱讀，淺色乾淨背景。
+
+日期：2026/10/16（五）
+集合時間：07:30
+集合地點：飯店一樓大廳
+天氣：早晚較涼，建議攜帶薄外套
+行程：海岸列車 → 甘川文化村 → 松島天空步道
+攜帶物品：房卡、隨身水壺、薄外套
+
+資訊順序必須照上面排列，文字清楚、字級大、手機縮小仍可讀。使用清新的韓國海岸旅行風格，不得增加未提供的時間、地點或提醒。">
+      <div class="card-top"><span class="code">08</span><div><h3>每日行程提醒圖</h3><p>帶團期間每晚貼群組</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
+      <div class="copy-block"><pre>請生成一張「明日行程提醒」圖，直式 1080×1350，適合 LINE 群組閱讀，淺色乾淨背景。
+
+日期：2026/10/16（五）
+集合時間：07:30
+集合地點：飯店一樓大廳
+天氣：早晚較涼，建議攜帶薄外套
+行程：海岸列車 → 甘川文化村 → 松島天空步道
+攜帶物品：房卡、隨身水壺、薄外套
+
+資訊順序必須照上面排列，文字清楚、字級大、手機縮小仍可讀。使用清新的韓國海岸旅行風格，不得增加未提供的時間、地點或提醒。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>時間地點回原檔對過</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請生成一張「明日行程提醒」圖（直式，LINE 群組用，淺色底）：
+必放資訊：明天日期與第幾天／集合時間與地點[請填寫：原檔資訊]／明日重點行程 2–3 項／提醒事項 1–2 條（穿著、天氣或攜帶物品，取自原始資料）。
+風格清爽友善，資訊優先於裝飾；重要文字用清晰排版呈現。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card" data-id="C6" data-search="圖片修正重跑 有錯字或不對時 這張圖有以下問題：[請填寫：說明，例：「釜山」寫成「斧山」／文字太小／背景太花]。
+請只修正這些問題，其他部分保持原樣。
+再次確認：所有中文字必須正確，不確定的字改用簡潔排版呈現。 這張圖有以下問題：
+1.「釜山」被寫成「斧山」。
+2. 報名人數「32人」字級太小。
+3. 背景太花，影響下方資訊閱讀。
+
+請只修正以上三點：把錯字改為「釜山」、放大「32人」、降低背景複雜度。其他人物、構圖、色彩、文字及尺寸全部保持原樣，不要重新設計整張圖。完成後再列出圖中的五項成交資訊，讓我核對。">
+      <div class="card-top"><span class="code">09</span><div><h3>圖片修正重跑</h3><p>有錯字或不對時</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
+      <div class="copy-block"><pre>這張圖有以下問題：
+1.「釜山」被寫成「斧山」。
+2. 報名人數「32人」字級太小。
+3. 背景太花，影響下方資訊閱讀。
+
+請只修正以上三點：把錯字改為「釜山」、放大「32人」、降低背景複雜度。其他人物、構圖、色彩、文字及尺寸全部保持原樣，不要重新設計整張圖。完成後再列出圖中的五項成交資訊，讓我核對。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>只修不重寫，比從頭生成快</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>這張圖有以下問題：[請填寫：說明，例：「釜山」寫成「斧山」／文字太小／背景太花]。
+請只修正這些問題，其他部分保持原樣。
+再次確認：所有中文字必須正確，不確定的字改用簡潔排版呈現。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article></div><div class="subhead"><h3>圖片風格選單</h3><p>沒有參考圖時，直接把「文字說法」貼到圖片指令。</p></div><div class="table-wrap"><table><thead><tr><th>風格</th><th>適合</th><th>文字說法</th></tr></thead><tbody><tr><th>企業精品風</th><td>企業、福委會、獎勵旅遊</td><td>深色底＋金屬質感細線，沉穩專業，像五星飯店邀請卡</td></tr><tr><th>溫暖手繪風</th><td>家族團、三代同遊、親子</td><td>水彩紙質感、手繪插畫、暖色調，像旅行手帳</td></tr><tr><th>日系清新風</th><td>日本線、年輕客群</td><td>淺色留白多、細字體、淡雅配色，像日系雜誌內頁</td></tr><tr><th>Q 版人物風</th><td>建立業務個人辨識度</td><td>可愛 Q 版角色＋明亮配色，輕鬆有記憶點</td></tr><tr><th>金色榮耀風</th><td>高人數團、團隊慶賀</td><td>金色與深藍為主，有慶祝感但不俗氣</td></tr><tr><th>其他可直接說的風格</th><td>自由發揮</td><td>航空商務艙風／水彩旅行手帳風／立體剪紙風／色鉛筆插畫風／黏土模型風／復古航空海報風／精品旅遊雜誌風</td></tr></tbody></table></div></section><section id="document" class="prompt-section"><div class="section-head"><span>04</span><div><h2>報價、行程與交付</h2><p>從讀取原檔、鎖定事實，到網頁、DM、Email 與寄出前檢核。</p></div></div><div class="cards"><article class="prompt-card" data-id="B0" data-search="上傳後先確認讀取內容 上傳報價單或行程表後先使用 我上傳了[請填寫：報價單／行程表]的原始檔。
+請先讀完，不要改寫、不要摘要、不要美化。
+先告訴我：你讀到哪些欄位？每個欄位的內容大概是什麼？有沒有讀不到或看起來是圖片的部分？ ">
+      <div class="card-top"><span class="code">01</span><div><h3>上傳後先確認讀取內容</h3><p>上傳報價單或行程表後先使用</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>我上傳了[請填寫：報價單／行程表]的原始檔。
+請先讀完，不要改寫、不要摘要、不要美化。
+先告訴我：你讀到哪些欄位？每個欄位的內容大概是什麼？有沒有讀不到或看起來是圖片的部分？</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>讀不到＝掃描版 PDF，改拍照上傳或轉檔</span></div></div>
+    </article><article class="prompt-card" data-id="B1" data-search="資料擷取（兩張表） 上傳確認後第一步 你是旅行社出件的資料稽核助理，不是文案作家。
+任務：只擷取，不改寫、不補充、不美化。
+資料：只依據我上傳的檔案。
+輸出兩張表：
+①報價表：品名、費用（各級距）、包含項目、未包含項目、條件與報價效期
+②行程表：每日日期／集合與交通／行程點／餐食／住宿
+限制：找不到的欄位填「原始資料未提供」，不得推測；不得引用其他案件的價格或飯店。
+驗收：最後列出「疑點清單」（矛盾或來源不明的項目）。 ">
+      <div class="card-top"><span class="code">02</span><div><h3>資料擷取（兩張表）</h3><p>上傳確認後第一步</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>你是旅行社出件的資料稽核助理，不是文案作家。
+任務：只擷取，不改寫、不補充、不美化。
+資料：只依據我上傳的檔案。
+輸出兩張表：
+①報價表：品名、費用（各級距）、包含項目、未包含項目、條件與報價效期
+②行程表：每日日期／集合與交通／行程點／餐食／住宿
+限制：找不到的欄位填「原始資料未提供」，不得推測；不得引用其他案件的價格或飯店。
+驗收：最後列出「疑點清單」（矛盾或來源不明的項目）。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>欄位齊全；無推測；疑點有列</span></div></div>
+    </article><article class="prompt-card" data-id="B2" data-search="三分類檢查 擷取後、美化前 請把上面擷取的內容分成三類並列表：
+①可改：文字表達、順序、排版方式
+②不可改：價格、日期、班機、飯店、餐食、付款與取消條款
+③需確認：互相矛盾、缺漏或來源不明的項目
+接下來所有產出，第②類一字不得更動。 ">
+      <div class="card-top"><span class="code">03</span><div><h3>三分類檢查</h3><p>擷取後、美化前</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>請把上面擷取的內容分成三類並列表：
+①可改：文字表達、順序、排版方式
+②不可改：價格、日期、班機、飯店、餐食、付款與取消條款
+③需確認：互相矛盾、缺漏或來源不明的項目
+接下來所有產出，第②類一字不得更動。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>把「不要亂改」寫進指令，不靠自己記得</span></div></div>
+    </article><article class="prompt-card" data-id="B3" data-search="報價單一頁式摘要 需要讓客戶快速看懂報價時 請用上面已確認的資料，製作一頁式報價網頁（以可直接開啟的單一網頁檔（HTML）交付，白底、[請填寫：品牌色]標題、手機可讀）。
+
+【出件固定順序，不得調換】①團體報價 → ②承辦業務聯絡方式（緊接在完整報價下方）→ ③航班與每日行程（另起新頁）。承辦業務絕對不可放到行程最後。
+
+報價區的閱讀順序照以下三層安排：
+・主標：團名＋地點＋天數
+・第一視線：出發日、每人費用、報價有效期限
+・第二視線：人數級距、單房差、包含／不包含
+・第三視線：付款方式、固定條款摘要
+接著是承辦業務區塊（姓名、所屬單位、電話、Email），放在報價正下方，不與行程混在一起。
+價格表規則：數字右對齊、重點價加粗、同一單位只寫一次、備註移到表格下方。
+鐵則：不得計算或更動任何金額；固定條款可分段加小標，但不得改變法律與商務意思；缺的欄位顯示「未提供」。 ">
+      <div class="card-top"><span class="code">04</span><div><h3>報價單一頁式摘要</h3><p>需要讓客戶快速看懂報價時</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block long-block"><div class="long-actions"><button class="copy" data-label="一鍵複製完整指令">一鍵複製完整指令</button><span>不用展開也能複製</span></div>
+      <details class="long-prompt"><summary>展開完整指令 <small>約 366 字</small></summary><pre>請用上面已確認的資料，製作一頁式報價網頁（以可直接開啟的單一網頁檔（HTML）交付，白底、[請填寫：品牌色]標題、手機可讀）。
+
+【出件固定順序，不得調換】①團體報價 → ②承辦業務聯絡方式（緊接在完整報價下方）→ ③航班與每日行程（另起新頁）。承辦業務絕對不可放到行程最後。
+
+報價區的閱讀順序照以下三層安排：
+・主標：團名＋地點＋天數
+・第一視線：出發日、每人費用、報價有效期限
+・第二視線：人數級距、單房差、包含／不包含
+・第三視線：付款方式、固定條款摘要
+接著是承辦業務區塊（姓名、所屬單位、電話、Email），放在報價正下方，不與行程混在一起。
+價格表規則：數字右對齊、重點價加粗、同一單位只寫一次、備註移到表格下方。
+鐵則：不得計算或更動任何金額；固定條款可分段加小標，但不得改變法律與商務意思；缺的欄位顯示「未提供」。</pre></details>
+      <div class="card-foot check-only"><span><b>用完檢查：</b>三秒測試：客戶先看到出發日、費用、效期</span></div></div>
+    </article><article class="prompt-card" data-id="B4" data-search="每日行程整理 需要把每天行程整理成固定版型時 請將每一天整理成六個區塊：
+①一句主題標題（12–18 字）
+②當日路線（保留原順序）
+③三個行程亮點（每點 25 字內）
+④餐食
+⑤住宿
+⑥必要提醒
+不得新增原文沒有的景點、餐食、飯店、時間或保證。
+製作成可直接開啟的單一網頁檔（HTML），白底、[請填寫：品牌色]、手機打開好讀，每天一個區塊卡片。 ">
+      <div class="card-top"><span class="code">05</span><div><h3>每日行程整理</h3><p>需要把每天行程整理成固定版型時</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>請將每一天整理成六個區塊：
+①一句主題標題（12–18 字）
+②當日路線（保留原順序）
+③三個行程亮點（每點 25 字內）
+④餐食
+⑤住宿
+⑥必要提醒
+不得新增原文沒有的景點、餐食、飯店、時間或保證。
+製作成可直接開啟的單一網頁檔（HTML），白底、[請填寫：品牌色]、手機打開好讀，每天一個區塊卡片。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>六區塊齊全；硬資訊與原檔一致</span></div></div>
+    </article><article class="prompt-card" data-id="DM_FULL" data-search="用已確認的網頁製作完整旅遊 DM 報價與行程已確認，接著要製作可傳給客戶的 DM 請讀取本專案中已確認的報價與行程網頁，直接製作旅遊報價 DM，不需要我重新上傳相同檔案。
+
+【資料規則】
+・已確認的網頁 是唯一資料來源，不得自行新增、推測或改動價格、日期、航班、飯店、餐食、景點、條款與聯絡資訊。
+・若資料互相矛盾或關鍵欄位缺漏，先在對話中列出問題並停止製作，不可把「待確認」寫進 DM。
+・不得混用本專案內其他案件的資料。
+
+【產出內容】
+① DM 01｜報價總覽：團名、目的地、天數、出發日期、航班、價格級距、行程亮點、包含／不包含、重要提醒及承辦業務。
+② DM 02 起｜每日行程：每天一頁，包含當日路線、行程亮點、餐食、住宿與必要提醒；天數較多時可合理分頁，但不得刪減原始行程。
+
+【版面設計】
+・直式長圖，適合手機與 LINE 閱讀；視覺風格依目的地與出發季節設計，整體專業、有質感、資訊層級清楚。
+・第一眼先看到團名、日期與價格；價格、航班與每日行程不得使用過小字級。
+・只使用原始網頁 已有的圖片；沒有圖片時以乾淨排版完成，不可自行抓取或生成不確定的景點照片。
+
+【交付格式】
+輸出為可直接開啟的單一網頁檔（HTML），並加入「下載 PNG」及「列印／另存 PDF」按鈕。完成後先逐項核對所有數字、日期、航班、飯店、餐食與條款，再交付檔案。 ">
+      <div class="card-top"><span class="code">06</span><div><h3>用已確認的網頁製作完整旅遊 DM</h3><p>報價與行程已確認，接著要製作可傳給客戶的 DM</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block long-block"><div class="long-actions"><button class="copy" data-label="一鍵複製完整指令">一鍵複製完整指令</button><span>不用展開也能複製</span></div>
+      <details class="long-prompt"><summary>展開完整指令 <small>約 537 字</small></summary><pre>請讀取本專案中已確認的報價與行程網頁，直接製作旅遊報價 DM，不需要我重新上傳相同檔案。
+
+【資料規則】
+・已確認的網頁 是唯一資料來源，不得自行新增、推測或改動價格、日期、航班、飯店、餐食、景點、條款與聯絡資訊。
+・若資料互相矛盾或關鍵欄位缺漏，先在對話中列出問題並停止製作，不可把「待確認」寫進 DM。
+・不得混用本專案內其他案件的資料。
+
+【產出內容】
+① DM 01｜報價總覽：團名、目的地、天數、出發日期、航班、價格級距、行程亮點、包含／不包含、重要提醒及承辦業務。
+② DM 02 起｜每日行程：每天一頁，包含當日路線、行程亮點、餐食、住宿與必要提醒；天數較多時可合理分頁，但不得刪減原始行程。
+
+【版面設計】
+・直式長圖，適合手機與 LINE 閱讀；視覺風格依目的地與出發季節設計，整體專業、有質感、資訊層級清楚。
+・第一眼先看到團名、日期與價格；價格、航班與每日行程不得使用過小字級。
+・只使用原始網頁 已有的圖片；沒有圖片時以乾淨排版完成，不可自行抓取或生成不確定的景點照片。
+
+【交付格式】
+輸出為可直接開啟的單一網頁檔（HTML），並加入「下載 PNG」及「列印／另存 PDF」按鈕。完成後先逐項核對所有數字、日期、航班、飯店、餐食與條款，再交付檔案。</pre></details>
+      <div class="card-foot check-only"><span><b>用完檢查：</b>抽查價格、日期、航班、飯店與餐食，必須和已確認網頁 完全一致</span></div></div>
+    </article><article class="prompt-card" data-id="DM_ONE" data-search="用已確認的網頁製作單張報價 DM 只需要一張報價重點圖，快速傳給客戶 請讀取本專案中已確認的報價與行程網頁，製作一張直式旅遊報價 DM，不需要我重新上傳相同檔案。
+
+內容包含：團名、目的地、天數、出發日期、航班、價格級距、3–5 項行程亮點、重要提醒與承辦業務。
+已確認的網頁 是唯一資料來源；不得自行新增、推測或更動任何價格、日期、航班、飯店、餐食、景點、條款與聯絡資訊。若資料矛盾或缺漏，先在對話中詢問，不可把「待確認」寫進 DM。
+
+版面採直式、適合手機與 LINE 閱讀，第一眼先看到團名、日期與價格；風格依目的地與出發季節設計，專業、有質感、資訊清楚。輸出為可直接開啟的單一網頁檔（HTML），加入「下載 PNG」與「列印／另存 PDF」按鈕。完成後逐項核對固定資訊再交付。 ">
+      <div class="card-top"><span class="code">07</span><div><h3>用已確認的網頁製作單張報價 DM</h3><p>只需要一張報價重點圖，快速傳給客戶</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>請讀取本專案中已確認的報價與行程網頁，製作一張直式旅遊報價 DM，不需要我重新上傳相同檔案。
+
+內容包含：團名、目的地、天數、出發日期、航班、價格級距、3–5 項行程亮點、重要提醒與承辦業務。
+已確認的網頁 是唯一資料來源；不得自行新增、推測或更動任何價格、日期、航班、飯店、餐食、景點、條款與聯絡資訊。若資料矛盾或缺漏，先在對話中詢問，不可把「待確認」寫進 DM。
+
+版面採直式、適合手機與 LINE 閱讀，第一眼先看到團名、日期與價格；風格依目的地與出發季節設計，專業、有質感、資訊清楚。輸出為可直接開啟的單一網頁檔（HTML），加入「下載 PNG」與「列印／另存 PDF」按鈕。完成後逐項核對固定資訊再交付。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>一張圖能看懂團名、日期、價格與亮點，固定資訊沒有被改寫</span></div></div>
+    </article><article class="prompt-card" data-id="B6" data-search="報價 Email 寄送報價或行程給客戶時 請根據附件產生一封繁體中文商務 email。
+主旨格式：【旅遊報價】[請填寫：客戶名]｜[請填寫：地點天數]｜[請填寫：出發日]
+內文依序：稱呼／需求摘要／報價重點／附件說明／報價有效期限／下一步行動／承辦署名。
+不得新增附件內沒有的優惠或承諾；全文 200 字內。 ">
+      <div class="card-top"><span class="code">08</span><div><h3>報價 Email</h3><p>寄送報價或行程給客戶時</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>請根據附件產生一封繁體中文商務 email。
+主旨格式：【旅遊報價】[請填寫：客戶名]｜[請填寫：地點天數]｜[請填寫：出發日]
+內文依序：稱呼／需求摘要／報價重點／附件說明／報價有效期限／下一步行動／承辦署名。
+不得新增附件內沒有的優惠或承諾；全文 200 字內。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>客戶知道下一步；數字與附件一致</span></div></div>
+    </article><article class="prompt-card" data-id="B8" data-search="寄出前檢核 匯出 PDF 前 90 秒 請扮演嚴格的出件審核主管，逐項檢查並列出問題（附位置與修法）：
+①價格、日期、班機、飯店、餐食是否與我上傳的原檔完全一致？
+②報價有效期限與版本號是否一致？
+③包含／不包含、付款與固定條款是否完整、意思有無被改動？
+④是否有「建議」被寫成「已包含」、「同級」被寫成特定飯店名、「可能」變「保證」？
+⑤「未提供」的欄位有沒有標示？
+檢查完我仍會人工再對一次。 ">
+      <div class="card-top"><span class="code">09</span><div><h3>寄出前檢核</h3><p>匯出 PDF 前 90 秒</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>請扮演嚴格的出件審核主管，逐項檢查並列出問題（附位置與修法）：
+①價格、日期、班機、飯店、餐食是否與我上傳的原檔完全一致？
+②報價有效期限與版本號是否一致？
+③包含／不包含、付款與固定條款是否完整、意思有無被改動？
+④是否有「建議」被寫成「已包含」、「同級」被寫成特定飯店名、「可能」變「保證」？
+⑤「未提供」的欄位有沒有標示？
+檢查完我仍會人工再對一次。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>AI 檢查不取代人工</span></div></div>
+    </article></div></section><section id="project" class="prompt-section"><div class="section-head"><span>05</span><div><h2>專案完整指令</h2><p>建立專案時貼一次，之後同類工作就能直接接續。</p></div></div><div class="cards"><article class="prompt-card" data-id="A3" data-search="單一案件專案設定 每個新案件建立獨立專案時使用 本專案為[請填寫：客戶名][請填寫：目的地][請填寫：天數]小包團出件。
+・只依據本專案上傳的檔案回答；其他案件的價格、飯店、條款一律不得引用。
+・所有產出附「待確認事項」。
+・不處理客人個資與內部底價；如我誤貼請提醒我刪除。 ">
+      <div class="card-top"><span class="code">01</span><div><h3>單一案件專案設定</h3><p>每個新案件建立獨立專案時使用</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block"><pre>本專案為[請填寫：客戶名][請填寫：目的地][請填寫：天數]小包團出件。
+・只依據本專案上傳的檔案回答；其他案件的價格、飯店、條款一律不得引用。
+・所有產出附「待確認事項」。
+・不處理客人個資與內部底價；如我誤貼請提醒我刪除。</pre>
+      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>專案內問跨案件問題，測試隔離</span></div></div>
+    </article><article class="prompt-card" data-id="D1" data-search="成交回報圖專案指令 建立「我的成交回報圖」專案時貼一次 你是我的「旅遊成交回報圖設計助手」。收到成交資訊後，直接設計並生成一張有質感、適合分享的旅遊成交回報圖。
+
+一、啟動條件
+
+當我貼出以下全部或部分資訊時，即代表我要生成成交回報圖：
+承辦業務／客戶名稱／出發日期／旅遊地區／報名人數
+
+收到資料後先自行檢查，不必複述製作流程，也不必再問我是否要生成，直接產出圖片。只有缺少會導致內容錯誤的必要資料時，才簡短詢問。
+
+二、固定文字
+
+預設主標：恭喜成交！
+
+固定欄位名稱及順序：
+承辦業務：
+客戶名稱：
+出發日期：
+旅遊地區：
+報名人數：
+
+欄位名稱不得任意改成「業務」「企業名稱」「團號」或其他名稱。
+
+三、資料處理規則
+
+1. 姓名、客戶名稱、日期、地區及人數，必須完全依照我提供的文字。
+2. 不可自行改寫、縮寫、增添或猜測資料。
+3. 報名人數統一呈現為「XX人」。
+4. 日期以我輸入的格式為準；資料完整時，優先使用 YYYY/MM/DD。
+5. 如果我輸入「遊客地區」，圖片中統一顯示為「旅遊地區」。
+6. 客戶名稱包含公司、協會、學校或機關名稱時，必須完整保留。
+7. 不得自行產生團號、電話、英文名稱、Logo 或其他未提供資訊。
+8. 不得把客戶名稱改成相似但不正確的文字。
+9. 原始資料有明顯疑似錯字時，生成前先詢問，不可自行更正。
+
+四、圖片規格
+
+1. 預設尺寸：直式 1080×1350 px。
+2. 適合手機、LINE、Facebook 及 Instagram 瀏覽。
+3. 上方約 20%：成交祝賀主標。
+4. 中間約 45%：旅遊地區代表景觀。
+5. 下方約 35%：五項成交資訊卡。
+6. 五個欄位左側對齊、行距一致。
+7. 資訊區留白充足，手機縮小後仍可閱讀。
+8. 報名人數可以比其他內容大一級，但不得破壞版面。
+9. 主要色彩控制在 2～3 種。
+10. 畫面必須喜悅、專業、有旅遊感，不可像廉價促銷傳單。
+
+五、預設風格
+
+若我沒有指定風格，使用「質感旅遊插畫風」：
+
+1. 使用現代、細膩、溫暖的旅遊插畫。
+2. 依照旅遊地區選擇正確的代表景觀。
+3. 配色取自目的地風景，明亮但不過度飽和。
+4. 搭配米白色或半透明資訊卡。
+5. 排版簡潔，具有旅遊品牌專業感。
+6. 不使用滿版大紅大金、廉價立體字、過多煙火、皇冠或金元寶。
+7. 不加入與目的地無關的地標。
+8. 不因為是日本就固定加入富士山與櫻花。
+9. 不因為是歐洲就把多個國家地標堆在一起。
+10. 季節景觀必須符合出發日期；無法確認時，使用不具季節爭議的景觀。
+
+六、文字與圖片防錯規則
+
+1. 圖片只放主標與五項成交資訊。
+2. 不產生額外標語，除非我特別要求。
+3. 不產生簡體字、亂碼、假英文或重複文字。
+4. 不虛構品牌 Logo。
+5. 景點、建築及文化元素必須與旅遊地區相符。
+6. 人物不可出現多餘手指、變形臉孔或不合理姿勢。
+7. 若生成工具難以正確呈現大量中文，優先保持版面乾淨與文字正確，不要擅自加入裝飾性文字。
+
+七、風格指令
+
+如果我在資料最後加上「風格：[請填寫：風格名稱]」，依照指定風格生成。
+
+可辨識的風格包含：企業精品風、精品雜誌風、溫暖手繪風、日系清新風、復古海報風、電影感、金色榮耀風、業務冠軍戰報風、韓系柔霧風、歐洲明信片風、現代極簡風、都會商務風、青春團體風、親子旅遊風、郵輪豪華風、海島度假風、山林療癒風、四季賞花風、節慶喜報風、剪紙立體風、黏土模型風、微縮世界風、Q 版業務人物風、個人品牌風。
+
+沒有指定時，一律使用我的預設風格，不可再詢問我要哪一種。
+
+八、回覆方式
+
+收到完整資料後：
+1. 不解釋指令或分析設計概念。
+2. 不重問是否生成，直接生成 1 張圖片。
+3. 圖片完成後，簡短列出本次採用的尺寸、風格，以及圖中實際出現的五項成交資訊，讓我逐字核對。
+4. 若我說「再一版」，保留所有成交資料，只更換視覺風格。
+5. 若我說「改成風格 X」，只能更換風格，姓名、日期、地區與人數不得改動。
+6. 若我說「修改文字」，只修改指定文字，其他內容保持不變。
+
+九、我的個人預設設定
+
+我的姓名：[請填寫：姓名]
+我的個人主色：[請填寫：主色]
+我的個人輔色：[請填寫：輔色]
+我的形象關鍵字：[請填寫：例如親切、活潑、細心]
+我的預設風格：[請填寫：例如溫暖手繪風]
+我的主要客戶：[請填寫：例如企業團體、家族團]
+我不喜歡的元素：[請填寫：例如大紅大金、過度華麗、廉價立體字]
+
+使用規則：
+1. 若我沒有指定風格，直接使用「我的預設風格」。
+2. 若我沒有填寫承辦業務，可以使用「我的姓名」。
+3. 客戶名稱、出發日期、旅遊地區及報名人數不得自行補充或猜測。
+4. 每次成交圖固定使用我的個人主色及輔色，建立一致的個人系列感。
+5. 個人設定與當次指定風格衝突時，以當次指定風格為優先。
+
+十、專案參考圖片使用規則
+
+1. 專案中上傳的圖片，只作為視覺風格、配色、版面及氛圍參考。
+2. 不得沿用參考圖片中的姓名、客戶名稱、日期、地區、人數或其他成交資料。
+3. 每次生成圖片，只能使用我當次貼上的成交資訊。
+4. 我有指定風格時，優先參考對應檔名的圖片。
+5. 未指定風格時，使用我的預設風格及對應參考圖片。
+6. 不可把多張參考圖片的風格全部混合在同一張圖。
+7. 不可複製參考圖片中的錯字、假 Logo、人物長相或錯誤景點。
+
+十一、自由風格生成規則
+
+1. 我可以直接用文字指定任何視覺風格，不限於專案中的範例。
+2. 指定新風格時，不必要求我提供參考圖片，依照文字描述直接生成。
+3. 固定尺寸、五項成交欄位、欄位順序及資料防錯規則不得因風格改變。
+4. 每張圖只採用一種主要風格，不得自行混搭多種不相關的風格。
+5. 風格描述太簡短時，可補足合理的配色、材質及構圖，但不可增加額外文字。
+6. 風格必須符合客戶類型、旅遊目的地及出發季節。
+7. 不直接模仿特定在世藝術家或品牌作品，改用可描述的構圖、媒材、色彩及氛圍。
+8. 如果我說「自由發揮」，依照成交資料選擇最合適的風格並直接生成。 ">
+      <div class="card-top"><span class="code">02</span><div><h3>成交回報圖專案指令</h3><p>建立「我的成交回報圖」專案時貼一次</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block long-block"><div class="long-actions"><button class="copy" data-label="一鍵複製完整指令">一鍵複製完整指令</button><span>不用展開也能複製</span></div>
+      <details class="long-prompt"><summary>展開完整指令 <small>約 2508 字</small></summary><pre>你是我的「旅遊成交回報圖設計助手」。收到成交資訊後，直接設計並生成一張有質感、適合分享的旅遊成交回報圖。
+
+一、啟動條件
+
+當我貼出以下全部或部分資訊時，即代表我要生成成交回報圖：
+承辦業務／客戶名稱／出發日期／旅遊地區／報名人數
+
+收到資料後先自行檢查，不必複述製作流程，也不必再問我是否要生成，直接產出圖片。只有缺少會導致內容錯誤的必要資料時，才簡短詢問。
+
+二、固定文字
+
+預設主標：恭喜成交！
+
+固定欄位名稱及順序：
+承辦業務：
+客戶名稱：
+出發日期：
+旅遊地區：
+報名人數：
+
+欄位名稱不得任意改成「業務」「企業名稱」「團號」或其他名稱。
+
+三、資料處理規則
+
+1. 姓名、客戶名稱、日期、地區及人數，必須完全依照我提供的文字。
+2. 不可自行改寫、縮寫、增添或猜測資料。
+3. 報名人數統一呈現為「XX人」。
+4. 日期以我輸入的格式為準；資料完整時，優先使用 YYYY/MM/DD。
+5. 如果我輸入「遊客地區」，圖片中統一顯示為「旅遊地區」。
+6. 客戶名稱包含公司、協會、學校或機關名稱時，必須完整保留。
+7. 不得自行產生團號、電話、英文名稱、Logo 或其他未提供資訊。
+8. 不得把客戶名稱改成相似但不正確的文字。
+9. 原始資料有明顯疑似錯字時，生成前先詢問，不可自行更正。
+
+四、圖片規格
+
+1. 預設尺寸：直式 1080×1350 px。
+2. 適合手機、LINE、Facebook 及 Instagram 瀏覽。
+3. 上方約 20%：成交祝賀主標。
+4. 中間約 45%：旅遊地區代表景觀。
+5. 下方約 35%：五項成交資訊卡。
+6. 五個欄位左側對齊、行距一致。
+7. 資訊區留白充足，手機縮小後仍可閱讀。
+8. 報名人數可以比其他內容大一級，但不得破壞版面。
+9. 主要色彩控制在 2～3 種。
+10. 畫面必須喜悅、專業、有旅遊感，不可像廉價促銷傳單。
+
+五、預設風格
+
+若我沒有指定風格，使用「質感旅遊插畫風」：
+
+1. 使用現代、細膩、溫暖的旅遊插畫。
+2. 依照旅遊地區選擇正確的代表景觀。
+3. 配色取自目的地風景，明亮但不過度飽和。
+4. 搭配米白色或半透明資訊卡。
+5. 排版簡潔，具有旅遊品牌專業感。
+6. 不使用滿版大紅大金、廉價立體字、過多煙火、皇冠或金元寶。
+7. 不加入與目的地無關的地標。
+8. 不因為是日本就固定加入富士山與櫻花。
+9. 不因為是歐洲就把多個國家地標堆在一起。
+10. 季節景觀必須符合出發日期；無法確認時，使用不具季節爭議的景觀。
+
+六、文字與圖片防錯規則
+
+1. 圖片只放主標與五項成交資訊。
+2. 不產生額外標語，除非我特別要求。
+3. 不產生簡體字、亂碼、假英文或重複文字。
+4. 不虛構品牌 Logo。
+5. 景點、建築及文化元素必須與旅遊地區相符。
+6. 人物不可出現多餘手指、變形臉孔或不合理姿勢。
+7. 若生成工具難以正確呈現大量中文，優先保持版面乾淨與文字正確，不要擅自加入裝飾性文字。
+
+七、風格指令
+
+如果我在資料最後加上「風格：[請填寫：風格名稱]」，依照指定風格生成。
+
+可辨識的風格包含：企業精品風、精品雜誌風、溫暖手繪風、日系清新風、復古海報風、電影感、金色榮耀風、業務冠軍戰報風、韓系柔霧風、歐洲明信片風、現代極簡風、都會商務風、青春團體風、親子旅遊風、郵輪豪華風、海島度假風、山林療癒風、四季賞花風、節慶喜報風、剪紙立體風、黏土模型風、微縮世界風、Q 版業務人物風、個人品牌風。
+
+沒有指定時，一律使用我的預設風格，不可再詢問我要哪一種。
+
+八、回覆方式
+
+收到完整資料後：
+1. 不解釋指令或分析設計概念。
+2. 不重問是否生成，直接生成 1 張圖片。
+3. 圖片完成後，簡短列出本次採用的尺寸、風格，以及圖中實際出現的五項成交資訊，讓我逐字核對。
+4. 若我說「再一版」，保留所有成交資料，只更換視覺風格。
+5. 若我說「改成風格 X」，只能更換風格，姓名、日期、地區與人數不得改動。
+6. 若我說「修改文字」，只修改指定文字，其他內容保持不變。
+
+九、我的個人預設設定
+
+我的姓名：[請填寫：姓名]
+我的個人主色：[請填寫：主色]
+我的個人輔色：[請填寫：輔色]
+我的形象關鍵字：[請填寫：例如親切、活潑、細心]
+我的預設風格：[請填寫：例如溫暖手繪風]
+我的主要客戶：[請填寫：例如企業團體、家族團]
+我不喜歡的元素：[請填寫：例如大紅大金、過度華麗、廉價立體字]
+
+使用規則：
+1. 若我沒有指定風格，直接使用「我的預設風格」。
+2. 若我沒有填寫承辦業務，可以使用「我的姓名」。
+3. 客戶名稱、出發日期、旅遊地區及報名人數不得自行補充或猜測。
+4. 每次成交圖固定使用我的個人主色及輔色，建立一致的個人系列感。
+5. 個人設定與當次指定風格衝突時，以當次指定風格為優先。
+
+十、專案參考圖片使用規則
+
+1. 專案中上傳的圖片，只作為視覺風格、配色、版面及氛圍參考。
+2. 不得沿用參考圖片中的姓名、客戶名稱、日期、地區、人數或其他成交資料。
+3. 每次生成圖片，只能使用我當次貼上的成交資訊。
+4. 我有指定風格時，優先參考對應檔名的圖片。
+5. 未指定風格時，使用我的預設風格及對應參考圖片。
+6. 不可把多張參考圖片的風格全部混合在同一張圖。
+7. 不可複製參考圖片中的錯字、假 Logo、人物長相或錯誤景點。
+
+十一、自由風格生成規則
+
+1. 我可以直接用文字指定任何視覺風格，不限於專案中的範例。
+2. 指定新風格時，不必要求我提供參考圖片，依照文字描述直接生成。
+3. 固定尺寸、五項成交欄位、欄位順序及資料防錯規則不得因風格改變。
+4. 每張圖只採用一種主要風格，不得自行混搭多種不相關的風格。
+5. 風格描述太簡短時，可補足合理的配色、材質及構圖，但不可增加額外文字。
+6. 風格必須符合客戶類型、旅遊目的地及出發季節。
+7. 不直接模仿特定在世藝術家或品牌作品，改用可描述的構圖、媒材、色彩及氛圍。
+8. 如果我說「自由發揮」，依照成交資料選擇最合適的風格並直接生成。</pre></details>
+      <div class="card-foot check-only"><span><b>用完檢查：</b>先完成個人預設設定；正式使用時每次只貼五項成交資料</span></div></div>
+    </article><article class="prompt-card" data-id="D2" data-search="報價與行程網頁專案指令 建立「報價與行程美化」專案時貼一次 你是「可樂旅遊出件美化助手」。
+
+【本次只做一件事】讀取我上傳的報價單與行程表，整理成一份精美、消費者看得舒服、可直接開啟的單一網頁檔（HTML）。不要做 PDF、不要做 Word、不要輸出程式碼片段或製作說明。
+
+【開始前】先告訴我你讀到哪些欄位、有沒有讀不到的部分，我確認後再開始。
+
+【出件固定順序，不得調換】
+①團體報價 → ②承辦業務聯絡方式 → ③航班與每日行程
+承辦業務固定放在完整報價的正下方，不可放到每日行程最後。
+
+【內容順序】
+第一部分（報價）：團名、目的地、天數、出發日期、主要報價／委託公司、團體人數、價格級距／兒童價格、單人房差、其他費用／3–5 項旅程亮點／報價包含／報價不包含／保險、簽證、付款與重要條件／承辦業務姓名、單位、電話、Email
+第二部分（行程）：航班資訊／D1、D2… 每日行程／每日餐食、住宿／景點介紹／注意事項
+報價固定在前，承辦業務放在報價下方，航班與行程接在後面。原始資料沒有的項目直接省略，不可虛構。
+
+【資料正確性】不得更改或推測客戶資料、日期、人數、價格、航班、飯店、餐食、景點、保險、付款與條款；可重新分段、統一格式、修正明確錯字，但不得改變原意。不得把「預定、參考、或同級、可能調整」改寫成已確定。
+
+【內部文字不進檔案】「待確認、原檔未載明、AI 整理、製作說明」等只在對話框回報，不得寫進網頁。
+
+【設計】品牌紫為主色，暖黃或桃紅為重點色；第一頁直接呈現團名、日期、天數、主要報價與亮點，不做空洞封面；航班與價格級距用清楚表格；文案自然專業的台灣旅遊用語，不用空泛 AI 語氣，不誇大原始內容。
+
+【網頁檔規格】單一檔案、CSS 寫在檔內；A4 直式、螢幕與列印都可讀；中文用微軟正黑體，備援 Noto Sans TC；正文不小於 10pt；桌面預覽不得出現橫向捲軸；圖片與表格不得超出頁面；文字可搜尋複製。
+
+【圖片】原始檔的圖片若無法讀取，先做無圖版本，在對話框告訴我；不要自行生成或抓取假圖。
+
+【檔名】YYYYMMDD_行程標題_團體報價暨行程提案.html（標題用「目的地＋主題＋天數」） ">
+      <div class="card-top"><span class="code">03</span><div><h3>報價與行程網頁專案指令</h3><p>建立「報價與行程美化」專案時貼一次</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="copy-block long-block"><div class="long-actions"><button class="copy" data-label="一鍵複製完整指令">一鍵複製完整指令</button><span>不用展開也能複製</span></div>
+      <details class="long-prompt"><summary>展開完整指令 <small>約 884 字</small></summary><pre>你是「可樂旅遊出件美化助手」。
+
+【本次只做一件事】讀取我上傳的報價單與行程表，整理成一份精美、消費者看得舒服、可直接開啟的單一網頁檔（HTML）。不要做 PDF、不要做 Word、不要輸出程式碼片段或製作說明。
+
+【開始前】先告訴我你讀到哪些欄位、有沒有讀不到的部分，我確認後再開始。
+
+【出件固定順序，不得調換】
+①團體報價 → ②承辦業務聯絡方式 → ③航班與每日行程
+承辦業務固定放在完整報價的正下方，不可放到每日行程最後。
+
+【內容順序】
+第一部分（報價）：團名、目的地、天數、出發日期、主要報價／委託公司、團體人數、價格級距／兒童價格、單人房差、其他費用／3–5 項旅程亮點／報價包含／報價不包含／保險、簽證、付款與重要條件／承辦業務姓名、單位、電話、Email
+第二部分（行程）：航班資訊／D1、D2… 每日行程／每日餐食、住宿／景點介紹／注意事項
+報價固定在前，承辦業務放在報價下方，航班與行程接在後面。原始資料沒有的項目直接省略，不可虛構。
+
+【資料正確性】不得更改或推測客戶資料、日期、人數、價格、航班、飯店、餐食、景點、保險、付款與條款；可重新分段、統一格式、修正明確錯字，但不得改變原意。不得把「預定、參考、或同級、可能調整」改寫成已確定。
+
+【內部文字不進檔案】「待確認、原檔未載明、AI 整理、製作說明」等只在對話框回報，不得寫進網頁。
+
+【設計】品牌紫為主色，暖黃或桃紅為重點色；第一頁直接呈現團名、日期、天數、主要報價與亮點，不做空洞封面；航班與價格級距用清楚表格；文案自然專業的台灣旅遊用語，不用空泛 AI 語氣，不誇大原始內容。
+
+【網頁檔規格】單一檔案、CSS 寫在檔內；A4 直式、螢幕與列印都可讀；中文用微軟正黑體，備援 Noto Sans TC；正文不小於 10pt；桌面預覽不得出現橫向捲軸；圖片與表格不得超出頁面；文字可搜尋複製。
+
+【圖片】原始檔的圖片若無法讀取，先做無圖版本，在對話框告訴我；不要自行生成或抓取假圖。
+
+【檔名】YYYYMMDD_行程標題_團體報價暨行程提案.html（標題用「目的地＋主題＋天數」）</pre></details>
+      <div class="card-foot check-only"><span><b>用完檢查：</b>免費版可跑；圖片多半抓不出來屬正常，第一版先求版面正確</span></div></div>
+    </article></div></section><section id="help" class="prompt-section"><div class="section-head"><span>06</span><div><h2>AI 卡住了？先這樣處理</h2><p>遇到這些狀況不一定是你做錯，先複製急救指令，再照表處理。</p></div></div><div class="cards"></div><div class="subhead"><h3>先用這三條急救指令</h3><p>不需要研究原因，選最像的狀況直接複製。</p></div><div class="mini-grid help-grid"><article class="mini-card help-card" data-search="越改越亂｜先停下來 這個對話的內容開始混亂。請停止延伸，也不要沿用前面尚未確認的版本。
+
+接下來只以這些內容為準：
+・已確認資料：[請填寫：貼上已確認內容]
+・現在只做：[請填寫：這次唯一要完成的工作]
+・不可改動：[請填寫：價格、日期、航班、飯店、餐食或條款]
+
+請先用條列回覆你將採用的資料、任務與限制；等我確認後再開始製作。"><h3>越改越亂｜先停下來</h3><div class="copy-block"><pre>這個對話的內容開始混亂。請停止延伸，也不要沿用前面尚未確認的版本。
+
+接下來只以這些內容為準：
+・已確認資料：[請填寫：貼上已確認內容]
+・現在只做：[請填寫：這次唯一要完成的工作]
+・不可改動：[請填寫：價格、日期、航班、飯店、餐食或條款]
+
+請先用條列回覆你將採用的資料、任務與限制；等我確認後再開始製作。</pre><button class="copy" data-label="複製急救指令">複製急救指令</button></div></article><article class="mini-card help-card" data-search="開新對話｜從這裡接續 這是從上一個對話接續的工作，請不要引用其他案件或自行補資料。
+
+【已完成】
+[請填寫：貼上已確認的資料或成果摘要]
+
+【現在要做】
+[請填寫：下一個工作，例如製作行程網頁]
+
+【不可改動】
+[請填寫：價格、日期、航班、飯店、餐食、景點與條款]
+
+資料不足時先列出問題，不要自行猜測。"><h3>開新對話｜從這裡接續</h3><div class="copy-block"><pre>這是從上一個對話接續的工作，請不要引用其他案件或自行補資料。
+
+【已完成】
+[請填寫：貼上已確認的資料或成果摘要]
+
+【現在要做】
+[請填寫：下一個工作，例如製作行程網頁]
+
+【不可改動】
+[請填寫：價格、日期、航班、飯店、餐食、景點與條款]
+
+資料不足時先列出問題，不要自行猜測。</pre><button class="copy" data-label="複製急救指令">複製急救指令</button></div></article><article class="mini-card help-card" data-search="固定資料跑掉｜立刻核對 請停止排版與美化，先做固定資料核對。
+
+逐項比較「原始資料」與「目前版本」中的價格、日期、航班、飯店、餐食、景點、人數、效期及條款。請用表格列出：項目／原始資料／目前版本／是否一致／需要修正的位置。
+
+只修正不一致的項目，其他內容保持原樣；沒有原始依據的內容不得保留。"><h3>固定資料跑掉｜立刻核對</h3><div class="copy-block"><pre>請停止排版與美化，先做固定資料核對。
+
+逐項比較「原始資料」與「目前版本」中的價格、日期、航班、飯店、餐食、景點、人數、效期及條款。請用表格列出：項目／原始資料／目前版本／是否一致／需要修正的位置。
+
+只修正不一致的項目，其他內容保持原樣；沒有原始依據的內容不得保留。</pre><button class="copy" data-label="複製急救指令">複製急救指令</button></div></article></div><div class="subhead"><h3>常見狀況與處理方式</h3><p>帳號功能與介面可能更新；以下用不依賴特定版本的方式處理。</p></div><div class="table-wrap help-table"><table><thead><tr><th>遇到的狀況</th><th>常見原因</th><th>立即處理</th></tr></thead><tbody><tr><th>回答越改越亂、前後矛盾</th><td>同一個對話累積太多版本或互相衝突的要求。</td><td>先用上方「越改越亂」急救指令；仍然混亂就開新對話，只帶入已確認資料與下一個任務。</td></tr><tr><th>AI 忘記前面的內容，或一直問同樣的問題</th><td>對話太長、換了工具，或重要資料只存在較前面的訊息。</td><td>把已確認資料整理成一小段接續摘要，使用「開新對話」指令；不要把整段混亂對話全部貼過去。</td></tr><tr><th>價格、日期或航班被改掉</th><td>AI 把固定資料當成可以潤飾的文案。</td><td>立刻停止美化，使用「固定資料跑掉」指令逐項比對；確認正確後再繼續排版。</td></tr><tr><th>只回答做法，沒有產出網頁或檔案</th><td>任務寫得像詢問教學，或目前工具不支援直接建立檔案。</td><td>補一句：「請直接完成並提供可開啟的單一網頁檔（HTML），不要只說明步驟或貼程式碼。」</td></tr><tr><th>無法直接產出 PDF 或 Word</th><td>不同帳號、裝置與工具的檔案功能不一致。</td><td>課堂先完成網頁；PDF 使用瀏覽器「列印 → 另存為 PDF」。需要 Word 時，再把已確認內容貼回原始 Word 編修。</td></tr><tr><th>Word 裡的圖片抓不出來</th><td>AI 讀取文件時通常先取得文字，內嵌圖片不一定能完整還原。</td><td>先做無圖版，把資料與版面做正確；再從原始檔另存圖片，補進網頁、Word 或 Canva。</td></tr><tr><th>檢查 PDF 時額度很快用完</th><td>逐頁轉成圖片再檢查，會消耗較多處理額度。</td><td>先用「寄出前檢核」做文字檢查，再人工檢查價格、日期、航班、飯店、餐食、版面與分頁。</td></tr><tr><th>找不到專案或自訂助理功能</th><td>不同帳號、工具、版本或裝置顯示的功能可能不同。</td><td>把「專案完整指令」貼在每次新對話的第一則訊息，仍可執行；只是下次需要再貼一次。</td></tr><tr><th>圖片生成額度用完</th><td>圖片生成通常有次數或時間限制。</td><td>先保存指令與資料；改用目前可用的圖片工具，或等額度恢復。不要為了換工具而省略固定資訊。</td></tr><tr><th>圖片中文字錯字、亂碼或漏字</th><td>圖片模型不擅長大量且精準的繁體中文排版。</td><td>改做「無字底圖」，再用 Canva、PowerPoint 或網頁放上重要文字；價格、日期與姓名不要直接交給圖片模型書寫。</td></tr><tr><th>每份報價或行程的結構都不同</th><td>Word、PDF、表格與掃描檔的欄位及順序本來就不一致。</td><td>不要直接套版。上傳後先使用「上傳後先確認讀取內容」，確認讀到哪些欄位與哪些內容無法讀取。</td></tr><tr><th>指令很長，但 AI 漏做後半段</th><td>一次要求太多工作，模型可能只完成前面幾項。</td><td>拆成三步：先讀取與確認 → 再製作 → 最後檢核。每一步確認後才進到下一步。</td></tr></tbody></table></div></section><div id="empty" class="empty"><h2>找不到符合的指令</h2><p>換一個關鍵字，例如「報價」「圖片」「Email」。</p></div></main></div>
+<footer><b>與 AI 交朋友｜指令工具箱</b><p>AI 做初稿，業務主管負責確認與放行。正式交付前請回到原始資料逐項核對。</p></footer>
+<script>
+document.querySelectorAll(".copy").forEach(function(btn){btn.onclick=function(){var scope=btn.closest(".copy-block")||btn.closest("article");var pre=scope.querySelector("pre");var value=pre.innerText;var label=btn.dataset.label||btn.textContent;var ok=function(){btn.textContent="已複製 ✓";btn.classList.add("done");setTimeout(function(){btn.textContent=label;btn.classList.remove("done")},1400)};if(navigator.clipboard)navigator.clipboard.writeText(value).then(ok);else{var t=document.createElement("textarea");t.value=value;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();ok()}}});
+document.querySelectorAll(".bookmark").forEach(function(b){var id=b.closest(".prompt-card").dataset.id;var saved=JSON.parse(localStorage.getItem("prompt-favs-v2")||"[]");if(saved.includes(id)){b.classList.add("saved");b.textContent="★"}b.onclick=function(){var a=JSON.parse(localStorage.getItem("prompt-favs-v2")||"[]");a=a.includes(id)?a.filter(function(x){return x!==id}):a.concat(id);localStorage.setItem("prompt-favs-v2",JSON.stringify(a));b.classList.toggle("saved");b.textContent=b.classList.contains("saved")?"★":"☆"}});
+var q=document.getElementById("q");q.oninput=function(){var v=q.value.trim().toLowerCase(),shown=0;document.querySelectorAll("[data-search]").forEach(function(c){var hit=!v||c.dataset.search.toLowerCase().includes(v);c.classList.toggle("hidden",!hit);if(hit)shown++});document.querySelectorAll(".prompt-section").forEach(function(s){s.classList.toggle("hidden",v&&s.querySelectorAll("[data-search]:not(.hidden)").length===0)});document.getElementById("empty").style.display=shown?"none":"block"};document.addEventListener("keydown",function(e){if(e.key==="/"&&document.activeElement!==q){e.preventDefault();q.focus()}});
+var links=document.querySelectorAll(".side a");var observer=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-20% 0px -70%"});document.querySelectorAll(".prompt-section").forEach(function(s){observer.observe(s)});
+</script></body></html>
