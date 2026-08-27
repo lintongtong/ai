@@ -1,5 +1,6 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive"><title>與 AI 交朋友｜指令工具箱</title><link rel="icon" href="/ai/favicon.ico?v=20260827" sizes="any"><link rel="icon" type="image/svg+xml" href="/ai/favicon.svg?v=20260827"><link rel="shortcut icon" type="image/x-icon" href="/ai/favicon.ico?v=20260827"><style>
 :root{--ink:#111d38;--blue:#2945d3;--violet:#7358e8;--gold:#ffc969;--paper:#f5f6fb;--line:#dfe3ef;--muted:#657087;--pink:#e4007f;--green:#16805a}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif}button,input{font:inherit}button,a{cursor:pointer}.top{position:sticky;top:0;z-index:20;background:#101c42;color:white;box-shadow:0 5px 20px #111a3d22}.top-inner{width:min(1220px,calc(100% - 30px));margin:auto;min-height:72px;display:flex;align-items:center;gap:20px}.brand{color:white;text-decoration:none;font-weight:900;white-space:nowrap}.brand b{display:inline-grid;place-items:center;width:38px;height:38px;margin-right:9px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--violet))}.search{position:relative;flex:1}.search input{width:100%;padding:12px 48px 12px 16px;border:1px solid #ffffff25;border-radius:10px;background:#ffffff12;color:white}.search input::placeholder{color:#bcc6df}.search kbd{position:absolute;right:12px;top:11px;padding:2px 6px;border:1px solid #ffffff33;border-radius:5px;color:#bac3dc}.top a.back{color:var(--gold);text-decoration:none;font-size:13px;font-weight:800}.hero{padding:75px max(20px,calc((100vw - 1220px)/2));color:white;background:radial-gradient(circle at 82% 20%,#ffc96966,transparent 22%),linear-gradient(135deg,#101c42,#2d46c5 60%,#654bce)}.hero small{font-weight:900;letter-spacing:.15em;color:#cdd5ff}.hero h1{font-size:clamp(48px,7vw,84px);line-height:1.05;letter-spacing:-.05em;margin:18px 0}.hero h1 em{font-style:normal;color:var(--gold)}.hero p{max-width:750px;font-size:18px;line-height:1.8;color:#e3e7ff}.how{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.how span{padding:9px 12px;border:1px solid #ffffff33;border-radius:9px;background:#ffffff12}.layout{width:min(1220px,calc(100% - 30px));margin:35px auto 90px;display:grid;grid-template-columns:240px 1fr;gap:25px;align-items:start}.side{position:sticky;top:92px;padding:14px;background:white;border:1px solid var(--line);border-radius:15px}.side b{display:block;padding:8px;color:var(--muted);font-size:12px;letter-spacing:.12em}.side a{display:flex;gap:10px;align-items:center;padding:11px 9px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:800}.side a:hover,.side a.on{background:#edf0ff;color:var(--blue)}.side a span{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:#e5e8f4;font-size:11px}.status{padding:12px;margin-top:10px;background:#fff8e6;border-radius:9px;color:#715723;font-size:12px;line-height:1.6}.prompt-section{scroll-margin-top:95px;margin-bottom:85px}.section-head{display:flex;gap:18px;align-items:center;padding-bottom:18px;border-bottom:3px solid var(--ink);margin-bottom:18px}.section-head>span{display:grid;place-items:center;width:55px;height:55px;border-radius:15px;background:var(--ink);color:white;font-size:22px;font-weight:900}.section-head h2{font-size:34px;margin:0}.section-head p{margin:5px 0 0;color:var(--muted)}.cards{display:grid;gap:14px}.prompt-card{padding:22px;background:white;border:1px solid var(--line);border-radius:15px}.card-top{display:flex;align-items:flex-start;gap:12px}.code{padding:5px 9px;border-radius:7px;background:var(--pink);color:white;font-size:12px;font-weight:900}.card-top>div{flex:1}.card-top h3{font-size:20px;margin:0}.card-top p{margin:5px 0;color:var(--muted);font-size:13px}.bookmark{border:0;background:transparent;font-size:25px;color:#9ba3b4}.bookmark.saved{color:var(--gold)}pre{margin:17px 0;padding:17px;border:1px solid var(--line);border-radius:11px;background:#f5f6fa;white-space:pre-wrap;word-break:break-word;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;line-height:1.75}.card-foot{display:flex;align-items:center;gap:14px}.copy{padding:10px 15px;border:0;border-radius:8px;background:var(--ink);color:white;font-weight:900}.copy.done{background:var(--green)}.card-foot span{color:var(--muted);font-size:12px}.example-label{display:flex;align-items:center;gap:10px;margin-top:18px;color:var(--green)}.example-label b{padding:6px 9px;border-radius:7px;background:#e5f7ef}.example-label span{color:var(--muted);font-size:13px}details.custom-prompt{margin-top:18px;padding:15px;border:1px dashed #b8bfd1;border-radius:11px;background:#fafbfe}details.custom-prompt summary{cursor:pointer;font-weight:900;color:var(--blue)}details.custom-prompt .copy{margin-top:0}.subhead{margin:35px 0 15px}.subhead h3{font-size:25px;margin:0}.subhead p{color:var(--muted)}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mini-card{padding:18px;background:white;border:1px solid var(--line);border-radius:13px}.mini-card h3{margin:0}.mini-card pre{min-height:100px}.mini-card small{margin-left:10px;color:var(--muted)}.help-grid{grid-template-columns:repeat(3,1fr)}.help-card pre{min-height:330px}.help-table th:first-child{min-width:190px}.help-table td{min-width:250px}details.parts{margin-top:20px;padding:18px;background:#ece9fb;border-radius:13px}details.parts summary{cursor:pointer;font-weight:900}.parts-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.part{padding:15px;background:white;border-radius:10px}.part p{color:var(--muted);font-size:12px}.part div{line-height:1.7}.table-wrap{overflow:auto;border-radius:13px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:white}th,td{padding:13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}thead th{background:var(--ink);color:white}tbody th{color:var(--violet)}.empty{display:none;padding:60px;text-align:center;background:white;border-radius:15px}.hidden{display:none!important}footer{padding:50px max(20px,calc((100vw - 1220px)/2));background:var(--ink);color:white}footer p{color:#abb5ce}@media(max-width:800px){.top-inner{flex-wrap:wrap;padding:12px 0}.search{order:3;flex-basis:100%}.layout{grid-template-columns:1fr}.side{position:relative;top:0;display:flex;overflow:auto}.side b,.status{display:none}.side a{white-space:nowrap}.mini-grid,.parts-grid,.help-grid{grid-template-columns:1fr}.card-foot{align-items:flex-start;flex-direction:column}.example-label{align-items:flex-start;flex-direction:column}.help-card pre{min-height:0}}@media(max-width:500px){.hero{padding-top:45px}.section-head h2{font-size:27px}.prompt-card{padding:16px}pre{font-size:14px}}
+.cards-subhead{padding:22px 20px 8px;border-top:2px dashed #e3c4d3}.cards-subhead h3{margin:0;font-size:25px}.cards-subhead p{margin:7px 0 0;color:var(--muted)}.fun-subhead{order:99;margin-top:20px}.fun-card{order:100}.fun-card .code{white-space:nowrap}
 /* Responsive and long-prompt refinements */
 html,body{max-width:100%;overflow-x:hidden}main,.prompt-section,.prompt-card,.copy-block{min-width:0;max-width:100%}pre{max-width:100%;overflow-x:auto;overflow-wrap:anywhere}.table-wrap{max-width:100%;-webkit-overflow-scrolling:touch}.long-actions{display:flex;align-items:center;gap:12px;margin-top:17px}.long-actions span{color:var(--muted);font-size:12px}details.long-prompt{margin-top:14px;border:1px solid var(--line);border-radius:11px;background:#f8f9fd;overflow:hidden}details.long-prompt summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 17px;cursor:pointer;color:var(--blue);font-weight:900}details.long-prompt summary small{color:var(--muted);font-weight:400}details.long-prompt pre{margin:0;border:0;border-top:1px solid var(--line);border-radius:0}.check-only{margin-top:12px}
 @media(max-width:800px){body{width:100%}.top{position:relative;padding-top:env(safe-area-inset-top)}.top-inner{width:100%;max-width:100%;padding:12px 14px;gap:10px}.brand{font-size:15px;white-space:normal}.brand b{width:34px;height:34px;margin-right:7px}.search{min-width:0}.search kbd{display:none}.search input{padding-right:14px}.hero{width:100%;padding:38px 18px 42px}.hero h1{font-size:clamp(38px,11vw,52px);letter-spacing:-.04em}.hero p{font-size:16px;line-height:1.75}.how{gap:8px}.how span{font-size:13px;padding:8px 10px}.layout{width:100%;max-width:100%;padding:0 12px;margin:18px auto 65px;display:block}.side{position:relative;top:0;width:100%;max-width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:9px;margin-bottom:28px;overflow:visible}.side b{display:block;grid-column:1/-1;padding:4px 6px}.side a{min-width:0;padding:9px 7px;white-space:normal;font-size:13px;line-height:1.35}.side a span{flex:0 0 24px}.section-head{gap:12px;align-items:flex-start}.section-head>span{width:48px;height:48px;flex:0 0 48px}.section-head h2{font-size:26px;line-height:1.25}.section-head p{font-size:13px;line-height:1.55}.prompt-section{margin-bottom:60px}.prompt-card{padding:15px;border-radius:13px}.card-top{gap:9px}.card-top h3{font-size:18px;line-height:1.4}pre{font-size:14px;line-height:1.7;padding:14px}.long-actions{align-items:stretch;flex-direction:column}.long-actions .copy{width:100%}details.long-prompt summary{padding:14px;font-size:14px}.help-table th:first-child{min-width:150px}.help-table td{min-width:220px}}
@@ -221,9 +222,26 @@ footer{position:relative;overflow:hidden;background:linear-gradient(135deg,#101a
 承辦業務：[請填寫：姓名]／客戶名稱：[請填寫：客戶]／出發日期：[請填寫：日期]／旅遊地區：[請填寫：地區]／報名人數：[請填寫：N]人
 風格：[請填寫：風格名，例：企業精品風]；主色[請填寫：色系]。
 中文字必須正確清晰；不確定能正確生成的字改用色塊＋簡潔排版；不要浮水印、假 Logo 或可辨識真人。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
-    </article><article class="prompt-card" data-id="IMG_STYLE_REFERENCE" data-search="賀成交圖｜參考照片版 已建立成交回報圖專案時使用 參考照片可省略 承辦業務 客戶名稱 出發日期 旅遊地區 報名人數 沒有參考照片依目的地景點與出發日期季節性自由發揮">
+    </article><article class="prompt-card" data-id="IMG_STYLE_REFERENCE" data-search="賀成交圖｜參考照片版 直接試玩範例 展開自訂版 參考照片可省略 承辦業務 客戶名稱 出發日期 旅遊地區 報名人數 沒有參考照片依目的地景點與出發日期季節性自由發揮">
       <div class="card-top"><span class="code">03</span><div><h3>賀成交圖｜參考照片版</h3><p>有照片就參考風格；沒照片就依目的地與季節自由發揮</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
-      <div class="copy-block"><pre>參考照片：[請上傳；沒有可省略]
+      <div class="example-label"><b>直接試玩範例</b><span>可直接貼上；有附圖才會參考視覺風格</span></div>
+      <div class="copy-block"><pre>請直接生成一張「恭喜成交」旅行社回報圖，直式 4:5，適合手機與 LINE 群組閱讀。
+
+承辦業務：王小美
+客戶名稱：好日子企業員工旅遊
+出發日期：2026/11/20
+旅遊地區：日本京都
+報名人數：24人
+
+如果本訊息有上傳參考照片，只參考它的畫風、構圖感、色彩感、線條與插畫表現方式及整體氛圍；不要複製原圖的人物、文字、Logo 或內容。
+
+如果沒有上傳參考照片，請依日本京都的景點特色與十一月季節感自由發揮。
+
+主題為「恭喜成交」，五項資料放在清楚、好閱讀的資訊區。中文字必須清楚正確；不要自行增加團號、價格、電話、Logo、英文名稱或其他未提供資訊。畫面要有值得恭喜的感覺，但不要做成廉價促銷海報。
+
+請直接生成圖片。</pre>
+      <div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>有附圖才參考；五項資料與中文字逐字核對</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>參考照片：[請上傳；沒有可省略]
 
 承辦業務：[請填寫：OOO]
 客戶名稱：[請填寫：OOOO]
@@ -231,12 +249,15 @@ footer{position:relative;overflow:hidden;background:linear-gradient(135deg,#101a
 旅遊地區：[請填寫：OOOO]
 報名人數：[請填寫：O]人
 
-有參考照片時，只參考它的畫風、構圖、色彩、線條與整體氛圍，不要複製原圖的人物、文字、Logo 或內容。
+請直接生成一張「恭喜成交」旅行社回報圖，直式 4:5，適合手機與 LINE 群組閱讀。
 
-沒有參考照片時，請依旅遊地區、景點特色及出發日期的季節性，自由設計合適的畫面。
+如果我有上傳參考照片，只參考它的畫風、構圖感、色彩感、線條與插畫表現方式及整體氛圍；不要複製原圖的人物、文字、Logo 或內容。
 
-請直接生成圖片。</pre>
-      <div class="card-foot"><button class="copy" data-label="一鍵複製快速格式">一鍵複製快速格式</button><span><b>用完檢查：</b>五項資料已替換；有照片不照抄；沒照片符合目的地與季節</span></div></div>
+如果我沒有上傳參考照片，請依旅遊地區、景點特色及出發日期的季節性自由發揮。
+
+五項成交資料放在清楚、好閱讀的資訊區。中文字必須清楚正確；不要自行增加團號、價格、電話、Logo、英文名稱或其他未提供資訊。畫面要有值得恭喜的感覺，但不要做成廉價促銷海報。
+
+請直接生成圖片。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
     </article><article class="prompt-card" data-id="C3" data-search="圖片提示詞六欄位（通用） 任何一張圖都適用 ①用途：[請填寫：例：旅遊報價封面]
 ②主體：[請填寫：例：冬季京都街景與遠方列車]
 ③地點／季節：[請填寫：例：京都・一月]
@@ -316,32 +337,28 @@ A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與�
 ・畫面不要自行生成活動文字、價格、假 Logo、浮水印或其他人物。
 
 請直接產生完成圖。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
-    </article><article class="prompt-card" data-id="IMG_HOLOGRAM" data-search="未來全息影像改造 課堂創意挑戰，或製作有科技感的內部成交賀圖 請編輯我上傳的圖片，保留原人物的臉部特徵、姿勢與辨識度，將[請填寫：手上的物件／指定主體]改造成透明、發光的 3D 全息影像。
+    </article><div class="cards-subhead fun-subhead"><h3>有趣的圖片玩法</h3><p>與旅行社工作流程分開，適合課堂體驗或個人創作。</p></div><article class="prompt-card fun-card" data-id="IMG_HOLOGRAM" data-search="未來全息影像改造 有趣的圖片玩法 科幻照片 課堂創意挑戰 請編輯我上傳的圖片，保留原人物的臉部特徵、姿勢與辨識度，將[請填寫：手上的物件／指定主體]改造成透明、發光的 3D 全息影像。
 
-背景改成 500 年後的未來旅遊指揮中心：大型透明介面、懸浮城市與航線、藍紫色霓虹光、金色成功提示，具有電影感、專業且明亮，不要做成陰暗末日風。
+背景改成 500 年後的未來指揮中心：大型透明介面、懸浮城市與星圖、藍紫色霓虹光與少量暖金光，具有電影感、精緻且明亮，不要做成陰暗末日風。
 
-如果用於成交賀圖，畫面請預留下方 35% 乾淨資訊區，之後可放：承辦業務、客戶名稱、出發日期、旅遊地區、報名人數。不要在圖片中自行生成這些文字、假 Logo 或額外標語。
+圖片比例 4:5，人物手指與臉部自然；不要生成文字、假 Logo、浮水印或其他人物。 請編輯我上傳的人物照片，保留本人臉部特徵、姿勢與辨識度，將人物手上的物件改造成透明發光的 3D 地球全息影像。
 
-圖片比例 4:5，人物手指與臉部自然，畫面清楚、精緻、有高級科技感。 請編輯我上傳的人物照片，保留本人臉部特徵、姿勢與辨識度，將人物手上的物件改造成透明發光的 3D 地球全息影像。
+背景改成 500 年後的未來指揮中心：大型透明介面、懸浮城市與星圖，使用藍紫色霓虹光與少量暖金光；電影感、精緻且明亮，不要做成陰暗末日風。
 
-背景改成 500 年後的未來旅遊指揮中心：大型透明介面、懸浮城市與發光航線，使用藍紫色霓虹光與少量金色成功提示；電影感、專業且明亮，不要做成陰暗末日風。
-
-圖片比例 4:5，下方保留 35% 乾淨資訊區；不要生成成交資訊、假 Logo、額外標語或其他人物。人物手指與臉部必須自然。">
-      <div class="card-top"><span class="code">07</span><div><h3>未來全息影像改造</h3><p>課堂創意挑戰，或製作有科技感的內部成交賀圖</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+圖片比例 4:5；不要生成文字、假 Logo、浮水印或其他人物。人物手指與臉部必須自然。">
+      <div class="card-top"><span class="code">趣味 01</span><div><h3>未來全息影像改造</h3><p>把自己的照片變成科幻電影畫面</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
       <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
       <div class="copy-block"><pre>請編輯我上傳的人物照片，保留本人臉部特徵、姿勢與辨識度，將人物手上的物件改造成透明發光的 3D 地球全息影像。
 
-背景改成 500 年後的未來旅遊指揮中心：大型透明介面、懸浮城市與發光航線，使用藍紫色霓虹光與少量金色成功提示；電影感、專業且明亮，不要做成陰暗末日風。
+背景改成 500 年後的未來指揮中心：大型透明介面、懸浮城市與星圖，使用藍紫色霓虹光與少量暖金光；電影感、精緻且明亮，不要做成陰暗末日風。
 
-圖片比例 4:5，下方保留 35% 乾淨資訊區；不要生成成交資訊、假 Logo、額外標語或其他人物。人物手指與臉部必須自然。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>正式成交資訊後製排版，不讓生圖模型直接寫重要中文</span></div></div>
+圖片比例 4:5；不要生成文字、假 Logo、浮水印或其他人物。人物手指與臉部必須自然。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>臉部、手指與原人物辨識度要自然</span></div></div>
       <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請編輯我上傳的圖片，保留原人物的臉部特徵、姿勢與辨識度，將[請填寫：手上的物件／指定主體]改造成透明、發光的 3D 全息影像。
 
-背景改成 500 年後的未來旅遊指揮中心：大型透明介面、懸浮城市與航線、藍紫色霓虹光、金色成功提示，具有電影感、專業且明亮，不要做成陰暗末日風。
+背景改成 500 年後的未來指揮中心：大型透明介面、懸浮城市與星圖、藍紫色霓虹光與少量暖金光，具有電影感、精緻且明亮，不要做成陰暗末日風。
 
-如果用於成交賀圖，畫面請預留下方 35% 乾淨資訊區，之後可放：承辦業務、客戶名稱、出發日期、旅遊地區、報名人數。不要在圖片中自行生成這些文字、假 Logo 或額外標語。
-
-圖片比例 4:5，人物手指與臉部自然，畫面清楚、精緻、有高級科技感。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
-    </article><article class="prompt-card" data-id="IMG_AGE_GRID" data-search="我的九宮格年齡變化 課堂趣味體驗，用自己的照片觀察 AI 如何想像年齡 請以我上傳的本人照片為唯一人物參考，生成一張 3×3 九宮格寫實照片拼貼，呈現同一個人在以下九個年齡的樣貌：15、20、25、30、35、40、45、50、55 歲。
+圖片比例 4:5，人物手指與臉部自然；不要生成文字、假 Logo、浮水印或其他人物。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card fun-card" data-id="IMG_AGE_GRID" data-search="我的九宮格年齡變化 有趣的圖片玩法 課堂趣味體驗，用自己的照片觀察 AI 如何想像年齡 請以我上傳的本人照片為唯一人物參考，生成一張 3×3 九宮格寫實照片拼貼，呈現同一個人在以下九個年齡的樣貌：15、20、25、30、35、40、45、50、55 歲。
 
 要求：
 ・九格必須是同一個人，保留主要五官、臉型與辨識度，只調整合理的年齡特徵。
@@ -350,7 +367,8 @@ A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與�
 ・不要過度美肌、醜化、誇張老化，也不要增加其他人物。
 
 圖片比例 1:1，整體像攝影棚拍攝的成長紀錄。這是趣味模擬，不代表本人未來真實樣貌。 ">
-      <div class="card-top"><span class="code">08</span><div><h3>我的九宮格年齡變化</h3><p>課堂趣味體驗，用自己的照片觀察 AI 如何想像年齡</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="card-top"><span class="code">趣味 02</span><div><h3>我的九宮格年齡變化</h3><p>用自己的照片觀察 AI 如何想像年齡</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>上傳一張自己的正面清楚照片即可</span></div>
       <div class="copy-block"><pre>請以我上傳的本人照片為唯一人物參考，生成一張 3×3 九宮格寫實照片拼貼，呈現同一個人在以下九個年齡的樣貌：15、20、25、30、35、40、45、50、55 歲。
 
 要求：
@@ -360,8 +378,43 @@ A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與�
 ・不要過度美肌、醜化、誇張老化，也不要增加其他人物。
 
 圖片比例 1:1，整體像攝影棚拍攝的成長紀錄。這是趣味模擬，不代表本人未來真實樣貌。</pre>
-      <div class="card-foot"><button class="copy" data-label="複製指令">複製指令</button><span><b>用完檢查：</b>先確認九格是同一人、順序正確；年齡變化只是娛樂模擬</span></div></div>
-    </article><article class="prompt-card" data-id="C5" data-search="每日行程提醒圖 帶團期間每晚貼群組 請生成一張「明日行程提醒」圖（直式，LINE 群組用，淺色底）：
+      <div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>先確認九格是同一人、順序正確；年齡變化只是娛樂模擬</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請以我上傳的本人照片為唯一人物參考，生成一張[請填寫：3×3／2×3]多格照片拼貼，呈現同一個人在以下年齡的樣貌：[請填寫：年齡，例如 10、20、30、40、50、60 歲]。
+
+要求：
+・每格必須是同一個人，保留主要五官、臉型與辨識度，只調整合理的年齡特徵。
+・每格使用相同角度、光線與簡潔背景，服裝自然且不搶畫面。
+・由左到右、由上到下依年齡排列；每格下方只標示對應的阿拉伯數字。
+・不要過度美肌、醜化、誇張老化，也不要增加其他人物。
+
+圖片比例[請填寫：1:1／4:5]，整體風格為[請填寫：攝影棚寫實／復古相簿／溫暖底片]。這是趣味模擬，不代表本人未來真實樣貌。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card fun-card" data-id="IMG_FIGURE_BOX" data-search="我的 3D 公仔盒玩 有趣的圖片玩法 上傳照片 公仔 收藏盒 請以我上傳的本人照片為唯一人物參考，生成一款精緻的 3D 公仔收藏盒玩。">
+      <div class="card-top"><span class="code">趣味 03</span><div><h3>我的 3D 公仔盒玩</h3><p>把自己和喜歡的小物做成收藏盒</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>上傳一張自己的全身或半身照片</span></div>
+      <div class="copy-block"><pre>請以我上傳的本人照片為唯一人物參考，生成一款精緻的 3D 公仔收藏盒玩。
+
+公仔保留本人的五官、髮型與穿著特色，使用可愛但不幼稚的半寫實比例。盒內配件包含：迷你行李箱、相機、咖啡杯與筆記本；每件物品放在獨立凹槽中，排列整齊。
+
+包裝使用奶油白與深藍配色，像高質感設計玩具；正面透明展示窗，柔和棚拍光線，畫面乾淨、立體、有收藏感。圖片比例 4:5，不要出現品牌 Logo、浮水印、亂碼或其他人物。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>臉部像本人，配件數量與內容正確</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請以我上傳的本人照片為唯一人物參考，生成一款[請填寫：可愛／半寫實／潮流]風格的 3D 公仔收藏盒玩。
+
+公仔保留本人的五官、髮型與穿著特色。盒內配件包含：[請填寫：3–5 項代表自己的小物]；每件物品放在獨立凹槽中，排列整齊。
+
+包裝使用[請填寫：配色]，整體像[請填寫：高質感設計玩具／復古收藏品]；正面透明展示窗，柔和棚拍光線，畫面乾淨、立體、有收藏感。圖片比例[請填寫：4:5／1:1]，不要出現品牌 Logo、浮水印、亂碼或其他人物。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card fun-card" data-id="IMG_MOVIE_POSTER" data-search="我的原創電影海報 有趣的圖片玩法 上傳照片 主角 電影海報 請以我上傳的本人照片為唯一人物參考，將我設計成一張原創電影海報的主角。">
+      <div class="card-top"><span class="code">趣味 04</span><div><h3>我的原創電影海報</h3><p>把自己變成原創故事的主角</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="example-label"><b>直接試玩範例</b><span>不模仿現有電影，也不需要先想片名</span></div>
+      <div class="copy-block"><pre>請以我上傳的本人照片為唯一人物參考，將我設計成一張原創冒險電影海報的主角。
+
+保留本人的五官、臉型與辨識度；人物站在雲海上的發光列車旁，遠方是漂浮城市與晨曦。畫面有電影級光影、史詩感但不陰暗，主色為深藍、紫色與暖金。
+
+直式 2:3 構圖，人物是視覺焦點，上方保留乾淨留白。不要模仿任何現有電影、角色、演員、片名字體或 Logo；不要生成文字、浮水印或其他人物。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>像本人、故事場景清楚，沒有混入現有作品元素</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請以我上傳的本人照片為唯一人物參考，將我設計成一張原創[請填寫：冒險／喜劇／科幻／奇幻]電影海報的主角。
+
+保留本人的五官、臉型與辨識度；場景為[請填寫：故事場景]，氣氛[請填寫：明亮熱血／幽默輕鬆／神祕夢幻]，主色使用[請填寫：色系]。
+
+圖片比例[請填寫：2:3／4:5]，人物是視覺焦點，並在[請填寫：上方／下方]保留乾淨留白。不要模仿任何現有電影、角色、演員、片名字體或 Logo；不要生成文字、浮水印或其他人物。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+    </article><article class="prompt-card" data-id="C5" data-search="每日行程提醒圖 領隊 導遊專用 帶團期間每晚貼群組 參考上傳截圖視覺風格 請生成一張「明日行程提醒」圖（直式，LINE 群組用，淺色底）：
 必放資訊：明天日期與第幾天／集合時間與地點[請填寫：原檔資訊]／明日重點行程 2–3 項／提醒事項 1–2 條（穿著、天氣或攜帶物品，取自原始資料）。
 風格清爽友善，資訊優先於裝飾；重要文字用清晰排版呈現。 請生成一張「明日行程提醒」圖，直式 1080×1350，適合 LINE 群組閱讀，淺色乾淨背景。
 
@@ -373,7 +426,7 @@ A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與�
 攜帶物品：房卡、隨身水壺、薄外套
 
 資訊順序必須照上面排列，文字清楚、字級大、手機縮小仍可讀。使用清新的韓國海岸旅行風格，不得增加未提供的時間、地點或提醒。">
-      <div class="card-top"><span class="code">09</span><div><h3>每日行程提醒圖</h3><p>帶團期間每晚貼群組</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="card-top"><span class="code">07</span><div><h3>每日行程提醒圖｜領隊／導遊專用</h3><p>帶團期間每晚貼到旅客群組</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
       <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
       <div class="copy-block"><pre>請生成一張「明日行程提醒」圖，直式 1080×1350，適合 LINE 群組閱讀，淺色乾淨背景。
 
@@ -384,10 +437,25 @@ A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與�
 行程：海岸列車 → 甘川文化村 → 松島天空步道
 攜帶物品：房卡、隨身水壺、薄外套
 
-資訊順序必須照上面排列，文字清楚、字級大、手機縮小仍可讀。使用清新的韓國海岸旅行風格，不得增加未提供的時間、地點或提醒。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>時間地點回原檔對過</span></div></div>
-      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>請生成一張「明日行程提醒」圖（直式，LINE 群組用，淺色底）：
-必放資訊：明天日期與第幾天／集合時間與地點[請填寫：原檔資訊]／明日重點行程 2–3 項／提醒事項 1–2 條（穿著、天氣或攜帶物品，取自原始資料）。
-風格清爽友善，資訊優先於裝飾；重要文字用清晰排版呈現。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
+資訊順序必須照上面排列，文字清楚、字級大、手機縮小仍可讀，不得增加未提供的時間、地點或提醒。
+
+如果本訊息有上傳參考截圖，只參考它的畫風、構圖、色彩、線條與整體氛圍；不要複製原圖的人物、文字、Logo 或內容。如果沒有上傳參考截圖，使用清新的韓國海岸旅行風格。</pre><div class="card-foot"><button class="copy" data-label="一鍵複製範例">一鍵複製範例</button><span><b>用完檢查：</b>時間地點回原檔對過；有附圖只參考風格</span></div></div>
+      <details class="custom-prompt"><summary>需要換成自己的內容？展開自訂版</summary><div class="copy-block"><pre>參考截圖：[請上傳；沒有可省略]
+
+請生成一張「明日行程提醒」圖，直式 4:5，適合手機與 LINE 群組閱讀，供領隊／導遊在帶團期間傳給旅客。
+
+日期與第幾天：[請填寫]
+集合時間：[請填寫]
+集合地點：[請填寫]
+旅遊地區：[請填寫]
+明日重點行程：[請填寫 2–3 項]
+提醒事項：[請填寫 1–2 項，只使用已確認的穿著、天氣或攜帶物品資訊]
+
+資訊順序依上面排列，文字清楚、字級大、手機縮小仍可讀；不得增加未提供的時間、地點、天氣或提醒。
+
+如果我有上傳參考截圖，只參考它的畫風、構圖感、色彩感、線條與插畫表現方式及整體氛圍；不要複製原圖的人物、文字、Logo 或內容。
+
+如果我沒有上傳參考截圖，請依旅遊地區、明日行程與出發季節自由設計清爽友善的畫面，資訊優先於裝飾。</pre><button class="copy" data-label="複製自訂版">複製自訂版</button></div></details>
     </article><article class="prompt-card" data-id="C6" data-search="圖片修正重跑 有錯字或不對時 這張圖有以下問題：[請填寫：說明，例：「釜山」寫成「斧山」／文字太小／背景太花]。
 請只修正這些問題，其他部分保持原樣。
 再次確認：所有中文字必須正確，不確定的字改用簡潔排版呈現。 這張圖有以下問題：
@@ -396,7 +464,7 @@ A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與�
 3. 背景太花，影響下方資訊閱讀。
 
 請只修正以上三點：把錯字改為「釜山」、放大「32人」、降低背景複雜度。其他人物、構圖、色彩、文字及尺寸全部保持原樣，不要重新設計整張圖。完成後再列出圖中的五項成交資訊，讓我核對。">
-      <div class="card-top"><span class="code">10</span><div><h3>圖片修正重跑</h3><p>有錯字或不對時</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
+      <div class="card-top"><span class="code">08</span><div><h3>圖片修正重跑</h3><p>有錯字或不對時</p></div><button class="bookmark" aria-label="收藏">☆</button></div>
       <div class="example-label"><b>直接試玩範例</b><span>內容已填好，不用先想規格</span></div>
       <div class="copy-block"><pre>這張圖有以下問題：
 1.「釜山」被寫成「斧山」。
@@ -942,6 +1010,6 @@ A4 直式、精品旅遊雜誌風；畫面包含釜山海岸列車、海景與�
 <script>
 document.querySelectorAll(".copy").forEach(function(btn){btn.onclick=function(){var scope=btn.closest(".copy-block")||btn.closest("article");var pre=scope.querySelector("pre");var value=pre.innerText;var label=btn.dataset.label||btn.textContent;var ok=function(){btn.textContent="已複製 ✓";btn.classList.add("done");setTimeout(function(){btn.textContent=label;btn.classList.remove("done")},1400)};if(navigator.clipboard)navigator.clipboard.writeText(value).then(ok);else{var t=document.createElement("textarea");t.value=value;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();ok()}}});
 document.querySelectorAll(".bookmark").forEach(function(b){var id=b.closest(".prompt-card").dataset.id;var saved=JSON.parse(localStorage.getItem("prompt-favs-v2")||"[]");if(saved.includes(id)){b.classList.add("saved");b.textContent="★"}b.onclick=function(){var a=JSON.parse(localStorage.getItem("prompt-favs-v2")||"[]");a=a.includes(id)?a.filter(function(x){return x!==id}):a.concat(id);localStorage.setItem("prompt-favs-v2",JSON.stringify(a));b.classList.toggle("saved");b.textContent=b.classList.contains("saved")?"★":"☆"}});
-var q=document.getElementById("q");q.oninput=function(){var v=q.value.trim().toLowerCase(),shown=0;document.querySelectorAll("[data-search]").forEach(function(c){var hit=!v||c.dataset.search.toLowerCase().includes(v);c.classList.toggle("hidden",!hit);if(hit)shown++});document.querySelectorAll(".prompt-section").forEach(function(s){s.classList.toggle("hidden",v&&s.querySelectorAll("[data-search]:not(.hidden)").length===0)});document.getElementById("empty").style.display=shown?"none":"block"};document.addEventListener("keydown",function(e){if(e.key==="/"&&document.activeElement!==q){e.preventDefault();q.focus()}});
+var q=document.getElementById("q");q.oninput=function(){var v=q.value.trim().toLowerCase(),shown=0;document.querySelectorAll("[data-search]").forEach(function(c){var hit=!v||c.dataset.search.toLowerCase().includes(v);c.classList.toggle("hidden",!hit);if(hit)shown++});document.querySelectorAll(".fun-subhead").forEach(function(h){h.classList.toggle("hidden",v&&!h.parentElement.querySelector(".fun-card:not(.hidden)"))});document.querySelectorAll(".prompt-section").forEach(function(s){s.classList.toggle("hidden",v&&s.querySelectorAll("[data-search]:not(.hidden)").length===0)});document.getElementById("empty").style.display=shown?"none":"block"};document.addEventListener("keydown",function(e){if(e.key==="/"&&document.activeElement!==q){e.preventDefault();q.focus()}});
 var links=document.querySelectorAll(".side a");var observer=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-20% 0px -70%"});document.querySelectorAll(".prompt-section").forEach(function(s){observer.observe(s)});
 </script></body></html>
