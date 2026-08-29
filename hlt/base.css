@@ -3,18 +3,26 @@
 @media(max-width:600px){
   #find .finder{gap:16px;padding:16px}
   #find input,#rooms input{font-size:18px;padding:15px 16px;border-radius:16px}
-  #find .profile{padding:22px 16px;min-height:auto;text-align:center;border-radius:22px}
-  #find .profile>h3{font-size:30px!important;line-height:1.2;margin:0 0 16px!important;text-align:center;color:var(--n)}
-  #find .grid2{gap:12px}
-  #find .ibox{padding:16px 14px;font-size:18px;line-height:1.55;text-align:center;border-radius:16px}
-  #find .ibox b{font-size:14px;margin-bottom:5px;letter-spacing:.02em}
-  #rooms .rooms{grid-template-columns:1fr;gap:16px}
-  #rooms .roomcard{padding:20px 18px;text-align:center;border-radius:22px}
-  #rooms .roomhead{justify-content:center;margin-bottom:12px}
-  #rooms .roomno{width:64px;height:64px;font-size:24px;border-radius:18px}
-  #rooms .roomtitle{font-size:26px;line-height:1.15}
-  #rooms .roomsub{font-size:14px;margin-top:5px}
-  #rooms .person{align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:16px 0;gap:8px}
-  #rooms .person b{font-size:20px;line-height:1.3}
-  #rooms .person small{font-size:14px;padding:6px 12px;margin:0}
+  #find .profile{padding:20px 14px;min-height:auto;text-align:center;border-radius:22px}
+  #find .profile>h3{font-size:28px!important;line-height:1.2;margin:0 0 14px!important;text-align:center;color:var(--n)}
+  #find .grid2{grid-template-columns:1fr 1fr!important;gap:10px}
+  #find .ibox{padding:14px 10px;font-size:16px;line-height:1.45;text-align:center;border-radius:16px}
+  #find .ibox b{font-size:13px;margin-bottom:4px;letter-spacing:.02em}
+  #rooms .rooms{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  #rooms .roomcard{padding:14px 10px 12px!important;text-align:center;border-radius:18px;min-width:0}
+  #rooms .roomhead{justify-content:center!important;gap:8px!important;margin-bottom:8px!important;text-align:left}
+  #rooms .roomno{width:46px!important;height:46px!important;font-size:20px!important;border-radius:14px!important;flex:0 0 46px}
+  #rooms .roomtitle{font-size:18px!important;line-height:1.1!important;white-space:nowrap}
+  #rooms .roomsub{font-size:12px!important;margin-top:3px!important;white-space:nowrap}
+  #rooms .person{align-items:center!important;justify-content:center!important;flex-direction:column!important;text-align:center!important;padding:10px 2px!important;gap:5px!important;border-top:1px dashed #e3ddeb!important}
+  #rooms .person:first-of-type{border-top:1px dashed #e3ddeb!important}
+  #rooms .person b{font-size:16px!important;line-height:1.25!important;white-space:nowrap}
+  #rooms .person small{font-size:12px!important;padding:4px 9px!important;margin:0!important;white-space:nowrap}
+}
+@media(max-width:360px){
+  #rooms .rooms{gap:9px!important}
+  #rooms .roomcard{padding:12px 8px!important}
+  #rooms .roomno{width:42px!important;height:42px!important;flex-basis:42px;font-size:18px!important}
+  #rooms .roomtitle{font-size:17px!important}
+  #rooms .person b{font-size:15px!important}
 }
