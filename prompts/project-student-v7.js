@@ -23,9 +23,9 @@
       var h=box.querySelector('h4');
       if(!h)return;
       if(h.textContent.indexOf('① 專案設定')===0){
-        box.innerHTML='<h4>① 專案設定</h4>'+
-          '<p><b>專案名稱：</b>可樂旅遊｜團體報價單產出</p>'+
-          '<p><b>'+(kind==='claude'?'Project Knowledge':'資料來源')+'：</b></p>'+
+        box.innerHTML='<h4>① 專案設定</h4>'+ 
+          '<p><b>專案名稱：</b>可樂旅遊｜團體報價單產出</p>'+ 
+          '<p><b>'+(kind==='claude'?'Project Knowledge':'資料來源')+'：</b></p>'+ 
           '<ul><li>可樂旅遊_AI報價單產出指令_v3.txt</li><li>可樂旅遊團體報價單PDF底圖範本.pdf <small>（可選，視覺對照）</small></li></ul>';
       }
     });
@@ -40,19 +40,6 @@
       pre.textContent=text;
     });
 
-    /* ③ 每次怎麼用：檔案比口令重要，完整檔名直接寫出 */
-    boxes.forEach(function(box){
-      var h=box.querySelector('h4');
-      if(!h||h.textContent.indexOf('③ 每次怎麼用')!==0)return;
-      box.innerHTML='<h4>③ 每次怎麼用</h4>'+
-        '<p><b>每次先上傳這 2 個檔案：</b></p>'+
-        '<ol style="margin:6px 0 10px;padding-left:22px">'+
-          '<li><b>行程／報價原始檔</b>（DOC／DOCX／PDF）</li>'+
-          '<li><b>'+exactTemplate+'</b></li>'+
-        '</ol>'+
-        '<p>檔案上傳完成後，直接要求產出即可，例如：<br><code>依專案規範產出報價單</code></p>';
-    });
-
     /* 移除僅供維護者看的說明字樣 */
     card.querySelectorAll('p,li,span').forEach(function(el){
       var t=(el.textContent||'').trim();
@@ -64,6 +51,14 @@
 
   tidyPlatform(project.querySelector('.platform-card.chatgpt'),'chatgpt');
   tidyPlatform(project.querySelector('.platform-card.claude'),'claude');
+
+  /* ③ 每次怎麼用：實際位置是 quick-use，不在 platform-box 裡 */
+  project.querySelectorAll('.platform-card .quick-use').forEach(function(box){
+    box.innerHTML='<b>③ 每次怎麼用</b><br>'+ 
+      '<b>每次上傳這 2 個檔案：</b><br>'+ 
+      '① 行程／報價原始檔（DOC／DOCX／PDF）<br>'+ 
+      '② <strong>'+exactTemplate+'</strong>';
+  });
 
   /* 頂部流程也把必傳檔案說清楚 */
   var intro=project.querySelector('.project-intro p');
