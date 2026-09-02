@@ -12,7 +12,7 @@
   <style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f4f6fb;color:#13203f;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif}.loading{width:min(520px,calc(100% - 36px));padding:30px;border:1px solid #dfe5f0;border-radius:20px;background:#fff;box-shadow:0 18px 48px #1e2d5a12;text-align:center}.mark{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 15px;border-radius:13px;background:linear-gradient(135deg,#3658df,#7658e8);color:#fff;font-weight:900}.loading h1{margin:0;font-size:24px}.loading p{color:#66728a}.loading a{color:#3658df;font-weight:900}</style>
 </head>
 <body>
-<div class="loading" id="loading"><div class="mark">AI</div><h1>正在開啟指令大全</h1><p>載入既有指令與課堂分類導覽…</p><noscript><p>瀏覽器未啟用 JavaScript，請 <a href="content.html">直接開啟指令內容</a>。</p></noscript></div>
+<div class="loading" id="loading"><div class="mark">AI</div><h1>正在開啟指令大全</h1><p>載入既有指令與課堂分類導覽…</p><noscript><p>瀏覽器未啟用 JavaScript，請 <a href="content.html">直接開啟既有指令內容</a>。</p></noscript></div>
 <script>
 (function(){
 const ui=`
@@ -24,7 +24,7 @@ const ui=`
 @media(max-width:800px){.side{top:0!important}.prompt-section{scroll-margin-top:70px!important}}
 `;
 const helper=`<script>(function(){var side=document.querySelector('.side');if(side){var watch=new MutationObserver(function(){if(window.innerWidth>960)return;var active=side.querySelector('a.on');if(active){side.scrollTo({left:Math.max(0,active.offsetLeft-side.clientWidth/2+active.clientWidth/2),behavior:'smooth'})}});side.querySelectorAll('a[href^="#"]').forEach(function(a){watch.observe(a,{attributes:true,attributeFilter:['class']})})}if(location.hash){setTimeout(function(){var target=document.querySelector(location.hash);if(target)target.scrollIntoView()},80)}})();<\/script>`;
-fetch('content.html?v=20260902-project-v4',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error('load');return r.text()}).then(function(html){html=html.replace('</style>',ui+'\n</style>');html=html.replace('<nav class="side">','<nav class="side"><a class="side-home" href="../"><span>⌂</span>課堂首頁</a>');html=html.replace('</body>','<script src="project-v4.js?v=20260902-project-v4"><\/script>'+helper+'</body>');document.open();document.write(html);document.close()}).catch(function(){document.getElementById('loading').innerHTML='<div class="mark">!</div><h1>指令內容載入失敗</h1><p>請重新整理，或 <a href="content.html">直接開啟既有指令內容</a>。</p>'});
+fetch('content.html?v=20260902-prompt-cleanup-v5',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error('load');return r.text()}).then(function(html){html=html.replace('</style>',ui+'\n</style>');html=html.replace('<nav class="side">','<nav class="side"><a class="side-home" href="../"><span>⌂</span>課堂首頁</a>');html=html.replace('</body>','<script src="project-v4.js?v=20260902-project-v4"><\/script><script src="prompt-cleanup-v5.js?v=20260902-prompt-cleanup-v5"><\/script>'+helper+'</body>');document.open();document.write(html);document.close()}).catch(function(){document.getElementById('loading').innerHTML='<div class="mark">!</div><h1>指令內容載入失敗</h1><p>請重新整理，或 <a href="content.html">直接開啟既有指令內容</a>。</p>'});
 })();
 </script>
 </body>
