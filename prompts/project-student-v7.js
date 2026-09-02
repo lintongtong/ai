@@ -2,6 +2,10 @@
   var project=document.getElementById('project');
   if(!project)return;
 
+  /* 學生頁只保留當下操作需要的資訊 */
+  var imageProjectNote=document.getElementById('project-image-note');
+  if(imageProjectNote)imageProjectNote.remove();
+
   var exactTemplate='可樂旅遊團體報價單WORD底圖範本.docx';
 
   /* 首頁重點：每次一定要帶哪兩個檔案 */
