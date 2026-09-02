@@ -1,0 +1,69 @@
+(function(){
+  var project=document.getElementById('project');
+  if(!project)return;
+
+  var exactTemplate='可樂旅遊團體報價單WORD底圖範本.docx';
+
+  /* 首頁重點：每次一定要帶哪兩個檔案 */
+  var strip=project.querySelector('.rule-strip');
+  if(strip){
+    var items=strip.querySelectorAll('div');
+    if(items[0])items[0].innerHTML='<b>每次必傳 2 個檔案</b><br>① 行程／報價原始檔<br>② <strong>'+exactTemplate+'</strong>';
+    if(items[1])items[1].innerHTML='<b>景點照片</b><br>≥ 3 張：純文字版＋大圖版<br>&lt; 3 張：純文字版';
+    if(items[2])items[2].remove();
+    strip.style.gridTemplateColumns='repeat(2,minmax(0,1fr))';
+  }
+
+  function tidyPlatform(card,kind){
+    if(!card)return;
+    var boxes=card.querySelectorAll('.platform-box');
+
+    /* ① 專案設定：只留學生真正要做的事 */
+    boxes.forEach(function(box){
+      var h=box.querySelector('h4');
+      if(!h)return;
+      if(h.textContent.indexOf('① 專案設定')===0){
+        var projectName=box.querySelector('p');
+        box.innerHTML='<h4>① 專案設定</h4>'+
+          '<p><b>專案名稱：</b>可樂旅遊｜團體報價單產出</p>'+
+          '<p><b>'+(kind==='claude'?'Project Knowledge':'資料來源')+'：</b></p>'+
+          '<ul><li>可樂旅遊_AI報價單產出指令_v3.txt</li><li>可樂旅遊團體報價單PDF底圖範本.pdf <small>（可選，視覺對照）</small></li></ul>';
+      }
+    });
+
+    /* ② AI 指令內的底圖檔名統一成完整檔名 */
+    card.querySelectorAll('pre').forEach(function(pre){
+      pre.textContent=pre.textContent
+        .replace(/可樂旅遊團體報價單\s*WORD\s*底圖範本\s*\.docx/g,exactTemplate)
+        .replace(/WORD\s*底圖範本\s*\.docx/g,exactTemplate);
+    });
+
+    /* ③ 每次怎麼用：檔案比口令重要，完整檔名直接寫出 */
+    boxes.forEach(function(box){
+      var h=box.querySelector('h4');
+      if(!h||h.textContent.indexOf('③ 每次怎麼用')!==0)return;
+      box.innerHTML='<h4>③ 每次怎麼用</h4>'+
+        '<p><b>每次先上傳這 2 個檔案：</b></p>'+
+        '<ol style="margin:6px 0 10px;padding-left:22px">'+
+          '<li><b>行程／報價原始檔</b>（DOC／DOCX／PDF）</li>'+
+          '<li><b>'+exactTemplate+'</b></li>'+
+        '</ol>'+
+        '<p>檔案上傳完成後，直接要求產出即可，例如：<br><code>依專案規範產出報價單</code></p>';
+    });
+
+    /* 移除僅供維護者看的說明字樣 */
+    card.querySelectorAll('p,li,span').forEach(function(el){
+      var t=(el.textContent||'').trim();
+      if(t.indexOf('不要放：AI 生圖與 DM 指令')===0 || t.indexOf('那是另一個專案')>-1){
+        el.remove();
+      }
+    });
+  }
+
+  tidyPlatform(project.querySelector('.platform-card.chatgpt'),'chatgpt');
+  tidyPlatform(project.querySelector('.platform-card.claude'),'claude');
+
+  /* 頂部流程也把必傳檔案說清楚 */
+  var intro=project.querySelector('.project-intro p');
+  if(intro)intro.textContent='設定一次，以後每一團只要上傳「行程／報價原始檔」＋「'+exactTemplate+'」，即可直接產出。';
+})();
