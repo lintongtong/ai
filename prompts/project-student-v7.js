@@ -18,19 +18,21 @@
     if(!card)return;
     var boxes=card.querySelectorAll('.platform-box');
 
-    /* ① 專案設定：只留學生真正要做的事 */
+    /* ① 專案設定：保留學生需要的設定與下載檔 */
     boxes.forEach(function(box){
       var h=box.querySelector('h4');
       if(!h)return;
       if(h.textContent.indexOf('① 專案設定')===0){
+        var settingFile=kind==='claude'?'可樂旅遊_Claude專案設定_v2.txt':'可樂旅遊_ChatGPT專案設定_v2.txt';
         box.innerHTML='<h4>① 專案設定</h4>'+ 
           '<p><b>專案名稱：</b>可樂旅遊｜團體報價單產出</p>'+ 
           '<p><b>'+(kind==='claude'?'Project Knowledge':'資料來源')+'：</b></p>'+ 
-          '<ul><li>可樂旅遊_AI報價單產出指令_v3.txt</li><li>可樂旅遊團體報價單PDF底圖範本.pdf <small>（可選，視覺對照）</small></li></ul>';
+          '<ul><li>可樂旅遊_AI報價單產出指令_v3.txt</li><li>可樂旅遊團體報價單PDF底圖範本.pdf <small>（可選，視覺對照）</small></li></ul>'+ 
+          '<div class="file-links"><a href="files/'+settingFile+'" target="_blank">下載完整設定 TXT</a><a href="files/可樂旅遊_AI報價單產出指令_v3.txt" target="_blank">下載共用 AI 規範</a></div>';
       }
     });
 
-    /* ② AI 指令：統一完整檔名，並改為只出純文字版 */
+    /* ② AI 指令：畫面內容固定只出純文字版 */
     card.querySelectorAll('pre').forEach(function(pre){
       var text=pre.textContent
         .replace(/可樂旅遊團體報價單\s*WORD\s*底圖範本\s*\.docx/g,exactTemplate)
@@ -52,7 +54,7 @@
   tidyPlatform(project.querySelector('.platform-card.chatgpt'),'chatgpt');
   tidyPlatform(project.querySelector('.platform-card.claude'),'claude');
 
-  /* ③ 每次怎麼用：實際位置是 quick-use，不在 platform-box 裡 */
+  /* ③ 每次怎麼用：只強調要上傳的兩個完整檔名，不再把口令當主角 */
   project.querySelectorAll('.platform-card .quick-use').forEach(function(box){
     box.innerHTML='<b>③ 每次怎麼用</b><br>'+ 
       '<b>每次上傳這 2 個檔案：</b><br>'+ 
@@ -60,7 +62,6 @@
       '② <strong>'+exactTemplate+'</strong>';
   });
 
-  /* 頂部流程也把必傳檔案說清楚 */
   var intro=project.querySelector('.project-intro p');
   if(intro)intro.textContent='設定一次，以後每一團只要上傳「行程／報價原始檔」＋「'+exactTemplate+'」，即可直接產出純文字版 WORD＋PDF。';
 })();
