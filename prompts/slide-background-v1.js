@@ -202,8 +202,9 @@
         copyText(singlePrompt,this);
       });
 
+      var noTextBackground=imageCards.querySelector('[data-id="C4"]');
       var fun=imageCards.querySelector('.fun-subhead');
-      imageCards.insertBefore(single,fun||null);
+      imageCards.insertBefore(single,noTextBackground?noTextBackground.nextSibling:(fun||null));
     }
   }
 
