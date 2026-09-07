@@ -187,6 +187,51 @@
     .signal h3 { margin: .85rem 0 .65rem; color: var(--navy); font-size: 1.2rem; }
     .signal p { margin: 0; color: var(--muted); }
 
+    .media-intro {
+      display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: 1rem; margin-bottom: 1rem;
+    }
+    .video-card { overflow: hidden; background: #07152d; }
+    .video-frame { position: relative; aspect-ratio: 16 / 9; background: #07152d; }
+    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-meta { padding: 1rem 1.2rem 1.15rem; background: #fff; }
+    .video-meta strong { display: block; color: var(--navy); font-size: 1.08rem; }
+    .video-meta span { color: var(--muted); font-size: .85rem; }
+    .video-copy {
+      padding: clamp(1.35rem, 3vw, 2rem); display: flex; flex-direction: column; justify-content: center;
+      background: linear-gradient(145deg, #ffffff, #eaf7f5);
+    }
+    .video-copy .eyebrow { margin: 0 0 .65rem; color: var(--teal); font-size: .78rem; font-weight: 900; letter-spacing: .08em; }
+    .video-copy h3 { margin: 0; color: var(--navy); font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.3; }
+    .video-copy p { margin: .75rem 0 0; color: var(--muted); }
+    .video-link { margin-top: 1rem; color: var(--blue); font-weight: 800; text-underline-offset: 3px; }
+
+    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; gap: .75rem; }
+    .gallery-item {
+      appearance: none; display: block; position: relative; min-width: 0; padding: 0; overflow: hidden;
+      border: 0; border-radius: 18px; background: #dce5ed; cursor: zoom-in; box-shadow: var(--shadow);
+    }
+    .gallery-item.featured { grid-column: span 2; grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s ease, filter .3s ease; }
+    .gallery-item::after {
+      content: ""; position: absolute; inset: 45% 0 0; pointer-events: none;
+      background: linear-gradient(transparent, rgba(6, 20, 42, .78));
+    }
+    .gallery-item:hover img, .gallery-item:focus-visible img { transform: scale(1.035); filter: saturate(1.06); }
+    .gallery-item:focus-visible { outline: 3px solid #77c9c1; outline-offset: 3px; }
+    .gallery-label {
+      position: absolute; left: 1rem; right: 1rem; bottom: .85rem; z-index: 1;
+      color: #fff; font-size: .88rem; font-weight: 800; text-align: left; text-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+    .lightbox { width: min(1100px, calc(100% - 2rem)); max-height: 92vh; padding: 0; border: 0; border-radius: 20px; overflow: hidden; background: #07152d; box-shadow: 0 30px 90px rgba(0,0,0,.35); }
+    .lightbox::backdrop { background: rgba(4, 13, 29, .82); backdrop-filter: blur(6px); }
+    .lightbox img { display: block; width: 100%; max-height: 82vh; object-fit: contain; }
+    .lightbox-close {
+      position: absolute; top: .75rem; right: .75rem; z-index: 2; width: 42px; height: 42px;
+      border: 1px solid rgba(255,255,255,.3); border-radius: 50%; color: #fff; background: rgba(7,21,45,.72); cursor: pointer;
+    }
+
     .conclusion {
       margin: clamp(3rem, 7vw, 5.5rem) 0 4rem; padding: clamp(1.75rem, 4vw, 3rem);
       color: #fff; border-radius: 28px; overflow: hidden; position: relative;
@@ -220,6 +265,8 @@
       .assessment-stat:last-child { grid-column: 1 / -1; }
       .signals { grid-template-columns: 1fr; }
       .signal { min-height: 0; }
+      .media-intro { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 190px; }
     }
     @media (max-width: 680px) {
       main, .topbar-inner { width: min(100% - 1.2rem, var(--max)); }
@@ -248,6 +295,9 @@
       .bar-track { grid-column: 1 / -1; grid-row: 2; height: 13px; }
       .bar-value { grid-column: 2; grid-row: 1; }
       .chart-list { gap: 1.15rem; }
+      .gallery { grid-template-columns: 1fr; grid-auto-rows: 230px; }
+      .gallery-item.featured, .gallery-item.wide, .gallery-item.tall { grid-column: auto; grid-row: auto; }
+      .gallery-item { border-radius: 15px; }
       .conclusion { border-radius: 22px; }
     }
     @media print {
@@ -278,6 +328,7 @@
         <a href="#gain">課程收穫</a>
         <a href="#next">後續需求</a>
         <a href="#voice">正向回饋</a>
+        <a href="#moments">課程紀實</a>
       </nav>
     </div>
   </header>
@@ -423,6 +474,44 @@
       </div>
     </section>
 
+    <section id="moments">
+      <div class="section-head">
+        <div><p class="section-kicker">06 COURSE MOMENTS</p><h2>課程現場集錦</h2></div>
+        <p class="section-note">影片紀錄與精選照片</p>
+      </div>
+
+      <div class="media-intro">
+        <article class="panel video-card">
+          <div class="video-frame">
+            <iframe src="https://drive.google.com/file/d/1cu6SCiHDc1nxwx97t2Wy2cElQJ4lwcWD/preview" title="20260907 與 AI 交朋友課程影片" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          </div>
+          <div class="video-meta"><strong>課程影片</strong><span>20260907 與 AI 交朋友｜現場紀錄</span></div>
+        </article>
+        <aside class="panel video-copy">
+          <p class="eyebrow">LEARNING IN ACTION</p>
+          <h3>從理解概念，到現場共同實作</h3>
+          <p>透過講師示範、專注練習與分組討論，讓學員把 AI 應用帶回日常工作情境。</p>
+          <a class="video-link" href="https://drive.google.com/file/d/1cu6SCiHDc1nxwx97t2Wy2cElQJ4lwcWD/view?usp=sharing" target="_blank" rel="noopener">在 Google Drive 開啟影片 ↗</a>
+        </aside>
+      </div>
+
+      <div class="gallery" aria-label="課程現場精選照片">
+        <button class="gallery-item featured" type="button" data-full="https://drive.google.com/thumbnail?id=1x2SCOK8wjNpaPF1no77nFOaI2WZKJav7&sz=w2400" aria-label="放大檢視學員分組實作照片"><img src="https://drive.google.com/thumbnail?id=1x2SCOK8wjNpaPF1no77nFOaI2WZKJav7&sz=w1600" alt="學員圍繞筆電進行分組實作" loading="lazy" decoding="async"><span class="gallery-label">分組實作</span></button>
+        <button class="gallery-item wide" type="button" data-full="https://drive.google.com/thumbnail?id=17gmaru0XmKcUcuAEcw2oogdqNfad_FQW&sz=w2400" aria-label="放大檢視課堂交流照片"><img src="https://drive.google.com/thumbnail?id=17gmaru0XmKcUcuAEcw2oogdqNfad_FQW&sz=w1600" alt="多組學員於課堂中討論與操作" loading="lazy" decoding="async"><span class="gallery-label">課堂交流</span></button>
+        <button class="gallery-item" type="button" data-full="https://drive.google.com/thumbnail?id=16JLltZGq1RzleZLWiMtxWSBLysy5BMTd&sz=w2400" aria-label="放大檢視小組討論照片"><img src="https://drive.google.com/thumbnail?id=16JLltZGq1RzleZLWiMtxWSBLysy5BMTd&sz=w1600" alt="學員進行小組討論" loading="lazy" decoding="async"><span class="gallery-label">小組討論</span></button>
+        <button class="gallery-item" type="button" data-full="https://drive.google.com/thumbnail?id=13PLgWcB2Ac51Xy3brcG3p3b8RJryIhdU&sz=w2400" aria-label="放大檢視協作學習照片"><img src="https://drive.google.com/thumbnail?id=13PLgWcB2Ac51Xy3brcG3p3b8RJryIhdU&sz=w1600" alt="學員運用筆電協作學習" loading="lazy" decoding="async"><span class="gallery-label">協作學習</span></button>
+        <button class="gallery-item tall" type="button" data-full="https://drive.google.com/thumbnail?id=1Q5L-YWLQ-rWSE68V4407FLv34m3_QS7w&sz=w2400" aria-label="放大檢視專心上課照片"><img src="https://drive.google.com/thumbnail?id=1Q5L-YWLQ-rWSE68V4407FLv34m3_QS7w&sz=w1600" alt="學員專心聆聽課程內容" loading="lazy" decoding="async"><span class="gallery-label">專心上課</span></button>
+        <button class="gallery-item" type="button" data-full="https://drive.google.com/thumbnail?id=1aGAtR9614EaaoJTA-OgV9H0V3ls2z25s&sz=w2400" aria-label="放大檢視動手練習照片"><img src="https://drive.google.com/thumbnail?id=1aGAtR9614EaaoJTA-OgV9H0V3ls2z25s&sz=w1600" alt="學員專注操作電腦進行練習" loading="lazy" decoding="async"><span class="gallery-label">動手練習</span></button>
+        <button class="gallery-item" type="button" data-full="https://drive.google.com/thumbnail?id=1Rwipxn1NTm7ozj0Gln-UvTNojHm3EpWX&sz=w2400" aria-label="放大檢視講師分享照片"><img src="https://drive.google.com/thumbnail?id=1Rwipxn1NTm7ozj0Gln-UvTNojHm3EpWX&sz=w1600" alt="講師於台前分享 AI 應用內容" loading="lazy" decoding="async"><span class="gallery-label">講師分享</span></button>
+        <button class="gallery-item wide" type="button" data-full="https://drive.google.com/thumbnail?id=1bKdoRhZMbtMO1QZ_lwvcXvGA2bxeHY1j&sz=w2400" aria-label="放大檢視講師示範照片"><img src="https://drive.google.com/thumbnail?id=1bKdoRhZMbtMO1QZ_lwvcXvGA2bxeHY1j&sz=w1600" alt="講師進行課程示範，學員同步觀看" loading="lazy" decoding="async"><span class="gallery-label">講師示範</span></button>
+      </div>
+    </section>
+
+    <dialog class="lightbox" id="lightbox" aria-label="照片放大檢視">
+      <button class="lightbox-close" type="button" aria-label="關閉照片">✕</button>
+      <img src="" alt="">
+    </dialog>
+
     <article class="conclusion">
       <small>整體結論</small>
       <h2>高度滿意、方向明確，實務應用是最主要價值</h2>
@@ -431,5 +520,21 @@
   </main>
 
   <footer>資料來源：20260907 與 AI 交朋友｜課後回饋問卷（回覆）、課程驗收試題（回覆）｜匿名彙整</footer>
+  <script>
+    const lightbox = document.querySelector('#lightbox');
+    const lightboxImage = lightbox.querySelector('img');
+    document.querySelectorAll('.gallery-item').forEach((item) => {
+      item.addEventListener('click', () => {
+        const thumbnail = item.querySelector('img');
+        lightboxImage.src = item.dataset.full;
+        lightboxImage.alt = thumbnail.alt;
+        lightbox.showModal();
+      });
+    });
+    lightbox.querySelector('.lightbox-close').addEventListener('click', () => lightbox.close());
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+  </script>
 </body>
 </html>
