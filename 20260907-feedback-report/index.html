@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102a56">
+  <meta name="description" content="20260907 與 AI 交朋友課後回饋匿名分析報告，共 41 份有效回覆。">
+  <title>20260907 與 AI 交朋友｜課後回饋分析</title>
+  <style>
+    :root {
+      --navy: #102a56;
+      --navy-2: #173d70;
+      --blue: #2878b9;
+      --teal: #15887f;
+      --cyan: #e8f7f5;
+      --sky: #eaf3fb;
+      --ink: #182337;
+      --muted: #647187;
+      --line: #dce4ee;
+      --paper: #ffffff;
+      --canvas: #f3f6fa;
+      --shadow: 0 16px 48px rgba(16, 42, 86, .09);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 85% 0%, rgba(40,120,185,.10), transparent 30rem),
+        var(--canvas);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+    .skip-link {
+      position: fixed; left: 1rem; top: -5rem; z-index: 100;
+      padding: .7rem 1rem; border-radius: 10px; background: #fff; color: var(--navy);
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(243, 246, 250, .92);
+      border-bottom: 1px solid rgba(220, 228, 238, .8);
+      backdrop-filter: blur(16px);
+    }
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 2rem)); margin: auto;
+      min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: .75rem; min-width: 0; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 12px; flex: 0 0 auto;
+      display: grid; place-items: center; color: #fff; font-weight: 900;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      box-shadow: 0 8px 20px rgba(16,42,86,.2);
+    }
+    .brand-text { min-width: 0; }
+    .brand-text strong { display: block; color: var(--navy); line-height: 1.2; }
+    .brand-text span { display: block; color: var(--muted); font-size: .78rem; white-space: nowrap; }
+    .nav { display: flex; gap: .25rem; overflow-x: auto; scrollbar-width: none; }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      padding: .55rem .78rem; border-radius: 10px; text-decoration: none;
+      color: var(--muted); font-size: .88rem; font-weight: 700; white-space: nowrap;
+    }
+    .nav a:hover, .nav a:focus-visible { color: var(--navy); background: #fff; outline: none; }
+
+    main { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    .hero { padding: clamp(2.5rem, 6vw, 5rem) 0 2rem; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .55rem;
+      margin: 0 0 1rem; color: var(--teal); font-size: .84rem; font-weight: 800; letter-spacing: .08em;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 3px; border-radius: 9px; background: var(--teal); }
+    h1 { margin: 0; max-width: 900px; color: var(--navy); font-size: clamp(2rem, 5vw, 4.2rem); line-height: 1.14; letter-spacing: -.04em; }
+    .hero-sub { margin: 1.2rem 0 0; color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); }
+
+    .metrics {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+      background: var(--line); box-shadow: var(--shadow);
+    }
+    .metric { min-height: 160px; padding: 1.5rem; background: var(--paper); display: flex; flex-direction: column; justify-content: space-between; }
+    .metric:nth-child(1), .metric:nth-child(2) { background: var(--navy); color: #fff; }
+    .metric:nth-child(3), .metric:nth-child(4) { background: var(--teal); color: #fff; }
+    .metric-value { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1; letter-spacing: -.04em; }
+    .metric-label { font-weight: 700; opacity: .9; }
+
+    .executive {
+      margin-top: 1.25rem; padding: 1.35rem 1.5rem; border-radius: 18px;
+      background: linear-gradient(120deg, #e6f5f3, #eef6fb); border: 1px solid #d3e9e6;
+      color: #26384f; font-size: 1.05rem;
+    }
+    .executive strong { color: var(--teal); }
+
+    section { padding: clamp(3rem, 7vw, 5.5rem) 0 0; scroll-margin-top: 76px; }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: end; margin-bottom: 1.5rem; }
+    .section-kicker { margin: 0 0 .35rem; color: var(--blue); font-weight: 800; letter-spacing: .06em; font-size: .82rem; }
+    h2 { margin: 0; color: var(--navy); font-size: clamp(1.65rem, 3vw, 2.45rem); line-height: 1.2; letter-spacing: -.025em; }
+    .section-note { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .understanding { display: grid; grid-template-columns: 1.05fr .95fr; gap: 1.25rem; }
+    .panel { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .donut-panel { padding: clamp(1.35rem, 3vw, 2rem); display: grid; grid-template-columns: 190px 1fr; gap: 2rem; align-items: center; }
+    .donut {
+      --value: 70.7%; width: 180px; aspect-ratio: 1; border-radius: 50%;
+      background: conic-gradient(var(--teal) 0 var(--value), #d9e5eb var(--value) 100%);
+      display: grid; place-items: center; position: relative;
+    }
+    .donut::after { content: ""; position: absolute; width: 72%; aspect-ratio: 1; border-radius: 50%; background: #fff; }
+    .donut-center { position: relative; z-index: 1; text-align: center; }
+    .donut-center strong { display: block; color: var(--navy); font-size: 2.15rem; line-height: 1; }
+    .donut-center span { color: var(--muted); font-size: .78rem; }
+    .donut-copy h3 { margin: 0 0 .5rem; color: var(--navy); font-size: 1.25rem; }
+    .donut-copy p { margin: 0; color: var(--muted); }
+    .response-list { padding: 1rem 1.25rem; }
+    .response-row { padding: 1rem .25rem; border-bottom: 1px solid var(--line); }
+    .response-row:last-child { border: 0; }
+    .response-top { display: flex; justify-content: space-between; gap: .8rem; margin-bottom: .45rem; font-weight: 700; }
+    .response-top strong { color: var(--navy); white-space: nowrap; }
+    .track { width: 100%; height: 9px; background: #edf1f5; border-radius: 99px; overflow: hidden; }
+    .fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--teal)); transform-origin: left; animation: grow .9s ease-out both; }
+    @keyframes grow { from { transform: scaleX(0); } }
+
+    .chart-card { padding: clamp(1.2rem, 3vw, 2rem); }
+    .chart-list { display: grid; gap: 1rem; }
+    .bar-row { display: grid; grid-template-columns: minmax(220px, 1.15fr) minmax(260px, 2fr) 100px; gap: 1rem; align-items: center; }
+    .bar-label { font-weight: 700; }
+    .bar-track { height: 18px; background: #edf2f6; border-radius: 5px; overflow: hidden; }
+    .bar { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), #4c98d0); transform-origin: left; animation: grow .9s ease-out both; }
+    .bar.teal { background: linear-gradient(90deg, var(--teal), #45a89f); }
+    .bar-value { color: var(--navy); font-weight: 900; text-align: right; white-space: nowrap; }
+    .chart-foot { margin: 1.2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; }
+
+    .signals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .signal { padding: 1.5rem; min-height: 200px; }
+    .signal-no { color: var(--blue); font-size: .78rem; font-weight: 900; letter-spacing: .1em; }
+    .signal h3 { margin: .85rem 0 .65rem; color: var(--navy); font-size: 1.2rem; }
+    .signal p { margin: 0; color: var(--muted); }
+
+    .conclusion {
+      margin: clamp(3rem, 7vw, 5.5rem) 0 4rem; padding: clamp(1.75rem, 4vw, 3rem);
+      color: #fff; border-radius: 28px; overflow: hidden; position: relative;
+      background: linear-gradient(135deg, var(--navy), var(--navy-2) 54%, var(--teal)); box-shadow: 0 24px 60px rgba(16,42,86,.2);
+    }
+    .conclusion::after {
+      content: ""; position: absolute; width: 260px; height: 260px; right: -100px; top: -120px;
+      border: 44px solid rgba(255,255,255,.08); border-radius: 50%;
+    }
+    .conclusion small { display: block; margin-bottom: .55rem; color: #91ddd4; font-weight: 800; letter-spacing: .08em; }
+    .conclusion h2 { color: #fff; position: relative; z-index: 1; }
+    .conclusion p { margin: 1rem 0 0; max-width: 850px; color: rgba(255,255,255,.84); font-size: 1.05rem; position: relative; z-index: 1; }
+
+    footer { padding: 0 0 2.5rem; text-align: center; color: var(--muted); font-size: .78rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fill, .bar { animation: none; }
+    }
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .metric { min-height: 135px; }
+      .understanding { grid-template-columns: 1fr; }
+      .signals { grid-template-columns: 1fr; }
+      .signal { min-height: 0; }
+    }
+    @media (max-width: 680px) {
+      main, .topbar-inner { width: min(100% - 1.2rem, var(--max)); }
+      .topbar-inner { min-height: 58px; }
+      .brand-mark { width: 34px; height: 34px; border-radius: 10px; }
+      .brand-text span { font-size: .7rem; }
+      .hero { padding-top: 2.2rem; }
+      h1 { font-size: clamp(2rem, 11vw, 3rem); }
+      .metrics { grid-template-columns: 1fr 1fr; border-radius: 18px; }
+      .metric { min-height: 120px; padding: 1.1rem; }
+      .metric-value { font-size: clamp(1.75rem, 10vw, 2.5rem); }
+      .metric-label { font-size: .85rem; }
+      .executive { padding: 1.1rem; font-size: 1rem; }
+      .section-head { grid-template-columns: 1fr; }
+      .section-note { margin-top: -.35rem; }
+      .donut-panel { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1.25rem; }
+      .donut { width: 165px; }
+      .bar-row { grid-template-columns: 1fr auto; gap: .35rem .8rem; }
+      .bar-label { font-size: .95rem; }
+      .bar-track { grid-column: 1 / -1; grid-row: 2; height: 13px; }
+      .bar-value { grid-column: 2; grid-row: 1; }
+      .chart-list { gap: 1.15rem; }
+      .conclusion { border-radius: 22px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .topbar { position: static; }
+      .nav { display: none; }
+      main { width: 100%; }
+      .hero { padding-top: 2rem; }
+      section { break-inside: avoid; padding-top: 2rem; }
+      .panel, .metrics, .conclusion { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="課後回饋分析">
+        <div class="brand-mark" aria-hidden="true">AI</div>
+        <div class="brand-text">
+          <strong>課後回饋分析</strong>
+          <span>2026.09.07｜匿名彙整</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="頁面導覽">
+        <a href="#effect">課程成效</a>
+        <a href="#gain">課程收穫</a>
+        <a href="#next">後續需求</a>
+        <a href="#voice">正向回饋</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="hero">
+      <p class="eyebrow">課後回饋分析報告</p>
+      <h1>20260907<br>與 AI 交朋友</h1>
+      <p class="hero-sub">41 份有效回覆｜資料期間：2026/09/07｜未納入任何個人識別資訊</p>
+    </div>
+
+    <div class="metrics" aria-label="四項主要成果">
+      <article class="metric"><div class="metric-value">41</div><div class="metric-label">有效回覆</div></article>
+      <article class="metric"><div class="metric-value">5.0<small style="font-size:.46em">／5</small></div><div class="metric-label">整體平均評分</div></article>
+      <article class="metric"><div class="metric-value">95.1%</div><div class="metric-label">認為課程有幫助</div></article>
+      <article class="metric"><div class="metric-value">70.7%</div><div class="metric-label">已知道怎麼做</div></article>
+    </div>
+
+    <div class="executive"><strong>整體判斷｜</strong>課程獲得高度肯定，學員不只對內容滿意，多數也已建立 AI 工具的基本操作方向；課程收穫與後續需求都集中在可直接應用於工作的實務成果。</div>
+
+    <section id="effect">
+      <div class="section-head">
+        <div><p class="section-kicker">01 COURSE EFFECT</p><h2>課程成效</h2></div>
+        <p class="section-note">單選題｜n＝41</p>
+      </div>
+      <div class="understanding">
+        <article class="panel donut-panel">
+          <div class="donut" role="img" aria-label="70.7% 的學員表示已經知道怎麼做">
+            <div class="donut-center"><strong>70.7%</strong><span>29 人</span></div>
+          </div>
+          <div class="donut-copy">
+            <h3>多數學員已建立行動方向</h3>
+            <p>29 人表示課程非常有幫助，已經知道怎麼做；整體共有 39 人認為課程有幫助。</p>
+          </div>
+        </article>
+        <article class="panel response-list" aria-label="AI 工作應用理解程度">
+          <div class="response-row">
+            <div class="response-top"><span>非常有幫助，已經知道怎麼做</span><strong>29｜70.7%</strong></div>
+            <div class="track"><div class="fill" style="width:70.7%"></div></div>
+          </div>
+          <div class="response-row">
+            <div class="response-top"><span>有幫助，會再練習嘗試</span><strong>10｜24.4%</strong></div>
+            <div class="track"><div class="fill" style="width:24.4%"></div></div>
+          </div>
+          <div class="response-row">
+            <div class="response-top"><span>其他回覆</span><strong>2｜4.9%</strong></div>
+            <div class="track"><div class="fill" style="width:4.9%"></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gain">
+      <div class="section-head">
+        <div><p class="section-kicker">02 KEY TAKEAWAYS</p><h2>最有收穫的課程內容</h2></div>
+        <p class="section-note">複選題｜依選擇人數排序</p>
+      </div>
+      <article class="panel chart-card">
+        <div class="chart-list">
+          <div class="bar-row"><div class="bar-label">對話 Chat／工作 Work／專案 Project</div><div class="bar-track"><div class="bar" style="width:78%"></div></div><div class="bar-value">32｜78.0%</div></div>
+          <div class="bar-row"><div class="bar-label">認識生成式 AI 與常見錯誤</div><div class="bar-track"><div class="bar" style="width:73.2%"></div></div><div class="bar-value">30｜73.2%</div></div>
+          <div class="bar-row"><div class="bar-label">行程、報價與提案實作</div><div class="bar-track"><div class="bar" style="width:65.9%"></div></div><div class="bar-value">27｜65.9%</div></div>
+          <div class="bar-row"><div class="bar-label">指令大全與課程工具</div><div class="bar-track"><div class="bar" style="width:63.4%"></div></div><div class="bar-value">26｜63.4%</div></div>
+          <div class="bar-row"><div class="bar-label">個人化設定與設定驗收</div><div class="bar-track"><div class="bar" style="width:61%"></div></div><div class="bar-value">25｜61.0%</div></div>
+          <div class="bar-row"><div class="bar-label">圖片生成與賀成交圖</div><div class="bar-track"><div class="bar" style="width:48.8%"></div></div><div class="bar-value">20｜48.8%</div></div>
+          <div class="bar-row"><div class="bar-label">AI 偏見、順從性與查證觀念</div><div class="bar-track"><div class="bar" style="width:36.6%"></div></div><div class="bar-value">15｜36.6%</div></div>
+        </div>
+        <p class="chart-foot">各項比例以 41 份有效回覆為分母；本題為複選，因此比例加總不等於 100%。</p>
+      </article>
+    </section>
+
+    <section id="next">
+      <div class="section-head">
+        <div><p class="section-kicker">03 NEXT LEARNING</p><h2>後續最想學的主題</h2></div>
+        <p class="section-note">複選題｜依選擇人數排序</p>
+      </div>
+      <article class="panel chart-card">
+        <div class="chart-list">
+          <div class="bar-row"><div class="bar-label">簡報、文件與表格製作</div><div class="bar-track"><div class="bar teal" style="width:65.9%"></div></div><div class="bar-value">27｜65.9%</div></div>
+          <div class="bar-row"><div class="bar-label">行程、報價與提案製作</div><div class="bar-track"><div class="bar teal" style="width:63.4%"></div></div><div class="bar-value">26｜63.4%</div></div>
+          <div class="bar-row"><div class="bar-label">更進階的提問與工作交代方式</div><div class="bar-track"><div class="bar teal" style="width:63.4%"></div></div><div class="bar-value">26｜63.4%</div></div>
+          <div class="bar-row"><div class="bar-label">工作流程自動化</div><div class="bar-track"><div class="bar teal" style="width:56.1%"></div></div><div class="bar-value">23｜56.1%</div></div>
+          <div class="bar-row"><div class="bar-label">建立自己的專案 Project</div><div class="bar-track"><div class="bar teal" style="width:48.8%"></div></div><div class="bar-value">20｜48.8%</div></div>
+          <div class="bar-row"><div class="bar-label">圖片生成與視覺設計</div><div class="bar-track"><div class="bar teal" style="width:43.9%"></div></div><div class="bar-value">18｜43.9%</div></div>
+          <div class="bar-row"><div class="bar-label">客戶需求整理與回覆話術</div><div class="bar-track"><div class="bar teal" style="width:36.6%"></div></div><div class="bar-value">15｜36.6%</div></div>
+          <div class="bar-row"><div class="bar-label">AI 資料查證與風險判斷</div><div class="bar-track"><div class="bar teal" style="width:31.7%"></div></div><div class="bar-value">13｜31.7%</div></div>
+          <div class="bar-row"><div class="bar-label">更多旅行業實際案例</div><div class="bar-track"><div class="bar teal" style="width:17.1%"></div></div><div class="bar-value">7｜17.1%</div></div>
+        </div>
+        <p class="chart-foot">各項比例以 41 份有效回覆為分母；本題為複選，因此比例加總不等於 100%。</p>
+      </article>
+    </section>
+
+    <section id="voice">
+      <div class="section-head">
+        <div><p class="section-kicker">04 POSITIVE VOICE</p><h2>正向訊號</h2></div>
+      </div>
+      <div class="signals">
+        <article class="panel signal"><div class="signal-no">POSITIVE 01</div><h3>內容易懂且實用</h3><p>回饋肯定課程內容清楚、實用、收穫豐富，並認同講師示範與課程安排。</p></article>
+        <article class="panel signal"><div class="signal-no">POSITIVE 02</div><h3>建立清楚的工作交代方式</h3><p>學員理解如何把需求說清楚、處理矛盾與卡點，讓 AI 更有效協助完成工作。</p></article>
+        <article class="panel signal"><div class="signal-no">POSITIVE 03</div><h3>實際成果提升學習動機</h3><p>課程中的實作與成果展示，讓學員更容易理解 AI 的應用價值，也提高後續使用意願。</p></article>
+      </div>
+    </section>
+
+    <article class="conclusion">
+      <small>整體結論</small>
+      <h2>高度滿意、方向明確，實務應用是最主要價值</h2>
+      <p>本次課程獲得一致的高滿意度，並讓多數學員建立 AI 工作應用的基本方向。從課程收穫與後續學習需求可看出，學員最重視的不是單一工具功能，而是能直接產出簡報、文件、表格、行程、報價與提案等工作成果。</p>
+    </article>
+  </main>
+
+  <footer>資料來源：20260907 與 AI 交朋友｜課後回饋問卷（回覆）｜匿名彙整</footer>
+</body>
+</html>
