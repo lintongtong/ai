@@ -21,7 +21,8 @@
       --line: #dce4ee;
       --paper: #ffffff;
       --canvas: #f3f6fa;
-      --shadow: 0 16px 48px rgba(16, 42, 86, .09);
+      --shadow: 0 18px 50px rgba(16, 42, 86, .085);
+      --shadow-hover: 0 22px 60px rgba(16, 42, 86, .14);
       --radius: 22px;
       --max: 1180px;
     }
@@ -32,8 +33,11 @@
       margin: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at 85% 0%, rgba(40,120,185,.10), transparent 30rem),
+        linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px),
+        radial-gradient(circle at 88% 0%, rgba(40,120,185,.13), transparent 32rem),
         var(--canvas);
+      background-size: 32px 32px, 32px 32px, auto, auto;
       font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
       font-size: 16px;
       line-height: 1.65;
@@ -77,26 +81,35 @@
     .nav a:hover, .nav a:focus-visible { color: var(--navy); background: #fff; outline: none; }
 
     main { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
-    .hero { padding: clamp(2.5rem, 6vw, 5rem) 0 2rem; }
-    h1 { margin: 0; max-width: 900px; color: var(--navy); font-size: clamp(2rem, 5vw, 4.2rem); line-height: 1.14; letter-spacing: -.04em; }
-    .hero-sub { margin: 1.2rem 0 0; color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); }
+    .hero { padding: clamp(2.4rem, 5vw, 4.4rem) 0 clamp(1.5rem, 3vw, 2.2rem); }
+    h1 {
+      margin: 0; display: flex; align-items: baseline; flex-wrap: nowrap; gap: .18em; white-space: nowrap;
+      color: var(--navy); font-size: clamp(2.25rem, 5.1vw, 4.35rem); line-height: 1.08; letter-spacing: -.045em;
+    }
+    .date-title { color: var(--blue); font-weight: 900; }
+    .course-title { font-weight: 900; }
 
     .metrics {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
       border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
       background: var(--line); box-shadow: var(--shadow);
     }
-    .metric { min-height: 160px; padding: 1.5rem; background: var(--paper); display: flex; flex-direction: column; justify-content: space-between; }
+    .metric {
+      min-height: 160px; padding: 1.5rem; background: var(--paper); display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .22s ease, filter .22s ease;
+    }
+    .metric:hover { transform: translateY(-3px); filter: brightness(1.035); }
     .metric:nth-child(1), .metric:nth-child(2) { background: var(--navy); color: #fff; }
     .metric:nth-child(3), .metric:nth-child(4) { background: var(--teal); color: #fff; }
     .metric-value { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1; letter-spacing: -.04em; }
     .metric-label { font-weight: 700; opacity: .9; }
 
     .executive {
-      margin-top: 1.25rem; padding: 1.35rem 1.5rem; border-radius: 18px;
+      margin-top: 1.25rem; padding: 1.35rem 1.5rem 1.35rem 1.65rem; border-radius: 18px; position: relative; overflow: hidden;
       background: linear-gradient(120deg, #e6f5f3, #eef6fb); border: 1px solid #d3e9e6;
       color: #26384f; font-size: 1.05rem;
     }
+    .executive::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; background: linear-gradient(var(--teal), var(--blue)); }
     .executive strong { color: var(--teal); }
 
     section { padding: clamp(3rem, 7vw, 5.5rem) 0 0; scroll-margin-top: 76px; }
@@ -106,7 +119,7 @@
     .section-note { margin: 0; color: var(--muted); font-size: .9rem; }
 
     .understanding { display: grid; grid-template-columns: 1.05fr .95fr; gap: 1.25rem; }
-    .panel { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .panel { background: rgba(255,255,255,.95); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
     .donut-panel { padding: clamp(1.35rem, 3vw, 2rem); display: grid; grid-template-columns: 190px 1fr; gap: 2rem; align-items: center; }
     .donut {
       --value: 70.7%; width: 180px; aspect-ratio: 1; border-radius: 50%;
@@ -139,7 +152,9 @@
     .chart-foot { margin: 1.2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; }
 
     .signals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .signal { padding: 1.5rem; min-height: 200px; }
+    .signal { padding: 1.5rem; min-height: 200px; position: relative; overflow: hidden; transition: transform .22s ease, box-shadow .22s ease; }
+    .signal::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+    .signal:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .signal-no { color: var(--blue); font-size: .78rem; font-weight: 900; letter-spacing: .1em; }
     .signal h3 { margin: .85rem 0 .65rem; color: var(--navy); font-size: 1.2rem; }
     .signal p { margin: 0; color: var(--muted); }
@@ -162,9 +177,14 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .fill, .bar { animation: none; }
+      .metric, .signal { transition: none; }
     }
     @media (max-width: 900px) {
-      .nav { display: none; }
+      .topbar-inner { flex-wrap: wrap; padding: .6rem 0 .5rem; gap: .35rem; }
+      .brand { width: 100%; }
+      .nav { width: 100%; margin: 0 -.2rem; }
+      .nav a { padding: .45rem .65rem; font-size: .82rem; }
+      section { scroll-margin-top: 112px; }
       .metrics { grid-template-columns: repeat(2, 1fr); }
       .metric { min-height: 135px; }
       .understanding { grid-template-columns: 1fr; }
@@ -176,13 +196,15 @@
       .topbar-inner { min-height: 58px; }
       .brand-mark { width: 34px; height: 34px; border-radius: 10px; }
       .brand-text span { font-size: .7rem; }
-      .hero { padding-top: 2.2rem; }
-      h1 { font-size: clamp(2rem, 11vw, 3rem); }
+      .hero { padding-top: 2rem; }
+      h1 { display: flex; font-size: clamp(1.35rem, 6.2vw, 1.8rem); gap: .22em; }
+      .date-title, .course-title { display: inline; }
+      .date-title { margin-bottom: 0; font-size: 1em; letter-spacing: -.02em; }
       .metrics { grid-template-columns: 1fr 1fr; border-radius: 18px; }
-      .metric { min-height: 120px; padding: 1.1rem; }
+      .metric { min-height: 116px; padding: 1.1rem; }
       .metric-value { font-size: clamp(1.75rem, 10vw, 2.5rem); }
       .metric-label { font-size: .85rem; }
-      .executive { padding: 1.1rem; font-size: 1rem; }
+      .executive { padding: 1.1rem 1.1rem 1.1rem 1.35rem; font-size: 1rem; }
       .section-head { grid-template-columns: 1fr; }
       .section-note { margin-top: -.35rem; }
       .donut-panel { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1.25rem; }
@@ -227,8 +249,7 @@
 
   <main id="main">
     <div class="hero">
-      <h1>20260907<br>與 AI 交朋友</h1>
-      <p class="hero-sub">41 份有效回覆｜資料期間：2026/09/07｜未納入任何個人識別資訊</p>
+      <h1><span class="date-title">20260907</span><span class="course-title">與 AI 交朋友</span></h1>
     </div>
 
     <div class="metrics" aria-label="四項主要成果">
