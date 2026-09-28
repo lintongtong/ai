@@ -79,7 +79,7 @@ def out_of_time(reserve=0):
     return DEADLINE is not None and time.time() > DEADLINE - reserve
 
 
-def http_get(url, binary=False, retries=3):
+def http_get(url, binary=False, retries=3, data=None, headers=None):
     global FAILS, OFFLINE, REQS
     if OFFLINE or out_of_time():
         return None
@@ -87,7 +87,7 @@ def http_get(url, binary=False, retries=3):
     for i in range(retries):
         REQS += 1
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+            req = urllib.request.Request(url, data=data, headers={"User-Agent": UA, "Accept": "*/*", **(headers or {})})
             with urllib.request.urlopen(req, timeout=40) as r:
                 data = r.read()
             time.sleep(SLEEP)
@@ -261,6 +261,10 @@ def tpex_inst(d):
             continue
         ic = col(fields, "代號")
         i_for, i_tru = _inst_cols(fields)
+        if i_for is None and len(fields) >= 14:
+            # 櫃買的欄位名稱只寫「買賣超股數」不寫法人別，依固定順序取：
+            # 外資及陸資(不含外資自營商) 買/賣/超 = 2,3,4；外資自營商 5-7；外資合計 8-10；投信 11-13
+            i_for, i_tru = 4, 13
         return {str(r[ic]).strip(): [num(r[i_for]) if i_for is not None else None,
                                      num(r[i_tru]) if i_tru is not None else None] for r in rows}
     return {}
@@ -299,35 +303,36 @@ def tpex_val(d):
 
 def mops_revenue(y, m, market):
     """market: sii（上市）或 otc（上櫃）。回傳 {code: [產業別, 當月營收(千元), 年增率%]}"""
+    import urllib.parse
     ry = y - 1911
-    for host in ("https://mopsov.twse.com.tw", "https://mops.twse.com.tw"):
-        raw = http_get(f"{host}/nas/t21/{market}/t21sc03_{ry}_{m}_0.csv", binary=True)
-        if not raw:
+    form = urllib.parse.urlencode({"step": "9", "functionName": "show_file2",
+                                   "filePath": f"/t21/{market}/", "fileName": f"t21sc03_{ry}_{m}.csv"}).encode()
+    raw = http_get("https://mopsov.twse.com.tw/server-java/FileDownLoad", binary=True, data=form,
+                   headers={"Content-Type": "application/x-www-form-urlencoded",
+                            "Referer": f"https://mopsov.twse.com.tw/nas/t21/{market}/t21sc03_{ry}_{m}_0.html"})
+    if not raw:
+        return None
+    txt = None
+    for enc in ("utf-8-sig", "cp950", "big5"):
+        try:
+            txt = raw.decode(enc)
+            break
+        except UnicodeDecodeError:
             continue
-        txt = None
-        for enc in ("utf-8-sig", "cp950", "big5"):
-            try:
-                txt = raw.decode(enc)
-                break
-            except UnicodeDecodeError:
-                continue
-        if not txt or "公司代號" not in txt:
+    if not txt or "公司代號" not in txt:
+        return {}
+    rd = csv.reader(io.StringIO(txt))
+    header = [re.sub(r"\s+", "", h) for h in next(rd)]
+    ic = col(header, "公司代號")
+    iind = col(header, "產業別")
+    irev = col(header, ("當月營收",), exclude=("上月", "去年", "累計"))
+    iyoy = col(header, ("去年同月增減",), exclude=("累計",))
+    out = {}
+    for r in rd:
+        if len(r) <= max(ic, irev, iyoy):
             continue
-        rd = csv.reader(io.StringIO(txt))
-        header = [re.sub(r"\s+", "", h) for h in next(rd)]
-        ic = col(header, "公司代號")
-        iind = col(header, "產業別")
-        irev = col(header, ("當月營收",), exclude=("上月", "去年", "累計"))
-        iyoy = col(header, ("去年同月增減",), exclude=("累計",))
-        out = {}
-        for r in rd:
-            if len(r) <= max(ic, irev, iyoy):
-                continue
-            code = r[ic].strip()
-            out[code] = [r[iind].strip() if iind is not None else "",
-                         num(r[irev]), num(r[iyoy])]
-        return out
-    return None
+        out[r[ic].strip()] = [r[iind].strip() if iind is not None else "", num(r[irev]), num(r[iyoy])]
+    return out
 
 
 # ---------------------------------------------------------------- 主流程
@@ -360,7 +365,7 @@ def main():
         scanned += 1
         if d.weekday() < 5:
             key = f"{d:%Y%m%d}"
-            if (OFFLINE or out_of_time(RESERVE)) and not os.path.exists(os.path.join(CACHE_DIR, "tpex_i", f"{key}.json")):
+            if (OFFLINE or out_of_time(RESERVE)) and not os.path.exists(os.path.join(CACHE_DIR, "tpex_i2", f"{key}.json")):
                 log(f"  ⏹ 停止往回抓（{'連線被擋' if OFFLINE else '已達時間上限'}），共取得 {len(day_tables)} 個交易日；下次執行會從快取接著抓")
                 break
             final = d < today or now.hour >= 17
@@ -368,7 +373,7 @@ def main():
             if tw:
                 tp = cached("tpex_q", key, lambda d=d: tpex_quotes(d), final) or {}
                 ti = cached("twse_i", key, lambda d=d: twse_inst(d), final) or {}
-                pi = cached("tpex_i", key, lambda d=d: tpex_inst(d), final) or {}
+                pi = cached("tpex_i2", key, lambda d=d: tpex_inst(d), final) or {}
                 day_tables[d] = (tw, tp, ti, pi)
                 k = len(day_tables)
                 if k <= 3 or k % 10 == 0:
@@ -461,7 +466,7 @@ def main():
         pub = date(y + (m == 12), 1 if m == 12 else m + 1, 11)
         merged = {}
         for mk in ("sii", "otc"):
-            t = cached("rev", f"{y}{m:02d}_{mk}", lambda y=y, m=m, mk=mk: mops_revenue(y, m, mk) or {},
+            t = cached("rev2", f"{y}{m:02d}_{mk}", lambda y=y, m=m, mk=mk: mops_revenue(y, m, mk),
                        cache_empty=today >= pub)
             merged.update(t or {})
         if merged:
