@@ -6,6 +6,11 @@ name: 台股資料更新
 on:
   schedule:
     - cron: "12 9 * * 1-5"   # UTC 09:12 = 台北 17:12（GitHub 排程常會延遲數分鐘到半小時）
+  push:
+    branches: [main]
+    paths:
+      - "tw-stock/fetch_tw_stocks.py"
+      - ".github/workflows/tw-stock-data.yml"
   workflow_dispatch:
     inputs:
       days:
