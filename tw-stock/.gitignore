@@ -1,2 +1,3 @@
 .twcache/
 stocks.json
+__pycache__/
