@@ -1,0 +1,88 @@
+==========================================================================================
+POST https://mopsov.twse.com.tw/server-java/FileDownLoad sii t21sc03_115_8.csv
+status 200 ; charset=iso-8859-1 bytes 207297 enc utf-8-sig
+出表日期,資料年月,公司代號,公司名稱,產業別,營業收入-當月營收,營業收入-上月營收,營業收入-去年當月營收,營業收入-上月比較增減(%),營業收入-去年同月增減(%),累計營業收入-當月累計營收,累計營業收入-去年累計營收,累計營業收入-前期比較增減(%),備註
+"115/09/28","115/8","1101","台泥","水泥工業","13515534","13744103","12214776","-1.6630332295967223","10.649053245020621","98726969","96131621","2.699785952844798","-"
+"115/09/28","115/8","1102","亞泥","水泥工業","5590320","5398231","5663764","3.558369399160577","-1.2967348215780177","43694999","46760798","-6.556344483257107","-"
+"115/09/28","115/8","1103","嘉泥","水泥工業","230872","242322","236882","-4.725117818439927","-2.537128190407038","1828907","2009771","-8.999234241115033","-"
+"115/09/28","115/8","1104","環泥","水泥工業","517521","663235","603054","-21.97019156106056","-14.183306967535245","4740038","5075610","-6.611461479506897","-"
+"115/09/28","115/8","1108","幸福","水泥工業","290125","309786","344143","-6.34663929293125","-15.696382027238677","2503880","3074851","-18.56
+==========================================================================================
+POST https://mopsov.twse.com.tw/server-java/FileDownLoad otc t21sc03_115_8.csv
+status 200 ; charset=iso-8859-1 bytes 168884 enc utf-8-sig
+出表日期,資料年月,公司代號,公司名稱,產業別,營業收入-當月營收,營業收入-上月營收,營業收入-去年當月營收,營業收入-上月比較增減(%),營業收入-去年同月增減(%),累計營業收入-當月累計營收,累計營業收入-去年累計營收,累計營業收入-前期比較增減(%),備註
+"115/09/28","115/8","1240","茂生農經","農業科技","251724","242511","230525","3.7990029318257728","9.195965730398004","1934907","1795018","7.793180904035503","-"
+"115/09/28","115/8","1259","安心","觀光餐旅","557241","550828","518800","1.1642472786423348","7.409599074787972","4199264","4028338","4.243089830098666","-"
+"115/09/28","115/8","1264","德麥","食品工業","574572","593252","526051","-3.1487462326296414","9.223630408458495","4633411","4324235","7.149842688938043","-"
+"115/09/28","115/8","1268","漢來美食","觀光餐旅","593410","551405","494542","7.617812678521232","19.991830825288854","4820456","4104798","17.434670354058834","-"
+"115/09/28","115/8","1294","漢田生技","食品工業","51332","69919","68440","-26.583618186758965","-24.99707773232028","576577","494773","16.5336427007941","-"
+"
+==========================================================================================
+POST https://mopsov.twse.com.tw/server-java/FileDownLoad sii t21sc03_114_6.csv
+status 200 ; charset=iso-8859-1 bytes 199474 enc utf-8-sig
+出表日期,資料年月,公司代號,公司名稱,產業別,營業收入-當月營收,營業收入-上月營收,營業收入-去年當月營收,營業收入-上月比較增減(%),營業收入-去年同月增減(%),累計營業收入-當月累計營收,累計營業收入-去年累計營收,累計營業收入-前期比較增減(%),備註
+"115/09/28","114/6","1101","台泥","水泥工業","10107877","12619495","13659543","-19.90268231811178","-26.001353046730774","70380916","64831975","8.558957212085549","-"
+"115/09/28","114/6","1102","亞泥","水泥工業","6019299","6370169","6838497","-5.508017134239296","-11.979211221413125","35260444","35484605","-0.6317133866926234","-"
+"115/09/28","114/6","1103","嘉泥","水泥工業","247791","249182","256328","-0.5582265171641612","-3.3304984238943853","1521022","1437444","5.8143482459142755","-"
+"115/09/28","114/6","1104","環泥","水泥工業","627049","643106","662277","-2.49678902078351","-5.319224433280938","3897477","4000652","-2.5789546303952458","-"
+"115/09/28","114/6","1108","幸福","水泥工業","361327","388571","354661","-7.011331262497716","1.8795413084607555","2373296","2410081","-1.
+==========================================================================================
+POST https://mops.twse.com.tw/server-java/FileDownLoad sii t21sc03_115_8.csv
+ERROR <HTTPError 404: ''>
+==========================================================================================
+POST https://mops.twse.com.tw/server-java/FileDownLoad otc t21sc03_115_8.csv
+ERROR <HTTPError 404: ''>
+==========================================================================================
+POST https://mops.twse.com.tw/server-java/FileDownLoad sii t21sc03_114_6.csv
+ERROR <HTTPError 404: ''>
+==========================================================================================
+GET https://mopsov.twse.com.tw/nas/t21/otc/t21sc03_115_8_0.html
+status 200 text/html bytes 394827 enc cp950
+--- around 產業別:
+96年起電子工業細分為「半導體業、電腦及週邊設備業、光電業、通信網路業、電子零組件業、電子通路業、資訊服務業及其他電子業」等8大類，另獨立化學工業及生技醫療業，為免資訊重複，刪除「電子工業」及「化學生技醫療業」彙總資訊。</div><br><div class=tt style='width:100%;text-align:left;'>出表日期：115/09/28<!--20:00:10--></div><table border=0 width=100%><tr><td><br><table border=0 width=100%><tr><th class=tt align=left >產業別：食品工業</th><th class=tt align=right >單位：千元</th></tr><tr><td colspan=2><table  width=100% border=5 bordercolor='#FF6600' bgcolor='#FFFFFF'><tr><th class=tt colspan=2>&nbsp;</th><th class=tt colspan=5 >營業收入</th><th class=tt colspan=3 >累計營業收入</th><th rowspan=2 class=tt>備註</th></tr><tr><th class=tt>公司<br>代號</th><th class=tt>公司名稱</th><th class=tt>當月營收</th><th class=tt>上月營收</th><th class=tt>去年當月營收</th><th class=tt>上月比較<br>增減(%)</th><th class=tt >去年同月<br>增減(%)</th><th class=tt >當月累計營收</th><th class=tt >去年累計營收</th><th class=tt >前期比較<br>增減(%)</th></tr><tr align=right><td align=center>1264</td><td align=left>德麥</td><td nowrap>                574,572</td><td nowrap>                593,252</td><td nowrap>                526,051</td><td nowrap>                 -3.14</td><Td nowrap>                  9.22</td><td nowrap>              4,633,411</td><td nowrap>              4,324,235</td><td nowrap>                  7.14</td><td align=center>-</td></tr><tr align=right><td align=center>1294</td><td align=left>漢田生技</td><td nowrap>                 51,332</td><td nowrap>                 69,919</td><td nowrap>                 68,440</td><td nowrap>                -26.58</td><Td nowrap>                -24.99</td><td nowrap>                576,577</td><td nowrap>                494,773</td><td nowrap>                 16.53</td><td align=center>-</td></tr><tr align=right><td align=center>1295</td><td align=left>生合</td><td nowrap>                 75,012</td><td nowrap>                 78,660</td><td nowrap>                 75,481</td><td nowrap>                 -4.63</td><Td nowrap>                 -0.62</td><td nowrap>                664,388</td><td nowrap>                682,289</td><td nowrap>                 -2.62</td><td align=center>-</td></tr><tr align=right><td align=center>1780</td><td align=left>立弘</td><td nowrap>                 74,837</td><td nowrap>                 82,537</td><td nowrap>                 66,535</td><td nowrap>                 -9.32</td><Td nowrap>                 12.47</td><td nowrap>                655,773</td><td nowrap>                564,500</td><td nowrap>                 16.16</td><td align=center>-</td></tr><tr align=right><td align=center>1796</td><td align=left>金穎生技</td><td nowrap>                 57,338</td><td nowrap>                 64,643</td><td nowrap>                 64,348</td><td nowrap>                -11.30</td><Td nowrap>                -10.89</td><td nowrap>                444,105</td><td nowrap>                444,874</td><td nowrap>                 -0.17</td><td align=center>-</td></tr><tr align=right><td align=center>4205</t
+--- tr count 978; sample rows:
+   1295 | 生合 | 75,012 | 78,660 | 75,481 | -4.63 | 664,388 | 682,289 | -2.62 | -
+   1780 | 立弘 | 74,837 | 82,537 | 66,535 | -9.32 | 655,773 | 564,500 | 16.16 | -
+   1796 | 金穎生技 | 57,338 | 64,643 | 64,348 | -11.30 | 444,105 | 444,874 | -0.17 | -
+   4205 | 中華食 | 176,841 | 211,728 | 174,767 | -16.47 | 1,373,003 | 1,340,540 | 2.42 | -
+   4207 | 環泰 | 489,265 | 538,483 | 395,725 | -9.14 | 3,861,051 | 3,486,024 | 10.75 | -
+   6846 | 綠茵 | 63,790 | 62,153 | 71,905 | 2.63 | 519,793 | 587,864 | -11.57 | -
+   7743 | 金利食安 | 58,260 | 59,716 | 69,822 | -2.43 | 482,662 | 456,647 | 5.69 | -
+   合計 | 16,094,084 | 16,414,519 | 15,440,513 | -1.95 | 4.23 | 125,941,456 | 115,974,413 | 8.59 | 
+    | 營業收入 | 累計營業收入 | 備註
+   公司代號 | 公司名稱 | 當月營收 | 上月營收 | 去年當月營收 | 上月比較增減(%) | 去年同月增減(%) | 當月累計營收 | 去年累計營收 | 前期比較增減(%)
+   全部國內上櫃公司合計 | 360,585,105 | 350,172,449 | 243,911,612 | 2.97 | 47.83 | 2,520,539,202 | 1,925,135,898 | 30.92
+==========================================================================================
+GET https://mopsov.twse.com.tw/nas/t21/sii/t21sc03_114_6_0.html
+status 200 text/html bytes 449358 enc cp950
+--- around 產業別:
+96年起電子工業細分為「半導體業、電腦及週邊設備業、光電業、通信網路業、電子零組件業、電子通路業、資訊服務業及其他電子業」等8大類，另獨立化學工業及生技醫療業，為免資訊重複，刪除「電子工業」及「化學生技醫療業」彙總資訊。</div><br><div class=tt style='width:100%;text-align:left;'>出表日期：115/09/28<!--08:52:13--></div><table border=0 width=100%><tr><td><br><table border=0 width=100%><tr><th class=tt align=left >產業別：水泥工業</th><th class=tt align=right >單位：千元</th></tr><tr><td colspan=2><table  width=100% border=5 bordercolor='#FF6600' bgcolor='#FFFFFF'><tr><th class=tt colspan=2>&nbsp;</th><th class=tt colspan=5 >營業收入</th><th class=tt colspan=3 >累計營業收入</th><th rowspan=2 class=tt>備註</th></tr><tr><th class=tt>公司<br>代號</th><th class=tt>公司名稱</th><th class=tt>當月營收</th><th class=tt>上月營收</th><th class=tt>去年當月營收</th><th class=tt>上月比較<br>增減(%)</th><th class=tt >去年同月<br>增減(%)</th><th class=tt >當月累計營收</th><th class=tt >去年累計營收</th><th class=tt >前期比較<br>增減(%)</th></tr><tr align=right><td align=center>1101</td><td align=left>台泥</td><td nowrap>             10,107,877</td><td nowrap>             12,619,495</td><td nowrap>             13,659,543</td><td nowrap>                -19.90</td><Td nowrap>                -26.00</td><td nowrap>             70,380,916</td><td nowrap>             64,831,975</td><td nowrap>                  8.55</td><td align=center>-</td></tr><tr align=right><td align=center>1102</td><td align=left>亞泥</td><td nowrap>              6,019,299</td><td nowrap>              6,370,169</td><td nowrap>              6,838,497</td><td nowrap>                 -5.50</td><Td nowrap>                -11.97</td><td nowrap>             35,260,444</td><td nowrap>             35,484,605</td><td nowrap>                 -0.63</td><td align=center>-</td></tr><tr align=right><td align=center>1103</td><td align=left>嘉泥</td><td nowrap>                247,791</td><td nowrap>                249,182</td><td nowrap>                256,328</td><td nowrap>                 -0.55</td><Td nowrap>                 -3.33</td><td nowrap>              1,521,022</td><td nowrap>              1,437,444</td><td nowrap>                  5.81</td><td align=center>-</td></tr><tr align=right><td align=center>1104</td><td align=left>環泥</td><td nowrap>                627,049</td><td nowrap>                643,106</td><td nowrap>                662,277</td><td nowrap>                 -2.49</td><Td nowrap>                 -5.31</td><td nowrap>              3,897,477</td><td nowrap>              4,000,652</td><td nowrap>                 -2.57</td><td align=center>-</td></tr><tr align=right><td align=center>1108</td><td align=left>幸福</td><td nowrap>                361,327</td><td nowrap>                388,571</td><td nowrap>                354,661</td><td nowrap>                 -7.01</td><Td nowrap>                  1.87</td><td nowrap>              2,373,296</td><td nowrap>              2,410,081</td><td nowrap>                 -1.52</td><td align=center>-</td></tr><tr align=right><td align=center>1109</td><t
+--- tr count 1126; sample rows:
+   1103 | 嘉泥 | 247,791 | 249,182 | 256,328 | -0.55 | 1,521,022 | 1,437,444 | 5.81 | -
+   1104 | 環泥 | 627,049 | 643,106 | 662,277 | -2.49 | 3,897,477 | 4,000,652 | -2.57 | -
+   1108 | 幸福 | 361,327 | 388,571 | 354,661 | -7.01 | 2,373,296 | 2,410,081 | -1.52 | -
+   1109 | 信大 | 390,871 | 407,283 | 417,314 | -4.02 | 2,222,076 | 2,473,105 | -10.15 | -
+   1110 | 東泥 | 222,403 | 261,492 | 192,948 | -14.94 | 1,488,991 | 1,181,516 | 26.02 | -
+   合計 | 17,976,617 | 20,939,298 | 22,381,568 | -14.14 | -19.68 | 117,144,222 | 111,819,378 | 4.76 | 
+   產業別：食品工業 | 單位：千元
+   合計 | 0 | 0 | 0 |  |  | 0 | 0 |  | 
+    | 營業收入 | 累計營業收入 | 備註
+   公司代號 | 公司名稱 | 當月營收 | 上月營收 | 去年當月營收 | 上月比較增減(%) | 去年同月增減(%) | 當月累計營收 | 去年累計營收 | 前期比較增減(%)
+   全部國內上市公司合計 | 3,639,305,180 | 3,658,923,433 | 3,305,490,638 | -0.53 | 10.09 | 21,547,145,170 | 18,740,177,389 | 14.97
+==========================================================================================
+GET https://mopsov.twse.com.tw/nas/t21/sii/t21sc03_115_8_0.html
+status 200 text/html bytes 454277 enc cp950
+--- around 產業別:
+96年起電子工業細分為「半導體業、電腦及週邊設備業、光電業、通信網路業、電子零組件業、電子通路業、資訊服務業及其他電子業」等8大類，另獨立化學工業及生技醫療業，為免資訊重複，刪除「電子工業」及「化學生技醫療業」彙總資訊。</div><br><div class=tt style='width:100%;text-align:left;'>出表日期：115/09/28<!--20:00:10--></div><table border=0 width=100%><tr><td><br><table border=0 width=100%><tr><th class=tt align=left >產業別：水泥工業</th><th class=tt align=right >單位：千元</th></tr><tr><td colspan=2><table  width=100% border=5 bordercolor='#FF6600' bgcolor='#FFFFFF'><tr><th class=tt colspan=2>&nbsp;</th><th class=tt colspan=5 >營業收入</th><th class=tt colspan=3 >累計營業收入</th><th rowspan=2 class=tt>備註</th></tr><tr><th class=tt>公司<br>代號</th><th class=tt>公司名稱</th><th class=tt>當月營收</th><th class=tt>上月營收</th><th class=tt>去年當月營收</th><th class=tt>上月比較<br>增減(%)</th><th class=tt >去年同月<br>增減(%)</th><th class=tt >當月累計營收</th><th class=tt >去年累計營收</th><th class=tt >前期比較<br>增減(%)</th></tr><tr align=right><td align=center>1101</td><td align=left>台泥</td><td nowrap>             13,515,534</td><td nowrap>             13,744,103</td><td nowrap>             12,214,776</td><td nowrap>                 -1.66</td><Td nowrap>                 10.64</td><td nowrap>             98,726,969</td><td nowrap>             96,131,621</td><td nowrap>                  2.69</td><td align=center>-</td></tr><tr align=right><td align=center>1102</td><td align=left>亞泥</td><td nowrap>              5,590,320</td><td nowrap>              5,398,231</td><td nowrap>              5,663,764</td><td nowrap>                  3.55</td><Td nowrap>                 -1.29</td><td nowrap>             43,694,999</td><td nowrap>             46,760,798</td><td nowrap>                 -6.55</td><td align=center>-</td></tr><tr align=right><td align=center>1103</td><td align=left>嘉泥</td><td nowrap>                230,872</td><td nowrap>                242,322</td><td nowrap>                236,882</td><td nowrap>                 -4.72</td><Td nowrap>                 -2.53</td><td nowrap>              1,828,907</td><td nowrap>              2,009,771</td><td nowrap>                 -8.99</td><td align=center>-</td></tr><tr align=right><td align=center>1104</td><td align=left>環泥</td><td nowrap>                517,521</td><td nowrap>                663,235</td><td nowrap>                603,054</td><td nowrap>                -21.97</td><Td nowrap>                -14.18</td><td nowrap>              4,740,038</td><td nowrap>              5,075,610</td><td nowrap>                 -6.61</td><td align=center>-</td></tr><tr align=right><td align=center>1108</td><td align=left>幸福</td><td nowrap>                290,125</td><td nowrap>                309,786</td><td nowrap>                344,143</td><td nowrap>                 -6.34</td><Td nowrap>                -15.69</td><td nowrap>              2,503,880</td><td nowrap>              3,074,851</td><td nowrap>                -18.56</td><td align=center>-</td></tr><tr align=right><td align=center>1109</td><t
+--- tr count 1128; sample rows:
+   1103 | 嘉泥 | 230,872 | 242,322 | 236,882 | -4.72 | 1,828,907 | 2,009,771 | -8.99 | -
+   1104 | 環泥 | 517,521 | 663,235 | 603,054 | -21.97 | 4,740,038 | 5,075,610 | -6.61 | -
+   1108 | 幸福 | 290,125 | 309,786 | 344,143 | -6.34 | 2,503,880 | 3,074,851 | -18.56 | -
+   1109 | 信大 | 268,621 | 292,047 | 365,337 | -8.02 | 2,418,514 | 2,955,412 | -18.16 | -
+   1110 | 東泥 | 169,661 | 261,007 | 236,226 | -34.99 | 1,697,994 | 1,915,787 | -11.36 | -
+   合計 | 20,582,654 | 20,910,731 | 19,664,182 | -1.56 | 4.67 | 155,611,301 | 157,923,850 | -1.46 | 
+   產業別：食品工業 | 單位：千元
+   合計 | 0 | 0 | 0 |  |  | 0 | 0 |  | 
+    | 營業收入 | 累計營業收入 | 備註
+   公司代號 | 公司名稱 | 當月營收 | 上月營收 | 去年當月營收 | 上月比較增減(%) | 去年同月增減(%) | 當月累計營收 | 去年累計營收 | 前期比較增減(%)
+   全部國內上市公司合計 | 5,782,935,026 | 5,469,576,364 | 3,928,304,199 | 5.72 | 47.21 | 39,884,320,852 | 28,783,942,690 | 38.56
