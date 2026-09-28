@@ -1,0 +1,68 @@
+name: 台股資料更新
+
+# 每個交易日台北時間約 17:10 抓取證交所／櫃買中心／公開資訊觀測站資料，
+# 產出 stocks.json 放到 stock-data 分支（每次覆蓋，不會讓 main 的歷史變大）。
+# tw-stock/index.html 會自動讀取這份資料。
+on:
+  schedule:
+    - cron: "12 9 * * 1-5"   # UTC 09:12 = 台北 17:12（GitHub 排程常會延遲數分鐘到半小時）
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "抓取交易日數（第一次建議 260；想先快速試跑可填 60）"
+        required: false
+        default: "260"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tw-stock-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      TZ: Asia/Taipei
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tw-stock
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # 抓過的日期會快取起來，之後每天只補新資料
+      - name: 還原資料快取
+        uses: actions/cache/restore@v4
+        with:
+          path: tw-stock/.twcache
+          key: twcache-${{ github.run_id }}
+          restore-keys: twcache-
+
+      - name: 抓取資料
+        working-directory: tw-stock
+        run: python fetch_tw_stocks.py --days "${{ github.event.inputs.days || '260' }}" --out stocks.json
+
+      # 即使抓到一半失敗或逾時，也保存已抓的部分，下次接著抓
+      - name: 保存資料快取
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: tw-stock/.twcache
+          key: twcache-${{ github.run_id }}
+
+      - name: 發布到 stock-data 分支
+        run: |
+          mkdir -p /tmp/out && cp tw-stock/stocks.json /tmp/out/
+          cd /tmp/out
+          git init -q -b stock-data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stocks.json
+          git commit -q -m "台股資料 $(date +'%Y-%m-%d %H:%M')"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" stock-data
