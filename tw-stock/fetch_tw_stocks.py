@@ -42,6 +42,10 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 
 SLEEP = 3.0
 CACHE_DIR = ".twcache"
+DEADLINE = None      # 超過就不再連網，只用已抓到的資料輸出
+OFFLINE = False      # 連續失敗太多次時設為 True
+FAILS = 0
+REQS = 0
 BENCH_CODE = "0050"
 
 
@@ -71,14 +75,23 @@ def roc(d):
     return d.year - 1911
 
 
+def out_of_time(reserve=0):
+    return DEADLINE is not None and time.time() > DEADLINE - reserve
+
+
 def http_get(url, binary=False, retries=3):
+    global FAILS, OFFLINE, REQS
+    if OFFLINE or out_of_time():
+        return None
     last = None
     for i in range(retries):
+        REQS += 1
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
             with urllib.request.urlopen(req, timeout=40) as r:
                 data = r.read()
             time.sleep(SLEEP)
+            FAILS = 0
             return data if binary else data.decode("utf-8", errors="replace")
         except urllib.error.HTTPError as e:
             last = e
@@ -87,10 +100,16 @@ def http_get(url, binary=False, retries=3):
                 return None
         except Exception as e:  # 連線被斷、逾時等
             last = e
-        wait = SLEEP * (4 ** (i + 1))
-        log(f"    ⚠ 請求失敗（{last}），{int(wait)} 秒後重試…")
+        if i == retries - 1:
+            break
+        wait = (10, 30, 60)[min(i, 2)]
+        log(f"    ⚠ 請求失敗（{last}），{wait} 秒後重試…")
         time.sleep(wait)
+    FAILS += 1
     log(f"    ✗ 放棄：{url}")
+    if FAILS >= 6:
+        OFFLINE = True
+        log("    ✗ 連續 6 次請求失敗，可能被暫時封鎖：停止連線，改用已抓到的資料輸出")
     return None
 
 
@@ -102,8 +121,8 @@ def get_json(url):
         return json.loads(txt)
     except json.JSONDecodeError:
         # 被暫時封鎖時證交所會回傳 HTML
-        log("    ⚠ 回應不是 JSON（可能請求太頻繁），暫停 60 秒…")
-        time.sleep(60)
+        log("    ⚠ 回應不是 JSON（可能請求太頻繁），暫停 30 秒…")
+        time.sleep(30)
         txt = http_get(url)
         try:
             return json.loads(txt) if txt else None
@@ -320,29 +339,45 @@ def main():
     ap.add_argument("--out", default="stocks.json", help="輸出檔名（預設 stocks.json）")
     ap.add_argument("--cache", default=".twcache", help="快取資料夾")
     ap.add_argument("--sleep", type=float, default=3.0, help="每次請求間隔秒數（預設 3）")
+    ap.add_argument("--max-minutes", type=float, default=0, help="最多花幾分鐘連網抓資料（0＝不限）；到時間就用已抓到的資料輸出")
     args = ap.parse_args()
+    global DEADLINE
     SLEEP, CACHE_DIR = args.sleep, args.cache
+    if args.max_minutes > 0:
+        DEADLINE = time.time() + args.max_minutes * 60
 
     today = date.today()
     now = datetime.now()
 
-    # 1) 逐日往回找交易日並抓行情＋法人
-    log(f"① 抓每日行情與三大法人（目標 {args.days} 個交易日）")
-    trade_days = []
+    # 1) 從最近一天往回，逐日抓行情＋法人（時間不夠或被擋時，保留已抓到的最近 N 天）
+    log(f"① 抓每日行情與三大法人（目標 {args.days} 個交易日，時間上限 {args.max_minutes} 分鐘）")
+    RESERVE = 12 * 60  # 保留給評價與月營收
+    day_tables = {}
     d = today
     scanned = 0
-    while len(trade_days) < args.days and scanned < args.days * 2 + 30:
+    t0 = time.time()
+    while len(day_tables) < args.days and scanned < args.days * 2 + 30:
         scanned += 1
         if d.weekday() < 5:
+            key = f"{d:%Y%m%d}"
+            if (OFFLINE or out_of_time(RESERVE)) and not os.path.exists(os.path.join(CACHE_DIR, "tpex_i", f"{key}.json")):
+                log(f"  ⏹ 停止往回抓（{'連線被擋' if OFFLINE else '已達時間上限'}），共取得 {len(day_tables)} 個交易日；下次執行會從快取接著抓")
+                break
             final = d < today or now.hour >= 17
-            q = cached("twse_q", f"{d:%Y%m%d}", lambda d=d: twse_quotes(d), cache_empty=final)
-            if q:
-                trade_days.append(d)
-                log(f"  {d}  上市 {len(q)} 檔")
+            tw = cached("twse_q", key, lambda d=d: twse_quotes(d), cache_empty=final)
+            if tw:
+                tp = cached("tpex_q", key, lambda d=d: tpex_quotes(d), final) or {}
+                ti = cached("twse_i", key, lambda d=d: twse_inst(d), final) or {}
+                pi = cached("tpex_i", key, lambda d=d: tpex_inst(d), final) or {}
+                day_tables[d] = (tw, tp, ti, pi)
+                k = len(day_tables)
+                if k <= 3 or k % 10 == 0:
+                    log(f"  {d}  上市 {len(tw)}・上櫃 {len(tp)}・法人 {len(ti) + len(pi)} 筆"
+                        f"（第 {k} 天，已用 {(time.time() - t0) / 60:.0f} 分鐘，累計請求 {REQS} 次）")
         d -= timedelta(days=1)
-    trade_days.sort()
-    if not trade_days:
-        log("✗ 找不到任何交易日資料，請確認網路或稍後再試。")
+    trade_days = sorted(day_tables)
+    if len(trade_days) < 25:
+        log(f"✗ 只取得 {len(trade_days)} 個交易日，不足以輸出（至少需要 25 天）。請稍後再試或改在自己電腦執行。")
         sys.exit(1)
 
     dates = [f"{d:%Y-%m-%d}" for d in trade_days]
@@ -361,10 +396,7 @@ def main():
         return s
 
     for i, d in enumerate(trade_days):
-        key = f"{d:%Y%m%d}"
-        final = d < today or now.hour >= 17
-        tw = cached("twse_q", key, lambda d=d: twse_quotes(d), final) or {}
-        tp = cached("tpex_q", key, lambda d=d: tpex_quotes(d), final) or {}
+        tw, tp, ti, pi = day_tables[d]
         for market, table in (("上市", tw), ("上櫃", tp)):
             for code, (name, close, vol) in table.items():
                 if code == BENCH_CODE:
@@ -374,8 +406,6 @@ def main():
                 s = ensure(code, name, market)
                 s["cl"][i] = close
                 s["vo"][i] = round(vol / 1000) if vol is not None else None
-        ti = cached("twse_i", key, lambda d=d: twse_inst(d), final) or {}
-        pi = cached("tpex_i", key, lambda d=d: tpex_inst(d), final) or {}
         for table in (ti, pi):
             for code, (fb, tb) in table.items():
                 s = stocks.get(code)
@@ -383,8 +413,7 @@ def main():
                     continue
                 s["fb"][i] = round(fb / 1000) if fb is not None else None
                 s["tb"][i] = round(tb / 1000) if tb is not None else None
-        if (i + 1) % 20 == 0 or i == n - 1:
-            log(f"  已處理 {i + 1}/{n} 天（上櫃 {len(tp)} 檔、法人 {len(ti) + len(pi)} 筆）")
+    log(f"  完成：{dates[0]} ～ {dates[-1]}，{n} 個交易日，{len(stocks)} 檔")
 
     # 2) 評價：每月第一個交易日 + 最新一天
     log("② 抓本益比／殖利率／股價淨值比（每月一次＋最新）")
@@ -478,6 +507,8 @@ def main():
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, separators=(",", ":"))
     size = os.path.getsize(args.out) / 1024 / 1024
+    if OFFLINE or out_of_time():
+        log("  ⚠ 本次有部分資料因時間上限或連線被擋而缺漏，下次執行會自動補齊")
     log(f"\n✓ 完成：{args.out}（{len(out_stocks)} 檔，{dates[0]} ～ {dates[-1]}，{size:.1f} MB）")
     log("  到「台股選股工作台」網頁按「載入資料檔」選這個檔案即可。")
 

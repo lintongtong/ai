@@ -28,7 +28,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 200
     env:
       TZ: Asia/Taipei
     steps:
@@ -50,7 +50,7 @@ jobs:
 
       - name: 抓取資料
         working-directory: tw-stock
-        run: python fetch_tw_stocks.py --days "${{ github.event.inputs.days || '260' }}" --out stocks.json
+        run: python fetch_tw_stocks.py --days "${{ github.event.inputs.days || '260' }}" --out stocks.json --max-minutes 150
 
       # 即使抓到一半失敗或逾時，也保存已抓的部分，下次接著抓
       - name: 保存資料快取
@@ -62,6 +62,7 @@ jobs:
           key: twcache-${{ github.run_id }}
 
       - name: 發布到 stock-data 分支
+        if: always() && hashFiles('tw-stock/stocks.json') != ''
         run: |
           mkdir -p /tmp/out && cp tw-stock/stocks.json /tmp/out/
           cd /tmp/out
